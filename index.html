@@ -89,6 +89,26 @@ body{font-family:-apple-system,'Inter',sans-serif;background:var(--bg);color:var
 .client-field input,.client-field textarea{width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:inherit;}
 .client-field input:focus,.client-field textarea:focus{border-color:var(--acc);}
 .client-field textarea{resize:vertical;min-height:50px;}
+/* Welcome screen */
+.welcome{max-width:620px;margin:0 auto;text-align:center;}
+.welcome .w-logo{font-size:12px;letter-spacing:5px;color:var(--acc2);font-weight:700;margin-bottom:6px;}
+.welcome h2{font-family:Georgia,serif;font-size:28px;color:var(--txth);margin-bottom:6px;}
+.welcome .w-tag{font-size:13px;color:var(--gry);font-style:italic;margin-bottom:28px;}
+.welcome .w-intro{font-size:14px;color:var(--txt);line-height:1.7;text-align:left;margin-bottom:24px;}
+.welcome .w-prep{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;text-align:left;margin-bottom:24px;}
+.welcome .w-prep h4{font-size:12px;letter-spacing:1.5px;color:var(--acc2);margin-bottom:10px;font-weight:700;}
+.welcome .w-prep .w-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:13px;color:var(--txt);line-height:1.5;}
+.welcome .w-prep .w-icon{color:var(--acc);font-size:15px;flex-shrink:0;margin-top:1px;}
+.welcome .w-prep .w-opt{color:var(--gry);font-size:11px;margin-left:25px;margin-top:-4px;margin-bottom:6px;}
+.welcome .w-steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;text-align:left;}
+.welcome .w-step{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+.welcome .w-step .w-sn{font-size:20px;font-weight:800;color:var(--lav);margin-bottom:4px;}
+.welcome .w-step .w-st{font-size:12px;font-weight:700;color:var(--txth);margin-bottom:3px;}
+.welcome .w-step .w-sd{font-size:11px;color:var(--gry);line-height:1.4;}
+.welcome .w-begin{display:inline-block;padding:14px 48px;background:linear-gradient(135deg,var(--lav),var(--acc));color:var(--white);font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;margin-bottom:16px;}
+.welcome .w-begin:hover{opacity:0.9;transform:translateY(-1px);}
+.welcome .w-time{font-size:11px;color:var(--gry);margin-bottom:24px;}
+.welcome .w-note{font-size:11px;color:var(--gry);line-height:1.5;border-top:1px solid var(--border);padding-top:16px;text-align:center;}
 </style>
 </head>
 <body>
@@ -97,7 +117,7 @@ body{font-family:-apple-system,'Inter',sans-serif;background:var(--bg);color:var
 const A=document.getElementById('app');
 
 const S={
-  tab:'context',
+  tab:'welcome',
   client:{name:'',age:'',sex:'female',height:'',weight:'',profile:'',labDate:''},
   ctx:{
     fam_diabetes:false,fam_heart:false,fam_stroke:false,fam_htn:false,fam_cancer:false,fam_obesity:false,
@@ -334,7 +354,46 @@ function render(){
       sh:[{lab:'Oura / Apple Watch',why:'HRV is the gold standard \u2014 labs can\u2019t replace it',p:'High'},{lab:'AM Cortisol',why:'Only direct lab measure for this domain',p:(r.mods.stress.hx)?'URGENT':'High'}]},
   ];
 
-  let h=`
+  let h='';
+
+  if(S.tab==='welcome'){
+    h+=`<div class="welcome">
+      <div style="margin-bottom:30px;padding-top:20px">
+        <div class="w-logo">\u00C9CIRE HEALTH\u2122</div>
+        <h2>The Alignment Lens\u2122</h2>
+        <div class="w-tag">Physician-designed metabolic governance</div>
+      </div>
+      <div class="w-intro">
+        This assessment measures your metabolic strategy across five domains: Energy Capacity, Structural Integrity, Insulin Regulation, Inflammatory Burden, and Stress Modulation. Together, they produce your Alignment Index\u2122 \u2014 a single score reflecting how well your body\u2019s systems are working together.
+      </div>
+      <div class="w-intro" style="margin-bottom:28px">
+        This is not a diet quiz or a wellness score. It is a governance assessment \u2014 designed by a physician to read the upstream metabolic conditions that drive disease risk, years before they show up on a standard physical.
+      </div>
+      <div class="w-prep">
+        <h4>WHAT YOU\u2019LL NEED</h4>
+        <div class="w-item"><span class="w-icon">\u2713</span><span>Your most recent bloodwork results (lipid panel, A1c, glucose, CBC)</span></div>
+        <div class="w-opt">Don\u2019t have labs? You can still complete the assessment \u2014 the Lens will score what it can see and tell you exactly which labs to request.</div>
+        <div class="w-item"><span class="w-icon">\u2713</span><span>Height, weight, and waist measurement (if available)</span></div>
+        <div class="w-item"><span class="w-icon">\u2713</span><span>Blood pressure and resting heart rate (if known)</span></div>
+        <div class="w-item"><span class="w-icon">\u2713</span><span>About 10\u201315 minutes</span></div>
+      </div>
+      <div class="w-steps">
+        <div class="w-step"><div class="w-sn">1</div><div class="w-st">Alignment Context</div><div class="w-sd">Health history, medications, and life context that shape how the Lens reads your data.</div></div>
+        <div class="w-step"><div class="w-sn">2</div><div class="w-st">Subjective Intake</div><div class="w-sd">How you actually feel \u2014 energy, sleep, stress, cravings, and recovery.</div></div>
+        <div class="w-step"><div class="w-sn">3</div><div class="w-st">Objective Data</div><div class="w-sd">Vitals and lab values. Enter what you have \u2014 the Lens adapts to available data.</div></div>
+        <div class="w-step"><div class="w-sn">4</div><div class="w-st">Domain Scores</div><div class="w-sd">Your five domain scores, Alignment Index, and governance postures \u2014 computed in real time.</div></div>
+      </div>
+      <button class="w-begin" onclick="sT('context')">Begin Assessment</button>
+      <div class="w-time">Takes about 10\u201315 minutes \u00B7 No account required \u00B7 Your data stays on your device</div>
+      <div class="w-note">
+        \u00C9cire is a physician-designed metabolic governance system. This assessment is not medical advice, diagnosis, or treatment. It does not replace your physician. It reveals what your current strategy is producing \u2014 so you can govern it.
+      </div>
+    </div>`;
+    A.innerHTML=h;
+    return;
+  }
+
+  h+=`
     <div class="hdr">
       <div class="brand">\u00C9CIRE HEALTH\u2122</div>
       <h1>The Alignment Lens\u2122</h1>
@@ -349,34 +408,28 @@ function render(){
       <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:3px">${aL===1?'Low Acuity \u2014 Subjective Only':aL===2?'Partial Acuity \u2014 Basic Labs':aL===3?'Good Acuity \u2014 Standard Panel':'High Acuity \u2014 Comprehensive Panel'}</div>
     </div>
     <div class="tabs">
-      <div class="tab ${S.tab==='context'?'active':''}" onclick="sT('context')">Alignment Context<span class="ct">History & Meds</span></div>
-      <div class="tab ${S.tab==='subjective'?'active':''}" onclick="sT('subjective')">Subjective Intake<span class="ct">Self-Reported</span></div>
-      <div class="tab ${S.tab==='objective'?'active':''}" onclick="sT('objective')">Objective Data<span class="ct">Vitals & Labs</span></div>
-      <div class="tab ${S.tab==='results'?'active':''}" onclick="sT('results')">Domain Scores<span class="ct">Governance Map</span></div>
+      <div class="tab ${S.tab==='context'?'active':''}" onclick="sT('context')">1 \u00B7 Alignment Context<span class="ct">History & Meds</span></div>
+      <div class="tab ${S.tab==='subjective'?'active':''}" onclick="sT('subjective')">2 \u00B7 Subjective Intake<span class="ct">How You Feel</span></div>
+      <div class="tab ${S.tab==='objective'?'active':''}" onclick="sT('objective')">3 \u00B7 Objective Data<span class="ct">Vitals & Labs</span></div>
+      <div class="tab ${S.tab==='results'?'active':''}" onclick="sT('results')">4 \u00B7 Domain Scores<span class="ct">Your Results</span></div>
     </div>`;
 
   if(S.tab==='context'){
     h+=`<div class="sec" style="margin-bottom:12px;border-color:var(--lav)30">
-      <h3 style="color:var(--acc)">Client Information</h3>
+      <h3 style="color:var(--acc)">About You</h3>
       <div class="grid">
         <div>
-          <div class="client-field"><label>Client Name</label>
-            <input type="text" value="${S.client.name}" placeholder="Full name" onchange="sCl('name',this.value)"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-            <div class="client-field"><label>Age</label>
-              <input type="number" value="${S.client.age}" placeholder="41" onchange="sCl('age',this.value)"></div>
-            <div class="client-field"><label>Sex</label>
-              <select onchange="sCl('sex',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-                <option value="female" ${S.client.sex==='female'?'selected':''}>Female</option>
-                <option value="male" ${S.client.sex==='male'?'selected':''}>Male</option>
-              </select></div>
-          </div>
+          <div class="client-field"><label>Your Name <span style="color:#4A5B6E;font-weight:400">(as you\u2019d like it on your report)</span></label>
+            <input type="text" value="${S.client.name}" placeholder="First name or full name" onchange="sCl('name',this.value)"></div>
         </div>
-        <div>
-          <div class="client-field"><label>Lab Date</label>
-            <input type="date" value="${S.client.labDate}" onchange="sCl('labDate',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none"></div>
-          <div class="client-field"><label>Profile Summary <span style="color:#4A5B6E;font-weight:400">(role, context, key notes)</span></label>
-            <textarea placeholder="e.g. CEO/Founder, Mother of 4. No structured exercise. Reports high stress, chronic fatigue." onchange="sCl('profile',this.value)">${S.client.profile}</textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="client-field"><label>Age</label>
+            <input type="number" value="${S.client.age}" placeholder="" onchange="sCl('age',this.value)"></div>
+          <div class="client-field"><label>Sex</label>
+            <select onchange="sCl('sex',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+              <option value="female" ${S.client.sex==='female'?'selected':''}>Female</option>
+              <option value="male" ${S.client.sex==='male'?'selected':''}>Male</option>
+            </select></div>
         </div>
       </div>
     </div>`;
@@ -481,6 +534,7 @@ function render(){
         </div>
       </div>
     </div>`;
+    h+=`<div style="text-align:center;margin-top:12px"><button class="btn-export" onclick="sT('subjective')">Continue to Subjective Intake \u2192</button></div>`;
   } else if(S.tab==='subjective'){
     h+=`<div class="grid">
       <div class="sec"><h3>Energy & Recovery</h3>
@@ -502,7 +556,11 @@ function render(){
         ${sel('jointPain','Joint Pain / Stiffness',{often:'Often',sometimes:'Sometimes',rarely:'Rarely',never:'Never'})}
       </div>
     </div>`;
+    h+=`<div style="text-align:center;margin-top:12px"><button class="btn-export" onclick="sT('objective')">Continue to Objective Data \u2192</button></div>`;
   } else if(S.tab==='objective'){
+    h+=`<div style="padding:10px 14px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.12);border-radius:8px;margin-bottom:12px;font-size:12px;color:var(--txt);line-height:1.5">
+      <strong style="color:var(--acc2)">Enter what you have.</strong> Leave blank anything you don\u2019t know. The Lens adapts to available data \u2014 your scores and acuity will reflect exactly what\u2019s been entered. You can find most of these values on your most recent bloodwork results or patient portal.
+    </div>`;
     h+=`<div class="grid"><div>
       <div class="sec"><h3>Vitals</h3>
         ${fld('sys','Systolic BP','mmHg','120')}${fld('dia','Diastolic BP','mmHg','80')}
@@ -531,6 +589,7 @@ function render(){
         ${fld('cortisol','AM Cortisol','\u03BCg/dL','','Stress Modulation')}
       </div>
     </div></div>`;
+    h+=`<div style="text-align:center;margin-top:12px"><button class="btn-export" onclick="sT('results')">See My Domain Scores \u2192</button></div>`;
   } else {
     h+='<div>';
     h+=`<div style="padding:10px 12px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px;margin-bottom:12px;font-size:10px;color:var(--txt);line-height:1.6">
@@ -578,11 +637,12 @@ function render(){
       </div>`;
     }
     h+='</div>';
-    h+=`<div style="text-align:center;margin:16px 0;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:10px">
-      <div style="font-size:13px;font-weight:700;color:var(--acc2);margin-bottom:4px">Export Assessment</div>
-      <div style="font-size:10px;color:var(--gry);margin-bottom:12px">Export the complete assessment data to generate the Alignment Report and Plan.</div>
-      <button class="btn-export" onclick="downloadJSON()">\u2B07 Download JSON</button>
-      <button class="btn-export secondary" id="copyBtn" onclick="copyJSON()">\u{1F4CB} Copy JSON</button>
+    h+=`<div style="text-align:center;margin:16px 0;padding:20px;background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--lav);border-radius:12px">
+      <div style="font-size:15px;font-weight:700;color:var(--txth);margin-bottom:4px">You\u2019re Done</div>
+      <div style="font-size:12px;color:var(--txt);margin-bottom:4px;line-height:1.5">Your assessment is complete. Download your results file and send it back to your practitioner.</div>
+      <div style="font-size:11px;color:var(--gry);margin-bottom:14px">They\u2019ll use it to generate your full Alignment Report.</div>
+      <button class="btn-export" onclick="downloadJSON()">\u2B07 Download My Results</button>
+      <div style="font-size:10px;color:var(--gry);margin-top:8px">Your data stays on your device. This file contains only what you entered here.</div>
     </div>`;
   }
 
@@ -617,7 +677,7 @@ function fld(k,label,unit,ph,hint){
       oninput="sO('${k}',this.value)">${hint?`<div class="hint">${hint}</div>`:''}</div>`;
 }
 
-window.sT=function(t){S.tab=t;render();};
+window.sT=function(t){S.tab=t;render();window.scrollTo(0,0);};
 window.sS=function(k,v){S.subj[k]=v;render();};
 window.sO=function(k,v){S.obj[k]=v;render();};
 window.tC=function(k){S.ctx[k]=!S.ctx[k];render();};
