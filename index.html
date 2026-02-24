@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Écire Alignment Lens™</title>
 <style>
 :root {
@@ -437,7 +438,7 @@ function render(){
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
           <div class="client-field"><label>Age</label>
-            <input type="number" value="${S.client.age}" placeholder="41" onchange="sCl('age',this.value)"></div>
+            <input type="number" value="${S.client.age}" placeholder="" onchange="sCl('age',this.value)"></div>
           <div class="client-field"><label>Sex</label>
             <select onchange="sCl('sex',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
               <option value="female" ${S.client.sex==='female'?'selected':''}>Female</option>
@@ -693,12 +694,13 @@ function sel(k,label,opts){
 function fld(k,label,unit,ph,hint){
   return `<div class="field"><label>${label} <span style="color:#4A5B6E;font-weight:400">${unit}</span></label>
     <input type="number" step="any" value="${S.obj[k]}" placeholder="${ph||''}"
-      oninput="sO('${k}',this.value)">${hint?`<div class="hint">${hint}</div>`:''}</div>`;
+      oninput="sO('${k}',this.value)" onblur="sODone()">${hint?`<div class="hint">${hint}</div>`:''}</div>`;
 }
 
 window.sT=function(t){S.tab=t;render();window.scrollTo(0,0);};
 window.sS=function(k,v){S.subj[k]=v;render();};
-window.sO=function(k,v){S.obj[k]=v;render();};
+window.sO=function(k,v){S.obj[k]=v;};
+window.sODone=function(){render();};
 window.tC=function(k){S.ctx[k]=!S.ctx[k];render();};
 window.sCtx=function(k,v){S.ctx[k]=v;render();};
 window.sCl=function(k,v){S.client[k]=v;};
