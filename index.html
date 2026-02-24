@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
 <title>Écire Alignment Lens™</title>
 <style>
 :root {
@@ -369,6 +368,10 @@ function render(){
       <div class="w-intro" style="margin-bottom:28px">
         This is not a diet quiz or a wellness score. It is a governance assessment \u2014 designed by a physician to read the upstream metabolic conditions that drive disease risk, years before they show up on a standard physical.
       </div>
+      <div style="text-align:center;margin-bottom:28px;padding:14px 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+        <span style="font-size:14px;color:var(--acc2);font-style:italic;line-height:1.6">Surveillance medicine reads snapshots, binary normal/abnormal.</span><br>
+        <span style="font-size:14px;color:var(--acc2);font-style:italic;line-height:1.6">The Lens reads trajectory \u2014 velocity \u2014 interdependencies.</span>
+      </div>
       <div class="w-prep">
         <h4>WHAT YOU\u2019LL NEED</h4>
         <div class="w-item"><span class="w-icon">\u2713</span><span>Your most recent bloodwork results (lipid panel, A1c, glucose, CBC)</span></div>
@@ -383,6 +386,16 @@ function render(){
         <div class="w-step"><div class="w-sn">3</div><div class="w-st">Objective Data</div><div class="w-sd">Vitals and lab values. Enter what you have \u2014 the Lens adapts to available data.</div></div>
         <div class="w-step"><div class="w-sn">4</div><div class="w-st">Domain Scores</div><div class="w-sd">Your five domain scores, Alignment Index, and governance postures \u2014 computed in real time.</div></div>
       </div>
+      <div class="w-prep" style="margin-bottom:28px">
+        <h4>WHAT YOU\u2019LL RECEIVE</h4>
+        <div style="font-size:13px;color:var(--txt);line-height:1.7;margin-bottom:12px">
+          After you complete this assessment, your practitioner will generate your <strong style="color:var(--acc2)">Alignment Report</strong> \u2014 a physician-level governance read of your metabolic strategy. Here\u2019s what it sees that standard bloodwork alone does not:
+        </div>
+        <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">Trajectory, not just position.</strong> A lab value that\u2019s \u201Cnormal\u201D today may be marching toward a threshold. The Lens reads velocity \u2014 where your numbers are heading, not just where they sit.</span></div>
+        <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">Cross-domain interactions.</strong> Your domains don\u2019t exist in isolation. A weakness in one can silently drag the others. The report shows how your domains are affecting each other.</span></div>
+        <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">The gaps that matter most.</strong> Not every missing lab is equal. The Lens identifies which single test or data point would most sharpen your picture \u2014 and why.</span></div>
+        <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">The One Move.</strong> Every report identifies the single highest-leverage intervention that touches the most domains at once. Not a laundry list. One move to start governing.</span></div>
+      </div>
       <button class="w-begin" onclick="sT('context')">Begin Assessment</button>
       <div class="w-time">Takes about 10\u201315 minutes \u00B7 No account required \u00B7 Your data stays on your device</div>
       <div class="w-note">
@@ -394,7 +407,7 @@ function render(){
   }
 
   h+=`
-    <div class="hdr">
+    <div class="hdr" style="cursor:pointer" onclick="sT('welcome')">
       <div class="brand">\u00C9CIRE HEALTH\u2122</div>
       <h1>The Alignment Lens\u2122</h1>
       <div class="sub">Physician-designed metabolic governance. Five domains. One operating principle.</div>
@@ -424,7 +437,7 @@ function render(){
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
           <div class="client-field"><label>Age</label>
-            <input type="number" value="${S.client.age}" placeholder="" onchange="sCl('age',this.value)"></div>
+            <input type="number" value="${S.client.age}" placeholder="41" onchange="sCl('age',this.value)"></div>
           <div class="client-field"><label>Sex</label>
             <select onchange="sCl('sex',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
               <option value="female" ${S.client.sex==='female'?'selected':''}>Female</option>
@@ -538,16 +551,16 @@ function render(){
   } else if(S.tab==='subjective'){
     h+=`<div class="grid">
       <div class="sec"><h3>Energy & Recovery</h3>
-        ${slider('energy','Overall Energy Level')}${slider('sleep','Sleep Quality')}${slider('recovery','Recovery Capacity')}
+        ${slider('energy','Overall Energy Level','Exhausted','Energized')}${slider('sleep','Sleep Quality','Terrible','Excellent')}${slider('recovery','Recovery Capacity','Very slow','Bounce back fast')}
         ${sel('exercise','Exercise Frequency',{none:'No regular exercise',light:'Light (1\u20132x/wk)',moderate:'Moderate (3\u20134x/wk)',intense:'Intense (5+/wk)'})}
         ${sel('fatigue','Fatigue',{always:'Constant',often:'Frequent',sometimes:'Sometimes',rarely:'Rarely'})}
       </div>
       <div class="sec"><h3>Stress & Mood</h3>
-        ${slider('stress','Perceived Stress (10=highest)')}${slider('mood','Mood Stability')}
+        ${slider('stress','Perceived Stress','Very low','Overwhelming')}${slider('mood','Mood Stability','Unpredictable','Very stable')}
         ${sel('sleepOnset','Time to Fall Asleep',{difficult:'30+ min',delayed:'15\u201330 min',normal:'5\u201315 min',easy:'Under 5 min'})}
       </div>
       <div class="sec"><h3>Hunger & Insulin Signals</h3>
-        ${slider('cravings','Cravings Intensity (10=worst)')}${slider('postmeal','Post-Meal Crashes (10=worst)')}
+        ${slider('cravings','Cravings Intensity','Rare','Constant')}${slider('postmeal','Post-Meal Energy Crashes','Never','After every meal')}
         ${sel('hunger','Hunger Pattern',{constant:'Constant',frequent:'Every 2\u20133 hrs',moderate:'3\u20134 hr intervals',controlled:'Rarely urgent'})}
       </div>
       <div class="sec"><h3>Body & Inflammation</h3>
@@ -639,10 +652,13 @@ function render(){
     h+='</div>';
     h+=`<div style="text-align:center;margin:16px 0;padding:20px;background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--lav);border-radius:12px">
       <div style="font-size:15px;font-weight:700;color:var(--txth);margin-bottom:4px">You\u2019re Done</div>
-      <div style="font-size:12px;color:var(--txt);margin-bottom:4px;line-height:1.5">Your assessment is complete. Download your results file and send it back to your practitioner.</div>
-      <div style="font-size:11px;color:var(--gry);margin-bottom:14px">They\u2019ll use it to generate your full Alignment Report.</div>
+      <div style="font-size:12px;color:var(--txt);margin-bottom:14px;line-height:1.5">Your assessment is complete. Download your results file and email it to your practitioner.</div>
       <button class="btn-export" onclick="downloadJSON()">\u2B07 Download My Results</button>
-      <div style="font-size:10px;color:var(--gry);margin-top:8px">Your data stays on your device. This file contains only what you entered here.</div>
+      <div style="margin-top:14px;padding:12px 16px;background:var(--navy2);border:1px solid var(--border);border-radius:8px;display:inline-block">
+        <div style="font-size:11px;color:var(--gry);margin-bottom:4px">Email your downloaded file to:</div>
+        <div style="font-size:15px;font-weight:700;color:var(--acc2);letter-spacing:0.3px">lens@ecirehealth.com</div>
+      </div>
+      <div style="font-size:10px;color:var(--gry);margin-top:12px">Your data stays on your device until you choose to send it. The file contains only what you entered here.</div>
     </div>`;
   }
 
@@ -660,11 +676,14 @@ function chk(k,label,desc){
     <input type="checkbox" ${on?'checked':''} onclick="event.stopPropagation();tC('${k}')">
     <div><div class="cl">${label}</div><div class="cd">${desc}</div></div></div>`;
 }
-function slider(k,label){
+function slider(k,label,lo,hi){
   const v=S.subj[k];
   return `<div class="field"><label>${label}</label><div class="sw">
+    <span style="font-size:10px;color:var(--gry);min-width:52px;text-align:right">${lo||''}</span>
     <input type="range" min="1" max="10" value="${v}" oninput="sS('${k}',+this.value)">
-    <div class="sv">${v}</div></div></div>`;
+    <div class="sv">${v}</div>
+    <span style="font-size:10px;color:var(--gry);min-width:52px">${hi||''}</span>
+    </div></div>`;
 }
 function sel(k,label,opts){
   const v=S.subj[k];
