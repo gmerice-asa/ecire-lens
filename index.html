@@ -692,6 +692,7 @@ function render(){
         Your domain scores reflect the current state of each metabolic domain based on what you\u2019ve entered. Where labs or measurements are missing, the Lens has scored what it can see and identified the testing that would sharpen acuity. Download your assessment file below and send it to \u00C9cire Health, where your data will be analyzed using \u00C9cire\u2019s clinical analytics to generate your personalized Alignment Report and Plan.
       </div>
       <button class="btn-export" onclick="downloadJSON()">\u2B07 Download My Assessment</button>
+      <button class="btn-export" onclick="submitAssessment()">Submit My Assessment</button>
       <div style="margin-top:16px;padding:14px 18px;background:var(--navy2);border:1px solid var(--border);border-radius:8px;display:inline-block;text-align:center">
         <div style="font-size:11px;color:var(--gry);margin-bottom:4px">Email your downloaded file to:</div>
         <div style="font-size:15px;font-weight:700;color:var(--acc2);letter-spacing:0.3px">lens@ecirehealth.com</div>
@@ -831,6 +832,30 @@ window.copyJSON=function(){
   });
 };
 
+  window.submitAssessment = async function () {
+  const endpoint = "https://script.google.com/macros/s/AKfycby3HedJA2voOxMQZQde9GKAJ8XcidaDlFH3GR6KqfTFmYc3k-19BvyDY8re7hG0R1f8/exec";
+  
+  const data = exportJSON();
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (result.ok) {
+      alert("Assessment submitted successfully.");
+    } else {
+      alert("Submission failed: " + (result.error || "Unknown error"));
+    }
+
+  } catch (err) {
+    alert("Network error: " + err.message);
+  }
+};
 render();
 </script>
 </body>
