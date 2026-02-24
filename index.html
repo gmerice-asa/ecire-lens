@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Écire Alignment Lens™</title>
+<style>
+:root {
+  --navy:#0B1B3A;--navy2:#111D35;--lav:#7B5EA7;--acc:#9B7EC8;--acc2:#B8A0D8;
+  --grn:#2E7D4F;--amb:#D4A017;--red:#C0392B;--gry:#8899AA;
+  --bg:#080E1A;--card:#0F1A2E;--card2:#162240;--border:#1E2D4A;
+  --txt:#C8D6E5;--txth:#EAF0F6;--white:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,'Inter',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;}
+.wrap{max-width:940px;margin:0 auto;padding:20px 16px;}
+.hdr{text-align:center;margin-bottom:20px;}
+.hdr .brand{font-size:11px;letter-spacing:4px;color:var(--acc2);font-weight:600;}
+.hdr h1{font-family:Georgia,serif;font-size:24px;color:var(--txth);margin:4px 0;}
+.hdr .sub{font-size:12px;color:var(--gry);font-style:italic;}
+.banner{background:linear-gradient(135deg,var(--navy),var(--lav));border-radius:14px;padding:20px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden;}
+.banner::before{content:'';position:absolute;top:-50%;right:-20%;width:60%;height:200%;background:radial-gradient(ellipse,rgba(155,126,200,0.1),transparent);}
+.banner .il{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.5);}
+.banner .inum{font-size:52px;font-weight:700;color:var(--white);line-height:1;}
+.banner .ist{font-size:15px;font-weight:600;display:inline-block;padding:3px 14px;border-radius:20px;background:rgba(255,255,255,0.12);margin-top:4px;}
+.banner .im{font-size:10px;color:rgba(255,255,255,0.45);margin-top:6px;}
+.abar{display:flex;gap:3px;justify-content:center;margin-top:8px;}
+.aseg{height:4px;width:40px;border-radius:2px;background:rgba(255,255,255,0.12);}
+.aseg.on{background:var(--acc2);}
+.tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap;}
+.tab{flex:1;min-width:120px;padding:10px 6px;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:11px;font-weight:600;color:var(--gry);cursor:pointer;transition:all 0.2s;}
+.tab:hover{color:var(--txth);}
+.tab.active{background:var(--lav);color:var(--white);border-color:var(--lav);}
+.tab .ct{font-size:9px;opacity:0.6;display:block;margin-top:2px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:700px){.grid{grid-template-columns:1fr;}}
+.sec{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;}
+.sec h3{font-size:13px;color:var(--acc2);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.field{margin-bottom:10px;}
+.field label{display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px;}
+.field input[type=number],.field select{width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;}
+.field input:focus,.field select:focus{border-color:var(--acc);}
+.field input::placeholder{color:#4A5B6E;}
+.field .hint{font-size:10px;color:#4A5B6E;margin-top:2px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.sw{display:flex;align-items:center;gap:8px;}
+.sw input[type=range]{flex:1;accent-color:var(--acc);}
+.sv{font-size:13px;font-weight:700;color:var(--acc2);min-width:28px;text-align:center;}
+/* Checkbox grid */
+.chk-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.chk-item{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all 0.15s;}
+.chk-item:hover{border-color:var(--acc);}
+.chk-item.on{border-color:var(--lav);background:rgba(123,94,167,0.12);}
+.chk-item input[type=checkbox]{accent-color:var(--lav);margin-top:2px;flex-shrink:0;}
+.chk-item .cl{font-size:11px;font-weight:600;color:var(--txth);}
+.chk-item .cd{font-size:10px;color:var(--gry);margin-top:1px;}
+/* Domain cards */
+.dcard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;}
+.dcard .dt{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+.dcard .dn{font-size:15px;font-weight:700;color:var(--txth);}
+.dcard .dd{font-size:10px;color:var(--gry);font-style:italic;}
+.dcard .ds{font-size:28px;font-weight:700;line-height:1;}
+.dcard .dp{font-size:10px;font-weight:600;}
+.dcard .cb{display:flex;align-items:center;gap:6px;margin:6px 0;}
+.dcard .ct2{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.dcard .cf{height:100%;border-radius:2px;}
+.dcard .cla{font-size:10px;color:var(--gry);white-space:nowrap;}
+.dcard .mk{display:flex;justify-content:space-between;padding:3px 0;font-size:11px;border-bottom:1px solid rgba(30,45,74,0.5);}
+.dcard .mn{color:var(--txt);}
+.dcard .mv{font-weight:600;}
+.dcard .sh{margin-top:8px;padding:8px;background:rgba(123,94,167,0.08);border:1px solid rgba(123,94,167,0.2);border-radius:6px;}
+.dcard .sht{font-size:10px;font-weight:700;color:var(--amb);margin-bottom:3px;}
+.dcard .shi{font-size:10px;color:var(--txt);margin-bottom:1px;}
+.tag{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;}
+.tag-med{background:rgba(212,160,23,0.15);color:var(--amb);border:1px solid rgba(212,160,23,0.3);}
+.tag-fam{background:rgba(192,57,43,0.12);color:var(--red);border:1px solid rgba(192,57,43,0.25);}
+.tag-urg{background:rgba(192,57,43,0.2);color:var(--red);border:1px solid rgba(192,57,43,0.4);}
+.mod-alert{margin-top:6px;padding:6px 8px;border-radius:5px;font-size:10px;border-left:3px solid;}
+.mod-alert.warn{background:rgba(192,57,43,0.08);border-color:var(--red);color:#E8A0A0;}
+.mod-alert.info{background:rgba(212,160,23,0.08);border-color:var(--amb);color:#E8D090;}
+.disc{margin-top:16px;padding:10px 14px;background:var(--card);border-radius:8px;font-size:10px;color:var(--gry);text-align:center;border:1px solid var(--border);}
+.btn-export{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--lav),var(--acc));color:var(--white);font-size:13px;font-weight:700;border:none;border-radius:8px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;margin:8px 4px;}
+.btn-export:hover{opacity:0.9;transform:translateY(-1px);}
+.btn-export.secondary{background:var(--card2);border:1px solid var(--border);color:var(--acc2);}
+.btn-export.secondary:hover{border-color:var(--acc);}
+.client-field{margin-bottom:8px;}
+.client-field label{display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px;}
+.client-field input,.client-field textarea{width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:inherit;}
+.client-field input:focus,.client-field textarea:focus{border-color:var(--acc);}
+.client-field textarea{resize:vertical;min-height:50px;}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+const A=document.getElementById('app');
+
+const S={
+  tab:'context',
+  client:{name:'',age:'',sex:'female',height:'',weight:'',profile:'',labDate:''},
+  ctx:{
+    fam_diabetes:false,fam_heart:false,fam_stroke:false,fam_htn:false,fam_cancer:false,fam_obesity:false,
+    hx_diabetes:false,hx_prediabetes:false,hx_htn:false,hx_pcos:false,hx_thyroid:false,hx_autoimmune:false,
+    hx_gest_diabetes:false,hx_gest_htn:false,hx_cholesterol:false,hx_depression:false,hx_sleep_apnea:false,
+    hx_stroke:false,hx_mi:false,hx_menopause:'pre',
+    life_isolation:'connected',life_financial:'stable',
+    med_statin:false,med_bp:false,med_thyroid:false,med_diabetes:false,med_glp1:false,
+    med_hormone:false,med_psych:false,med_sup_vitd:false,med_sup_iron:false,med_sup_omega3:false
+  },
+  subj:{energy:5,sleep:5,exercise:'none',cravings:5,postmeal:5,hunger:'moderate',
+    stress:5,sleepOnset:'normal',mood:5,recovery:5,
+    strength:'declining',bodyChange:'gaining',jointPain:'sometimes',fatigue:'often'},
+  obj:{sys:'',dia:'',hr:'',ht:'',wt:'',waist:'',hip:'',
+    tc:'',ldl:'',hdl:'',trig:'',a1c:'',fg:'',rg:'',hgb:'',
+    tsh:'',alt:'',vitD:'',hsCRP:'',fastIns:'',cortisol:''}
+};
+
+function val(v){const n=parseFloat(v);return(v!==''&&!isNaN(n))?n:null;}
+function scr(v,ranges){if(v===null)return null;for(const r of ranges){if(r.t(v))return{s:r.s,l:r.l,c:r.c};}return null;}
+
+const R={
+  a1c:[{t:v=>v<5,s:95,l:'Optimal',c:'var(--grn)'},{t:v=>v<=5.4,s:82,l:'Good',c:'var(--grn)'},{t:v=>v<=5.6,s:65,l:'Borderline',c:'var(--amb)'},{t:v=>v<=6.4,s:40,l:'Prediabetic',c:'var(--red)'},{t:()=>1,s:18,l:'Diabetic',c:'var(--red)'}],
+  fg:[{t:v=>v<85,s:95,l:'Optimal',c:'var(--grn)'},{t:v=>v<=99,s:78,l:'Normal',c:'var(--grn)'},{t:v=>v<=125,s:42,l:'Prediabetic',c:'var(--red)'},{t:()=>1,s:15,l:'Diabetic',c:'var(--red)'}],
+  rg:[{t:v=>v<120,s:80,l:'Likely Normal',c:'var(--grn)'},{t:v=>v<=140,s:58,l:'Elevated',c:'var(--amb)'},{t:v=>v<=199,s:35,l:'Concerning',c:'var(--red)'},{t:()=>1,s:12,l:'Critical',c:'var(--red)'}],
+  sys:[{t:v=>v<120,s:95,l:'Optimal',c:'var(--grn)'},{t:v=>v<=129,s:75,l:'Elevated',c:'var(--amb)'},{t:v=>v<=139,s:52,l:'Stage 1 HTN',c:'var(--red)'},{t:v=>v<=159,s:30,l:'Stage 2',c:'var(--red)'},{t:()=>1,s:10,l:'Crisis',c:'var(--red)'}],
+  dia:[{t:v=>v<80,s:95,l:'Optimal',c:'var(--grn)'},{t:v=>v<=84,s:75,l:'Elevated',c:'var(--amb)'},{t:v=>v<=89,s:50,l:'Stage 1',c:'var(--red)'},{t:()=>1,s:10,l:'High',c:'var(--red)'}],
+  tc:[{t:v=>v<200,s:90,l:'Desirable',c:'var(--grn)'},{t:v=>v<=239,s:60,l:'Borderline',c:'var(--amb)'},{t:()=>1,s:30,l:'High',c:'var(--red)'}],
+  ldl:[{t:v=>v<100,s:95,l:'Optimal',c:'var(--grn)'},{t:v=>v<=129,s:78,l:'Near Optimal',c:'var(--grn)'},{t:v=>v<=159,s:55,l:'Borderline',c:'var(--amb)'},{t:v=>v<=189,s:30,l:'High',c:'var(--red)'},{t:()=>1,s:12,l:'Very High',c:'var(--red)'}],
+  hdl:[{t:v=>v>=60,s:95,l:'Protective',c:'var(--grn)'},{t:v=>v>=50,s:75,l:'Good',c:'var(--grn)'},{t:v=>v>=40,s:50,l:'Borderline',c:'var(--amb)'},{t:()=>1,s:22,l:'Low',c:'var(--red)'}],
+  trig:[{t:v=>v<100,s:95,l:'Optimal',c:'var(--grn)'},{t:v=>v<=149,s:78,l:'Normal',c:'var(--grn)'},{t:v=>v<=199,s:50,l:'Borderline',c:'var(--amb)'},{t:()=>1,s:25,l:'High',c:'var(--red)'}],
+  hgb:[{t:v=>v>=12&&v<=15.5,s:90,l:'Normal',c:'var(--grn)'},{t:v=>v>=11,s:62,l:'Mild Anemia',c:'var(--amb)'},{t:v=>v>=9,s:35,l:'Mod Anemia',c:'var(--red)'},{t:()=>1,s:12,l:'Severe',c:'var(--red)'}],
+  hr:[{t:v=>v>=50&&v<=60,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v<=70,s:80,l:'Good',c:'var(--grn)'},{t:v=>v<=80,s:60,l:'Average',c:'var(--amb)'},{t:v=>v<=90,s:38,l:'Below Avg',c:'var(--red)'},{t:()=>1,s:18,l:'Elevated',c:'var(--red)'}],
+  bmi:[{t:v=>v>=18.5&&v<=24.9,s:88,l:'Normal',c:'var(--grn)'},{t:v=>v<=29.9,s:62,l:'Overweight',c:'var(--amb)'},{t:v=>v<=34.9,s:40,l:'Obese I',c:'var(--red)'},{t:v=>v<=39.9,s:22,l:'Obese II',c:'var(--red)'},{t:()=>1,s:10,l:'Obese III',c:'var(--red)'}],
+  whr:[{t:v=>v<0.80,s:92,l:'Low Risk',c:'var(--grn)'},{t:v=>v<=0.85,s:65,l:'Moderate',c:'var(--amb)'},{t:()=>1,s:30,l:'High Risk',c:'var(--red)'}],
+  tsh:[{t:v=>v>=0.5&&v<=2.5,s:92,l:'Optimal',c:'var(--grn)'},{t:v=>v<=4,s:68,l:'Suboptimal',c:'var(--amb)'},{t:()=>1,s:30,l:'Abnormal',c:'var(--red)'}],
+  alt:[{t:v=>v<=33,s:90,l:'Normal',c:'var(--grn)'},{t:v=>v<=50,s:60,l:'Mild Elev',c:'var(--amb)'},{t:()=>1,s:30,l:'Elevated',c:'var(--red)'}],
+  vitD:[{t:v=>v>=40,s:95,l:'Optimal',c:'var(--grn)'},{t:v=>v>=30,s:75,l:'Sufficient',c:'var(--grn)'},{t:v=>v>=20,s:45,l:'Insufficient',c:'var(--amb)'},{t:()=>1,s:18,l:'Deficient',c:'var(--red)'}],
+  hsCRP:[{t:v=>v<1,s:95,l:'Low Risk',c:'var(--grn)'},{t:v=>v<=3,s:60,l:'Average',c:'var(--amb)'},{t:()=>1,s:22,l:'High Risk',c:'var(--red)'}],
+};
+
+function subjScore(k,v){
+  const m={energy:v=>v*10,sleep:v=>v*10,stress:v=>(11-v)*10,cravings:v=>(11-v)*10,postmeal:v=>(11-v)*10,mood:v=>v*10,recovery:v=>v*10,
+    exercise:{none:20,light:50,moderate:75,intense:92},hunger:{constant:25,frequent:45,moderate:65,controlled:85},
+    sleepOnset:{difficult:25,delayed:50,normal:78,easy:92},strength:{declining:25,stable:60,building:88},
+    bodyChange:{gaining:22,fluctuating:45,stable:72,recomposing:90},jointPain:{often:25,sometimes:55,rarely:80,never:95},
+    fatigue:{always:15,often:35,sometimes:60,rarely:85}};
+  const f=m[k];if(typeof f==='function')return f(typeof v==='number'?v:parseInt(v));
+  if(typeof f==='object')return f[v]||50;return 50;
+}
+
+function blend(subjM,objM){
+  const ov=objM.filter(m=>m.s!==null);
+  const st=subjM.reduce((a,m)=>a+m.s*m.w,0)/subjM.reduce((a,m)=>a+m.w,0);
+  if(!ov.length)return{score:Math.round(st),conf:20,src:'Subjective Only',ou:0,ot:objM.length};
+  const tw=ov.reduce((a,m)=>a+m.w,0),os=ov.reduce((a,m)=>a+m.s*m.w,0)/tw;
+  const fw=objM.reduce((a,m)=>a+m.w,0),cov=tw/fw;
+  const ow=0.5+cov*0.35,bl2=os*ow+st*(1-ow);
+  return{score:Math.round(bl2),conf:Math.min(95,Math.round(20+cov*75)),src:cov>0.5?'Lab-Informed':'Partially Informed',ou:ov.length,ot:objM.length};
+}
+
+function computeAll(){
+  const o=S.obj,s=S.subj,c=S.ctx;
+  const ht=val(o.ht),wt=val(o.wt);
+  const bmi=(ht&&wt&&ht>0)?wt/(ht*ht)*703:null;
+  const waist=val(o.waist),hip=val(o.hip);
+  const whr=(waist&&hip&&hip>0)?waist/hip:null;
+  const trig=val(o.trig),hdl=val(o.hdl);
+  const thR=(trig&&hdl&&hdl>0)?trig/hdl:null;
+  const sc={
+    a1c:scr(val(o.a1c),R.a1c),fg:scr(val(o.fg),R.fg),rg:scr(val(o.rg),R.rg),
+    sys:scr(val(o.sys),R.sys),dia:scr(val(o.dia),R.dia),
+    tc:scr(val(o.tc),R.tc),ldl:scr(val(o.ldl),R.ldl),hdl:scr(val(o.hdl),R.hdl),
+    trig:scr(val(o.trig),R.trig),hgb:scr(val(o.hgb),R.hgb),hr:scr(val(o.hr),R.hr),
+    bmi:scr(bmi,R.bmi),whr:scr(whr,R.whr),tsh:scr(val(o.tsh),R.tsh),
+    alt:scr(val(o.alt),R.alt),vitD:scr(val(o.vitD),R.vitD),hsCRP:scr(val(o.hsCRP),R.hsCRP)
+  };
+  const gl=sc.fg||sc.rg;
+  const ths=thR?(thR<1?{s:95,l:thR.toFixed(1)+' Excellent',c:'var(--grn)'}:thR<=1.5?{s:82,l:thR.toFixed(1)+' Good',c:'var(--grn)'}:thR<=2.5?{s:60,l:thR.toFixed(1)+' Moderate',c:'var(--amb)'}:thR<=3.5?{s:38,l:thR.toFixed(1)+' IR likely',c:'var(--red)'}:{s:18,l:thR.toFixed(1)+' Strong IR',c:'var(--red)'}):null;
+  const ss={};for(const k in s)ss[k]=subjScore(k,s[k]);
+
+  // Governance modifiers
+  const mods={};
+  // Insulin
+  mods.insulin={fam:c.fam_diabetes,hx:c.hx_prediabetes||c.hx_diabetes||c.hx_gest_diabetes||c.hx_gest_htn||c.hx_pcos,med:c.med_diabetes||c.med_glp1,alerts:[],medLabels:[]};
+  if(c.med_diabetes)mods.insulin.medLabels.push('Diabetes Rx');
+  if(c.med_glp1)mods.insulin.medLabels.push('GLP-1/GIP');
+  if(c.fam_diabetes)mods.insulin.alerts.push({type:'warn',text:'Family history of Type 2 diabetes. A1c trajectory carries accelerated urgency. Fasting insulin is URGENT.'});
+  if(c.hx_gest_diabetes)mods.insulin.alerts.push({type:'warn',text:'History of gestational diabetes increases lifetime T2D risk 7x. This domain requires heightened surveillance.'});
+  if(c.hx_gest_htn)mods.insulin.alerts.push({type:'warn',text:'History of gestational hypertension increases lifetime cardiovascular and metabolic risk. Insulin and inflammatory domains both carry elevated urgency.'});
+  if(c.hx_pcos)mods.insulin.alerts.push({type:'info',text:'PCOS is strongly linked to insulin resistance. Fasting insulin and glucose response testing are critical for this domain.'});
+  if(c.med_diabetes||c.med_glp1)mods.insulin.alerts.push({type:'info',text:'Current diabetes or GLP-1/GIP medication affects this domain\u2019s markers. A1c, fasting glucose, and weight may all reflect medicated, not native, insulin regulation.'});
+
+  // Inflammatory
+  mods.inflammatory={fam:c.fam_heart||c.fam_stroke||c.fam_htn,hx:c.hx_htn||c.hx_cholesterol||c.hx_stroke||c.hx_mi||c.hx_gest_htn,med:c.med_statin||c.med_bp,alerts:[],medLabels:[]};
+  if(c.med_statin)mods.inflammatory.medLabels.push('Lipid Rx');
+  if(c.med_bp)mods.inflammatory.medLabels.push('BP Rx');
+  if(c.fam_heart)mods.inflammatory.alerts.push({type:'warn',text:'Family history of heart disease before 60. ApoB and Lp(a) upgraded to URGENT. Consider advanced imaging at Tier 3+.'});
+  if(c.fam_stroke)mods.inflammatory.alerts.push({type:'warn',text:'Family history of stroke. Blood pressure monitoring and hs-CRP are critical for this domain.'});
+  if(c.hx_mi)mods.inflammatory.alerts.push({type:'warn',text:'Personal history of heart attack. This domain carries the highest governance urgency. All inflammatory markers are critical. Advanced imaging recommended at Tier 3+.'});
+  if(c.hx_stroke)mods.inflammatory.alerts.push({type:'warn',text:'Personal history of stroke. Cardiovascular governance is urgent. BP monitoring, hs-CRP, ApoB, and Lp(a) are all critical. Recommendations should be contextualized in consultation with your care team.'});
+  if(c.hx_gest_htn)mods.inflammatory.alerts.push({type:'warn',text:'History of gestational hypertension. Lifetime cardiovascular risk is elevated. BP monitoring carries heightened importance.'});
+  if(c.med_statin)mods.inflammatory.alerts.push({type:'info',text:'Lipid-lowering medication (statin, ezetimibe, PCSK9i, or combination) affects LDL and total cholesterol. Current lipid scores reflect managed, not native, inflammatory burden.'});
+  if(c.med_bp)mods.inflammatory.alerts.push({type:'info',text:'Blood pressure medication affects BP readings. Current values reflect managed, not native, cardiovascular tone.'});
+
+  // Energy
+  mods.energy={fam:false,hx:c.hx_thyroid||c.hx_sleep_apnea,med:c.med_thyroid,alerts:[],medLabels:[]};
+  if(c.med_thyroid)mods.energy.medLabels.push('Thyroid Rx');
+  if(c.med_sup_vitd)mods.energy.medLabels.push('Vit D Suppl');
+  if(c.med_sup_iron)mods.energy.medLabels.push('Iron Suppl');
+  if(c.hx_thyroid)mods.energy.alerts.push({type:'info',text:'Known thyroid condition. TSH reflects managed thyroid function. Monitor adherence and retesting intervals.'});
+  if(c.med_thyroid)mods.energy.alerts.push({type:'info',text:'Thyroid medication affects TSH readings. Domain score reflects managed, not native, thyroid function.'});
+  if(c.hx_sleep_apnea)mods.energy.alerts.push({type:'warn',text:'Sleep apnea compromises sleep architecture, recovery, and oxygen saturation. Treatment compliance directly affects this domain.'});
+  if(c.med_sup_vitd&&S.obj.vitD){const vd=parseFloat(S.obj.vitD);if(!isNaN(vd)&&vd<30)mods.energy.alerts.push({type:'warn',text:'You are supplementing Vitamin D but levels remain low. This suggests either insufficient dosing, absorption issues, or severe depletion. Discuss with your provider \u2014 dose escalation or testing for absorption may be needed.'});}
+  if(c.med_sup_iron)mods.energy.alerts.push({type:'info',text:'Iron supplementation noted. Hemoglobin and ferritin levels reflect supplemented, not native, iron status.'});
+
+  // Structural
+  mods.structural={fam:c.fam_obesity,hx:false,med:false,alerts:[],medLabels:[]};
+  if(c.fam_obesity)mods.structural.alerts.push({type:'info',text:'Family history of obesity. Structural interventions may require more sustained effort. Genetic predisposition does not determine outcome.'});
+
+  // Stress
+  mods.stress={fam:false,hx:c.hx_depression||c.hx_autoimmune,med:c.med_psych||c.med_hormone,alerts:[],medLabels:[]};
+  if(c.med_psych)mods.stress.medLabels.push('Psych Rx');
+  if(c.med_hormone)mods.stress.medLabels.push('HRT');
+  if(c.hx_depression)mods.stress.alerts.push({type:'info',text:'History of depression/anxiety. Stress Modulation interventions should be coordinated with your mental health provider.'});
+  if(c.hx_autoimmune)mods.stress.alerts.push({type:'warn',text:'Autoimmune conditions are stress-sensitive. Cortisol and inflammatory markers carry elevated importance.'});
+  if(c.med_psych)mods.stress.alerts.push({type:'info',text:'Psychiatric medication may affect resting HR, HRV, and cortisol patterns. Domain markers reflect medicated baseline.'});
+  if(c.med_hormone)mods.stress.alerts.push({type:'info',text:'Hormone therapy affects cortisol, metabolic rate, and body composition. Multiple domain scores reflect medicated baseline.'});
+  // Cross-domain supplement notes on inflammatory
+  if(c.med_sup_omega3)mods.inflammatory.alerts.push({type:'info',text:'Omega-3 supplementation noted. Lipid panel and hs-CRP may reflect supplemented baseline. This is a positive governance input.'});
+  if(c.med_sup_omega3)mods.inflammatory.medLabels.push('Omega-3');
+
+  // Menopause modifiers (cross-domain)
+  const isPeri=c.hx_menopause==='peri',isPost=c.hx_menopause==='post';
+  if(isPeri||isPost){
+    const phase=isPeri?'Perimenopause':'Post-menopause';
+    mods.insulin.alerts.push({type:'warn',text:`${phase} reduces insulin sensitivity independent of weight or activity. A1c trajectory may accelerate. Fasting insulin carries elevated importance.`});
+    mods.structural.alerts.push({type:'warn',text:`${phase} accelerates bone density loss and lean mass decline. Resistance training and Vitamin D are critical. DEXA scan recommended at Tier 3+.`});
+    mods.inflammatory.alerts.push({type:'info',text:`${phase} shifts cardiovascular risk profile. Estrogen\u2019s protective effect on lipids and vascular tone diminishes. LDL trajectory may steepen.`});
+    mods.energy.alerts.push({type:'info',text:`${phase} affects metabolic rate, sleep architecture, and thermoregulation. TSH and thyroid function should be monitored more closely.`});
+    if(isPost)mods.stress.alerts.push({type:'info',text:'Post-menopause alters cortisol patterns and autonomic balance. HRV data and stress modulation interventions carry elevated importance.'});
+  }
+
+  // Life context modifiers
+  const isIsolated=c.life_isolation==='limited'||c.life_isolation==='isolated';
+  const isStrained=c.life_financial==='strained'||c.life_financial==='crisis';
+  if(isIsolated){
+    mods.stress.alerts.push({type:'warn',text:'Limited social connection is one of the strongest predictors of poor health outcomes. Stress Modulation interventions are critical, and community-based governance (Governing Circle\u2122) may be therapeutically important, not just a price point.'});
+    mods.energy.alerts.push({type:'info',text:'Social isolation is associated with increased fatigue, disrupted sleep, and reduced motivation. Accountability structure and community support directly improve outcomes in this domain.'});
+    mods.structural.alerts.push({type:'info',text:'Without social accountability, exercise adherence drops significantly. Group-based or partnered training is recommended over solo protocols.'});
+  }
+  if(c.life_isolation==='isolated'){
+    mods.stress.alerts.push({type:'warn',text:'Severe isolation carries mortality risk comparable to smoking. This is the single most important governance modifier in your profile. Rebuilding connection is as critical as any lab or intervention.'});
+  }
+  if(isStrained){
+    mods.stress.alerts.push({type:'warn',text:'Financial strain is a chronic stressor that directly elevates cortisol and undermines health behaviors. The Lens prioritizes free and low-cost interventions first.'});
+    // Flag across all domains that cost-conscious recs should lead
+    for(const dk of ['energy','structural','insulin','inflammatory']){
+      mods[dk].alerts.push({type:'info',text:'Given financial context, the Lens prioritizes interventions by cost: free (walking, sleep, time-restricted eating) before low-cost (supplements) before investment (devices, advanced labs).'});
+    }
+  }
+  if(c.life_financial==='crisis'){
+    mods.stress.alerts.push({type:'warn',text:'Financial crisis is a medical-grade stressor. Governance recommendations focus exclusively on zero-cost interventions until stability improves.'});
+  }
+
+  const doms={};
+  doms.energy=blend(
+    [{s:ss.energy,w:30},{s:ss.sleep,w:30},{s:ss.fatigue||50,w:25},{s:ss.exercise||50,w:15}],
+    [{s:sc.hgb?sc.hgb.s:null,w:30},{s:sc.hr?sc.hr.s:null,w:25},{s:sc.bmi?sc.bmi.s:null,w:15},{s:sc.tsh?sc.tsh.s:null,w:20},{s:sc.vitD?sc.vitD.s:null,w:10}]
+  );
+  doms.structural=blend(
+    [{s:ss.strength||50,w:25},{s:ss.bodyChange||50,w:35},{s:ss.exercise||50,w:25},{s:ss.fatigue||50,w:15}],
+    [{s:sc.bmi?sc.bmi.s:null,w:35},{s:sc.whr?sc.whr.s:null,w:40},{s:sc.vitD?sc.vitD.s:null,w:15},{s:sc.hgb?sc.hgb.s:null,w:10}]
+  );
+  doms.insulin=blend(
+    [{s:ss.cravings,w:30},{s:ss.postmeal,w:30},{s:ss.hunger||50,w:25},{s:ss.energy,w:15}],
+    [{s:sc.a1c?sc.a1c.s:null,w:35},{s:gl?gl.s:null,w:20},{s:ths?ths.s:null,w:30},{s:sc.bmi?sc.bmi.s:null,w:15}]
+  );
+  doms.inflammatory=blend(
+    [{s:ss.jointPain||50,w:25},{s:ss.fatigue||50,w:25},{s:ss.recovery,w:25},{s:ss.sleep,w:25}],
+    [{s:sc.sys?sc.sys.s:null,w:18},{s:sc.dia?sc.dia.s:null,w:10},{s:sc.ldl?sc.ldl.s:null,w:16},{s:sc.hdl?sc.hdl.s:null,w:12},{s:sc.trig?sc.trig.s:null,w:10},{s:sc.tc?sc.tc.s:null,w:6},{s:sc.bmi?sc.bmi.s:null,w:6},{s:sc.alt?sc.alt.s:null,w:5},{s:sc.hsCRP?sc.hsCRP.s:null,w:17}]
+  );
+  doms.stress=blend(
+    [{s:ss.stress,w:30},{s:ss.sleepOnset||50,w:20},{s:ss.mood,w:25},{s:ss.recovery,w:25}],
+    [{s:sc.hr?sc.hr.s:null,w:40},{s:sc.sys?sc.sys.s:null,w:30},{s:sc.dia?sc.dia.s:null,w:30}]
+  );
+
+  const dA=[doms.energy,doms.structural,doms.insulin,doms.inflammatory,doms.stress];
+  const dS=dA.map(d=>d.score),raw=dS.reduce((a,v)=>a+v,0)/dS.length;
+  const va=dS.reduce((a,v)=>a+(v-raw)**2,0)/dS.length;
+  const vP=Math.min(15,va/40);
+  const irS=doms.insulin.score,siS=doms.structural.score;
+  const cP=(irS<35||siS<35)?10:0;
+  const fM=Math.min(irS,siS),cap=fM<30?45:fM<40?55:100;
+  const idx=Math.max(0,Math.min(cap,Math.round(raw-vP-cP)));
+  const aC=Math.round(dA.reduce((a,d)=>a+d.conf,0)/dA.length);
+
+  // Count active modifiers
+  const modCount=Object.entries(S.ctx).filter(([k,v])=>{
+    if(k==='hx_menopause')return v!=='pre';
+    if(k==='life_isolation')return v!=='connected';
+    if(k==='life_financial')return v!=='stable';
+    return Boolean(v);
+  }).length;
+
+  return{doms,sc,ths,bmi,whr,idx,aC,dS,mods,modCount};
+}
+
+function gSt(s){return s>=85?{l:'Integrated',c:'var(--grn)'}:s>=70?{l:'Aligned',c:'var(--grn)'}:s>=55?{l:'Converging',c:'var(--amb)'}:s>=35?{l:'Drifting',c:'var(--red)'}:{l:'Fragmented',c:'var(--red)'};}
+function gP(s){return s>=80?{l:'Protect',c:'var(--grn)'}:s>=60?{l:'Tighten',c:'var(--amb)'}:s>=40?{l:'Stabilize',c:'var(--red)'}:{l:'Restructure',c:'var(--red)'};}
+function gC(s){return s>=70?'var(--grn)':s>=50?'var(--amb)':'var(--red)';}
+
+function render(){
+  const r=computeAll();
+  const st=gSt(r.idx);
+  const filled=Object.values(S.obj).filter(v=>v!=='').length;
+  const aL=r.aC>=75?4:r.aC>=55?3:r.aC>=35?2:1;
+
+  const DD=[
+    {key:'energy',name:'Energy Capacity',i:'01',desc:'Metabolic throughput and adaptive flexibility.',mk:'energy',
+      markers:[{n:'Hemoglobin',v:S.obj.hgb,u:'g/dL',r:r.sc.hgb},{n:'Resting HR',v:S.obj.hr,u:'bpm',r:r.sc.hr},{n:'BMI',v:r.bmi?r.bmi.toFixed(1):null,u:'',r:r.sc.bmi},{n:'TSH',v:S.obj.tsh,u:'mIU/L',r:r.sc.tsh},{n:'Vitamin D',v:S.obj.vitD,u:'ng/mL',r:r.sc.vitD}],
+      sh:[...(!S.obj.tsh?[{lab:'TSH',why:'Thyroid governs metabolic rate',p:r.mods.energy.hx?'URGENT':'High'}]:[]),...(!S.obj.vitD?[{lab:'Vitamin D',why:'>80% of Black women insufficient',p:'High'}]:[]),{lab:'Oura / Apple Watch',why:'Sleep architecture + recovery data',p:'Recommended'}]},
+    {key:'structural',name:'Structural Integrity',i:'02',desc:'Lean mass, strength, and long-term metabolic rate.',mk:'structural',
+      markers:[{n:'BMI',v:r.bmi?r.bmi.toFixed(1):null,u:'',r:r.sc.bmi},{n:'Waist:Hip',v:r.whr?r.whr.toFixed(2):null,u:'',r:r.sc.whr}],
+      sh:[{lab:'Smart Scale',why:'BMI is crude \u2014 lean mass vs fat mass is the real signal',p:'High'},...(!S.obj.waist||!S.obj.hip?[{lab:'Waist + Hip measurement',why:'Visceral fat proxy',p:'Do at home'}]:[])]},
+    {key:'insulin',name:'Insulin Regulation',i:'03',desc:'Energy partitioning, cravings, and glycemic stability.',mk:'insulin',
+      markers:[{n:'HbA1c',v:S.obj.a1c,u:'%',r:r.sc.a1c},{n:S.obj.fg?'Fasting Glucose':'Random Glucose',v:S.obj.fg||S.obj.rg,u:'mg/dL',r:r.sc.fg||r.sc.rg},{n:'Trig:HDL',v:r.ths?'':null,u:'ratio',r:r.ths?{s:r.ths.s,l:r.ths.l,c:r.ths.c}:null},{n:'BMI',v:r.bmi?r.bmi.toFixed(1):null,u:'',r:r.sc.bmi}],
+      sh:[{lab:'Fasting Insulin',why:'Catches IR 5\u201310 years before A1c rises',p:(r.mods.insulin.fam||r.mods.insulin.hx)?'URGENT':'High'}]},
+    {key:'inflammatory',name:'Inflammatory Burden',i:'04',desc:'Cardiovascular risk, fatigue, and metabolic friction.',mk:'inflammatory',
+      markers:[{n:'Systolic BP',v:S.obj.sys,u:'mmHg',r:r.sc.sys},{n:'Diastolic BP',v:S.obj.dia,u:'mmHg',r:r.sc.dia},{n:'LDL',v:S.obj.ldl,u:'mg/dL',r:r.sc.ldl},{n:'HDL',v:S.obj.hdl,u:'mg/dL',r:r.sc.hdl},{n:'Triglycerides',v:S.obj.trig,u:'mg/dL',r:r.sc.trig},{n:'ALT',v:S.obj.alt,u:'U/L',r:r.sc.alt},{n:'hs-CRP',v:S.obj.hsCRP,u:'mg/L',r:r.sc.hsCRP}],
+      sh:[...(!S.obj.hsCRP?[{lab:'hs-CRP',why:'Measures the fire, not just the fuel',p:(r.mods.inflammatory.fam||r.mods.inflammatory.hx)?'URGENT':'High'}]:[]),{lab:'ApoB',why:'More predictive than LDL alone',p:(r.mods.inflammatory.fam||r.mods.inflammatory.hx)?'URGENT':'Medium'},{lab:'Lp(a)',why:'Genetic risk \u2014 test once, know forever',p:(r.mods.inflammatory.fam||r.mods.inflammatory.hx)?'High':'Medium'}]},
+    {key:'stress',name:'Stress Modulation',i:'05',desc:'Cortisol tone, autonomic balance, and resilience.',mk:'stress',
+      markers:[{n:'Resting HR',v:S.obj.hr,u:'bpm',r:r.sc.hr},{n:'Systolic BP',v:S.obj.sys,u:'mmHg',r:r.sc.sys}],
+      sh:[{lab:'Oura / Apple Watch',why:'HRV is the gold standard \u2014 labs can\u2019t replace it',p:'High'},{lab:'AM Cortisol',why:'Only direct lab measure for this domain',p:(r.mods.stress.hx)?'URGENT':'High'}]},
+  ];
+
+  let h=`
+    <div class="hdr">
+      <div class="brand">\u00C9CIRE HEALTH\u2122</div>
+      <h1>The Alignment Lens\u2122</h1>
+      <div class="sub">Physician-designed metabolic governance. Five domains. One operating principle.</div>
+    </div>
+    <div class="banner">
+      <div class="il">ALIGNMENT INDEX\u2122</div>
+      <div class="inum">${r.idx}</div>
+      <div class="ist" style="color:${st.c}">${st.l}</div>
+      <div class="im">5/5 domains \u00B7 ${r.aC}% acuity \u00B7 ${filled} objective markers${r.modCount?' \u00B7 '+r.modCount+' governance modifiers':''}</div>
+      <div class="abar">${[1,2,3,4].map(i=>`<div class="aseg ${i<=aL?'on':''}"></div>`).join('')}</div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:3px">${aL===1?'Low Acuity \u2014 Subjective Only':aL===2?'Partial Acuity \u2014 Basic Labs':aL===3?'Good Acuity \u2014 Standard Panel':'High Acuity \u2014 Comprehensive Panel'}</div>
+    </div>
+    <div class="tabs">
+      <div class="tab ${S.tab==='context'?'active':''}" onclick="sT('context')">Alignment Context<span class="ct">History & Meds</span></div>
+      <div class="tab ${S.tab==='subjective'?'active':''}" onclick="sT('subjective')">Subjective Intake<span class="ct">Self-Reported</span></div>
+      <div class="tab ${S.tab==='objective'?'active':''}" onclick="sT('objective')">Objective Data<span class="ct">Vitals & Labs</span></div>
+      <div class="tab ${S.tab==='results'?'active':''}" onclick="sT('results')">Domain Scores<span class="ct">Governance Map</span></div>
+    </div>`;
+
+  if(S.tab==='context'){
+    h+=`<div class="sec" style="margin-bottom:12px;border-color:var(--lav)30">
+      <h3 style="color:var(--acc)">Client Information</h3>
+      <div class="grid">
+        <div>
+          <div class="client-field"><label>Client Name</label>
+            <input type="text" value="${S.client.name}" placeholder="Full name" onchange="sCl('name',this.value)"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div class="client-field"><label>Age</label>
+              <input type="number" value="${S.client.age}" placeholder="41" onchange="sCl('age',this.value)"></div>
+            <div class="client-field"><label>Sex</label>
+              <select onchange="sCl('sex',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+                <option value="female" ${S.client.sex==='female'?'selected':''}>Female</option>
+                <option value="male" ${S.client.sex==='male'?'selected':''}>Male</option>
+              </select></div>
+          </div>
+        </div>
+        <div>
+          <div class="client-field"><label>Lab Date</label>
+            <input type="date" value="${S.client.labDate}" onchange="sCl('labDate',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none"></div>
+          <div class="client-field"><label>Profile Summary <span style="color:#4A5B6E;font-weight:400">(role, context, key notes)</span></label>
+            <textarea placeholder="e.g. CEO/Founder, Mother of 4. No structured exercise. Reports high stress, chronic fatigue." onchange="sCl('profile',this.value)">${S.client.profile}</textarea></div>
+        </div>
+      </div>
+    </div>`;
+    h+=`<div class="grid">
+      <div>
+        <div class="sec"><h3>Family History</h3>
+          <div style="font-size:10px;color:var(--gry);margin-bottom:8px;font-style:italic">Do any of the following run in your immediate family (parents, siblings)?</div>
+          <div class="chk-grid">
+            ${chk('fam_diabetes','Type 2 Diabetes','Parent or sibling diagnosed')}
+            ${chk('fam_heart','Heart Disease < 60','Heart attack, bypass, stent before 60')}
+            ${chk('fam_stroke','Stroke','Parent or sibling')}
+            ${chk('fam_htn','High Blood Pressure','Diagnosed or medicated')}
+            ${chk('fam_cancer','Cancer','Breast, colon, or other')}
+            ${chk('fam_obesity','Obesity','Significant weight challenges')}
+          </div>
+        </div>
+        <div class="sec"><h3>Your Health History</h3>
+          <div style="font-size:10px;color:var(--gry);margin-bottom:8px;font-style:italic">Have you ever been told you have any of the following?</div>
+          <div class="chk-grid">
+            ${chk('hx_prediabetes','Prediabetes','A1c 5.7\u20136.4 or fasting glucose 100\u2013125')}
+            ${chk('hx_diabetes','Type 2 Diabetes','Diagnosed')}
+            ${chk('hx_gest_diabetes','Gestational Diabetes','During any pregnancy')}
+            ${chk('hx_gest_htn','Gestational Hypertension','Pre-eclampsia or high BP during any pregnancy')}
+            ${chk('hx_htn','High Blood Pressure','Diagnosed or medicated')}
+            ${chk('hx_cholesterol','High Cholesterol','Diagnosed or medicated')}
+            ${chk('hx_stroke','Stroke','Personal history')}
+            ${chk('hx_mi','Heart Attack','Personal history of MI')}
+            ${chk('hx_pcos','PCOS','Polycystic ovary syndrome')}
+            ${chk('hx_thyroid','Thyroid Disorder','Hypo- or hyperthyroid')}
+            ${chk('hx_autoimmune','Autoimmune Condition','Lupus, RA, Hashimoto\u2019s, etc.')}
+            ${chk('hx_depression','Depression / Anxiety','Diagnosed or treated')}
+            ${chk('hx_sleep_apnea','Sleep Apnea','Diagnosed or suspected')}
+          </div>
+          <div style="margin-top:10px">
+            <label style="display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px">Menopause Status</label>
+            <select onchange="sCtx('hx_menopause',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+              <option value="pre" ${S.ctx.hx_menopause==='pre'?'selected':''}>Pre-menopausal</option>
+              <option value="peri" ${S.ctx.hx_menopause==='peri'?'selected':''}>Perimenopausal (irregular cycles, symptoms beginning)</option>
+              <option value="post" ${S.ctx.hx_menopause==='post'?'selected':''}>Post-menopausal (12+ months without period)</option>
+            </select>
+            <div style="font-size:10px;color:#4A5B6E;margin-top:2px">Menopause status affects insulin sensitivity, bone density, cardiovascular risk, and stress patterns across multiple domains.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec"><h3>Current Medications</h3>
+          <div style="font-size:10px;color:var(--gry);margin-bottom:8px;font-style:italic">Current medications affect what the Lens can see. Select any categories you are currently taking. We do not manage medications \u2014 this helps the Lens interpret your lab values accurately.</div>
+          <div class="chk-grid">
+            ${chk('med_statin','Lipid-Lowering Medication','Statin, ezetimibe, PCSK9i, or combo (e.g. Vytorin)')}
+            ${chk('med_bp','Blood Pressure Medication','Any antihypertensive')}
+            ${chk('med_thyroid','Thyroid Medication','Levothyroxine, Synthroid, etc.')}
+            ${chk('med_diabetes','Diabetes Medication','Metformin, insulin, etc.')}
+            ${chk('med_glp1','GLP-1 or GIP/GLP-1 Agonist','Ozempic, Wegovy, Mounjaro, Zepbound, Saxenda, etc.')}
+            ${chk('med_hormone','Hormone Therapy','HRT, birth control, testosterone')}
+            ${chk('med_psych','Psychiatric Medication','Antidepressant, anti-anxiety, etc.')}
+            ${chk('med_sup_vitd','Vitamin D Supplement','Any dose')}
+            ${chk('med_sup_iron','Iron Supplement','Ferrous sulfate, etc.')}
+            ${chk('med_sup_omega3','Omega-3 / Fish Oil','High-dose EPA/DHA')}
+          </div>
+        </div>
+        <div class="sec" style="border-color:var(--lav)30">
+          <h3 style="color:var(--acc)">Why We Ask This</h3>
+          <div style="font-size:11px;color:var(--txt);line-height:1.5">
+            <p style="margin-bottom:8px">\u00C9cire does not diagnose, treat, or manage medications. Your physician does that.</p>
+            <p style="margin-bottom:8px">\u00C9cire governs the <em>metabolic conditions</em> that produce disease risk. Your health history and medications tell the Lens two critical things:</p>
+            <p style="margin-bottom:4px"><strong style="color:var(--acc2)">1. How urgently</strong> to govern each domain. The same A1c of 5.5 carries different weight with versus without family history of diabetes.</p>
+            <p style="margin-bottom:4px"><strong style="color:var(--acc2)">2. What the numbers actually mean.</strong> An LDL of 107 on a statin is not the same as an LDL of 107 without one. The Lens needs to know which it\u2019s seeing.</p>
+            <p style="margin-top:8px;font-size:10px;color:var(--gry)">This information does not change your domain scores. It changes how the Lens interprets them and how urgently it recommends action.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sec" style="margin-top:4px">
+      <h3>Life Context</h3>
+      <div style="font-size:10px;color:var(--gry);margin-bottom:10px;font-style:italic">These factors are among the strongest predictors of health outcomes. They affect what the Lens recommends and how it prioritizes interventions.</div>
+      <div class="grid">
+        <div>
+          <label style="display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px">Social Connection</label>
+          <select onchange="sCtx('life_isolation',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+            <option value="connected" ${S.ctx.life_isolation==='connected'?'selected':''}>Well connected \u2014 regular meaningful contact with people I care about</option>
+            <option value="some" ${S.ctx.life_isolation==='some'?'selected':''}>Some connection \u2014 but less than I\u2019d like</option>
+            <option value="limited" ${S.ctx.life_isolation==='limited'?'selected':''}>Limited \u2014 I often feel alone in managing my health and life</option>
+            <option value="isolated" ${S.ctx.life_isolation==='isolated'?'selected':''}>Isolated \u2014 I have very few people I can rely on</option>
+          </select>
+          <div style="font-size:10px;color:#4A5B6E;margin-top:2px">Social connection affects stress resilience, exercise adherence, and recovery across every domain.</div>
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px">Financial Context</label>
+          <select onchange="sCtx('life_financial',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+            <option value="stable" ${S.ctx.life_financial==='stable'?'selected':''}>Stable \u2014 health investments are manageable</option>
+            <option value="mindful" ${S.ctx.life_financial==='mindful'?'selected':''}>Mindful \u2014 I can invest in health but need to prioritize carefully</option>
+            <option value="strained" ${S.ctx.life_financial==='strained'?'selected':''}>Strained \u2014 financial concerns limit my health choices</option>
+            <option value="crisis" ${S.ctx.life_financial==='crisis'?'selected':''}>In crisis \u2014 basic needs are difficult to meet right now</option>
+          </select>
+          <div style="font-size:10px;color:#4A5B6E;margin-top:2px">The Lens prioritizes free and low-cost interventions first when financial context requires it.</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:10px 12px;background:rgba(123,94,167,0.04);border:1px solid rgba(123,94,167,0.1);border-radius:6px">
+        <div style="font-size:11px;color:var(--txt);line-height:1.6">
+          <strong style="color:var(--acc2)">A note on safety and whole-life context</strong><br>
+          <span style="color:var(--gry)">The Lens measures metabolic domains, but your health exists in the full context of your life. If anything in your life is affecting your safety, your stability, or your ability to care for yourself, your governance consultation is a confidential space to discuss this. Some things belong in a conversation, not a form. Your practitioner can adapt every recommendation to your real circumstances.</span>
+        </div>
+      </div>
+    </div>`;
+  } else if(S.tab==='subjective'){
+    h+=`<div class="grid">
+      <div class="sec"><h3>Energy & Recovery</h3>
+        ${slider('energy','Overall Energy Level')}${slider('sleep','Sleep Quality')}${slider('recovery','Recovery Capacity')}
+        ${sel('exercise','Exercise Frequency',{none:'No regular exercise',light:'Light (1\u20132x/wk)',moderate:'Moderate (3\u20134x/wk)',intense:'Intense (5+/wk)'})}
+        ${sel('fatigue','Fatigue',{always:'Constant',often:'Frequent',sometimes:'Sometimes',rarely:'Rarely'})}
+      </div>
+      <div class="sec"><h3>Stress & Mood</h3>
+        ${slider('stress','Perceived Stress (10=highest)')}${slider('mood','Mood Stability')}
+        ${sel('sleepOnset','Time to Fall Asleep',{difficult:'30+ min',delayed:'15\u201330 min',normal:'5\u201315 min',easy:'Under 5 min'})}
+      </div>
+      <div class="sec"><h3>Hunger & Insulin Signals</h3>
+        ${slider('cravings','Cravings Intensity (10=worst)')}${slider('postmeal','Post-Meal Crashes (10=worst)')}
+        ${sel('hunger','Hunger Pattern',{constant:'Constant',frequent:'Every 2\u20133 hrs',moderate:'3\u20134 hr intervals',controlled:'Rarely urgent'})}
+      </div>
+      <div class="sec"><h3>Body & Inflammation</h3>
+        ${sel('strength','Strength Trend',{declining:'Declining',stable:'Stable',building:'Building'})}
+        ${sel('bodyChange','Body Composition Trend',{gaining:'Gaining fat',fluctuating:'Fluctuating',stable:'Stable',recomposing:'Losing fat / building muscle'})}
+        ${sel('jointPain','Joint Pain / Stiffness',{often:'Often',sometimes:'Sometimes',rarely:'Rarely',never:'Never'})}
+      </div>
+    </div>`;
+  } else if(S.tab==='objective'){
+    h+=`<div class="grid"><div>
+      <div class="sec"><h3>Vitals</h3>
+        ${fld('sys','Systolic BP','mmHg','120')}${fld('dia','Diastolic BP','mmHg','80')}
+        ${fld('hr','Resting Heart Rate','bpm','72')}
+        <div class="field-row">${fld('ht','Height','inches','66')}${fld('wt','Weight','lbs','150')}</div>
+        ${r.bmi?`<div style="font-size:11px;color:var(--acc2);margin:-4px 0 6px">BMI: <strong>${r.bmi.toFixed(1)}</strong></div>`:''}
+        <div class="field-row">${fld('waist','Waist','inches','')}</div>
+        <div class="field-row">${fld('hip','Hip','inches','')}</div>
+        ${r.whr?`<div style="font-size:11px;color:var(--acc2);margin:-4px 0 6px">Waist:Hip: <strong>${r.whr.toFixed(2)}</strong></div>`:''}
+      </div>
+      <div class="sec"><h3>Glucose & Metabolic</h3>
+        ${fld('a1c','HbA1c','%','5.4')}${fld('fg','Fasting Glucose','mg/dL','90')}
+        ${fld('rg','Random Glucose','mg/dL','','If no fasting')}${fld('hgb','Hemoglobin','g/dL','13.0')}
+      </div></div><div>
+      <div class="sec"><h3>Lipid Panel</h3>
+        ${fld('tc','Total Cholesterol','mg/dL','200')}${fld('ldl','LDL','mg/dL','100')}
+        ${fld('hdl','HDL','mg/dL','55')}${fld('trig','Triglycerides','mg/dL','120')}
+        ${r.ths?`<div style="font-size:11px;color:${r.ths.c};margin:-4px 0 6px">Trig:HDL \u2014 ${r.ths.l}</div>`:''}
+      </div>
+      <div class="sec"><h3>Extended Panel</h3>
+        ${fld('tsh','TSH','mIU/L','2.0','Thyroid \u2192 Energy')}
+        ${fld('alt','ALT','U/L','22','Liver \u2192 Inflammatory')}
+        ${fld('vitD','Vitamin D (25-OH)','ng/mL','','Energy + Structural')}
+        ${fld('hsCRP','hs-CRP','mg/L','','Inflammation \u2192 Burden')}
+        ${fld('fastIns','Fasting Insulin','\u03BCIU/mL','','Early IR \u2192 Insulin')}
+        ${fld('cortisol','AM Cortisol','\u03BCg/dL','','Stress Modulation')}
+      </div>
+    </div></div>`;
+  } else {
+    h+='<div>';
+    h+=`<div style="padding:10px 12px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px;margin-bottom:12px;font-size:10px;color:var(--txt);line-height:1.6">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <div><strong style="color:var(--acc2);font-size:11px">Domains</strong><br>
+          <span style="color:var(--gry)">01</span> Energy Capacity<br>
+          <span style="color:var(--gry)">02</span> Structural Integrity<br>
+          <span style="color:var(--gry)">03</span> Insulin Regulation<br>
+          <span style="color:var(--gry)">04</span> Inflammatory Burden<br>
+          <span style="color:var(--gry)">05</span> Stress Modulation</div>
+        <div><strong style="color:var(--acc2);font-size:11px">Governance Posture</strong><br>
+          <span style="color:var(--grn)">\u25CF \u226580 Protect</span> \u2014 Maintain<br>
+          <span style="color:var(--amb)">\u25CF 60\u201379 Tighten</span> \u2014 One move<br>
+          <span style="color:var(--red)">\u25CF 40\u201359 Stabilize</span> \u2014 Intervene<br>
+          <span style="color:var(--red)">\u25CF &lt;40 Restructure</span> \u2014 Rebuild</div>
+        <div><strong style="color:var(--acc2);font-size:11px">Acuity (Confidence)</strong><br>
+          <span style="color:var(--grn)">\u25CF 75\u201395%</span> High \u2014 Lab-driven<br>
+          <span style="color:var(--grn)">\u25CF 55\u201374%</span> Good \u2014 Key gaps<br>
+          <span style="color:var(--amb)">\u25CF 35\u201354%</span> Partial \u2014 Directional<br>
+          <span style="color:var(--red)">\u25CF 0\u201334%</span> Low \u2014 Needs data</div>
+      </div>
+    </div>`;
+    for(const d of DD){
+      const dr=r.doms[d.key],p=gP(dr.score),sc2=gC(dr.score);
+      const vm=d.markers.filter(m=>m.v&&m.r);
+      const mod=r.mods[d.mk];
+      const hasMed=mod&&mod.medLabels&&mod.medLabels.length;
+      const hasFam=mod&&mod.fam;
+      const menoTag=(S.ctx.hx_menopause!=='pre'&&['insulin','structural','inflammatory'].includes(d.key))?S.ctx.hx_menopause==='peri'?'PERI':'POST':null;
+      const alerts=mod?mod.alerts:[];
+      h+=`<div class="dcard" style="border-left:4px solid ${sc2}">
+        <div class="dt"><div>
+          <div style="font-size:10px;letter-spacing:1px;color:var(--acc2);font-weight:600">${d.i} DOMAIN</div>
+          <div class="dn">${d.name}${hasMed?mod.medLabels.map(l=>`<span class="tag tag-med">${l}</span>`).join(''):''}${hasFam?'<span class="tag tag-fam">FAM HX</span>':''}${menoTag?`<span class="tag tag-fam">${menoTag}</span>`:''}</div>
+          <div class="dd">${d.desc}</div>
+        </div><div style="text-align:right">
+          <div class="ds" style="color:${sc2}">${dr.score}</div>
+          <div class="dp" style="color:${p.c}">${p.l}</div>
+        </div></div>
+        <div class="cb"><div class="ct2"><div class="cf" style="width:${dr.conf}%;background:${dr.conf>65?'var(--grn)':dr.conf>35?'var(--amb)':'var(--red)'}"></div></div>
+          <div class="cla">${dr.conf}% acuity \u00B7 ${dr.src} (${dr.ou}/${dr.ot} markers)</div></div>
+        ${vm.length?vm.map(m=>`<div class="mk"><span class="mn">${m.n}</span><span class="mv" style="color:${m.r.c}">${m.v}${m.u?' '+m.u:''} \u2014 ${m.r.l}</span></div>`).join(''):''}
+        ${alerts.length?alerts.map(a=>`<div class="mod-alert ${a.type}"><strong>${a.type==='warn'?'\u26A0 GOVERNANCE MODIFIER':'\u2139 NOTE'}:</strong> ${a.text}</div>`).join(''):''}
+        ${d.sh.length?`<div class="sh"><div class="sht">\u2191 TO SHARPEN THIS DOMAIN</div>${d.sh.map(s=>`<div class="shi"><strong>${s.lab}</strong> \u2014 ${s.why} <span class="tag ${s.p==='URGENT'?'tag-urg':'tag-med'}" style="${s.p==='URGENT'?'':'background:rgba(136,153,170,0.15);color:var(--gry);border-color:rgba(136,153,170,0.3)'}">${s.p}</span></div>`).join('')}</div>`:''}
+      </div>`;
+    }
+    h+='</div>';
+    h+=`<div style="text-align:center;margin:16px 0;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:10px">
+      <div style="font-size:13px;font-weight:700;color:var(--acc2);margin-bottom:4px">Export Assessment</div>
+      <div style="font-size:10px;color:var(--gry);margin-bottom:12px">Export the complete assessment data to generate the Alignment Report and Plan.</div>
+      <button class="btn-export" onclick="downloadJSON()">\u2B07 Download JSON</button>
+      <button class="btn-export secondary" id="copyBtn" onclick="copyJSON()">\u{1F4CB} Copy JSON</button>
+    </div>`;
+  }
+
+  h+=`<div class="disc">
+    <strong>\u00C9cire is a physician-designed metabolic governance system.</strong> Not medical advice, diagnosis, or treatment.
+    Consult your healthcare provider. \u00C9cire does not evaluate or recommend changes to prescribed medications.
+    Subjective inputs inform governance direction; objective data sharpens resolution. Governance modifiers adjust interpretation and urgency, not scores.
+  </div>`;
+  A.innerHTML=h;
+}
+
+function chk(k,label,desc){
+  const on=S.ctx[k];
+  return `<div class="chk-item ${on?'on':''}" onclick="tC('${k}')">
+    <input type="checkbox" ${on?'checked':''} onclick="event.stopPropagation();tC('${k}')">
+    <div><div class="cl">${label}</div><div class="cd">${desc}</div></div></div>`;
+}
+function slider(k,label){
+  const v=S.subj[k];
+  return `<div class="field"><label>${label}</label><div class="sw">
+    <input type="range" min="1" max="10" value="${v}" oninput="sS('${k}',+this.value)">
+    <div class="sv">${v}</div></div></div>`;
+}
+function sel(k,label,opts){
+  const v=S.subj[k];
+  return `<div class="field"><label>${label}</label><select onchange="sS('${k}',this.value)">
+    ${Object.entries(opts).map(([kk,l])=>`<option value="${kk}" ${v===kk?'selected':''}>${l}</option>`).join('')}</select></div>`;
+}
+function fld(k,label,unit,ph,hint){
+  return `<div class="field"><label>${label} <span style="color:#4A5B6E;font-weight:400">${unit}</span></label>
+    <input type="number" step="any" value="${S.obj[k]}" placeholder="${ph||''}"
+      oninput="sO('${k}',this.value)">${hint?`<div class="hint">${hint}</div>`:''}</div>`;
+}
+
+window.sT=function(t){S.tab=t;render();};
+window.sS=function(k,v){S.subj[k]=v;render();};
+window.sO=function(k,v){S.obj[k]=v;render();};
+window.tC=function(k){S.ctx[k]=!S.ctx[k];render();};
+window.sCtx=function(k,v){S.ctx[k]=v;render();};
+window.sCl=function(k,v){S.client[k]=v;};
+
+window.exportJSON=function(){
+  const r=computeAll();
+  const payload={
+    exportVersion:'1.0',
+    exportDate:new Date().toISOString(),
+    client:{...S.client},
+    context:{...S.ctx},
+    subjective:{...S.subj},
+    subjectiveScores:{},
+    objective:{...S.obj},
+    computed:{
+      bmi:r.bmi,whr:r.whr,trigHdlRatio:r.ths?parseFloat(((val(S.obj.trig))/(val(S.obj.hdl))).toFixed(2)):null,
+      domains:{},
+      index:r.idx,indexState:gSt(r.idx).l,
+      averageAcuity:r.aC,
+      modifierCount:r.modCount
+    },
+    modifiers:{},
+    markerScores:{}
+  };
+  // Subjective scores
+  for(const k in S.subj)payload.subjectiveScores[k]=subjScore(k,S.subj[k]);
+  // Domain data
+  const dKeys=['energy','structural','insulin','inflammatory','stress'];
+  for(const k of dKeys){
+    const d=r.doms[k];
+    payload.computed.domains[k]={score:d.score,confidence:d.conf,source:d.src,markersUsed:d.ou,markersTotal:d.ot,posture:gP(d.score).l};
+  }
+  // Modifiers
+  for(const k of dKeys){
+    const m=r.mods[k];
+    payload.modifiers[k]={familyHistory:!!m.fam,personalHistory:!!m.hx,medicated:!!m.med,medLabels:m.medLabels||[],alerts:m.alerts||[]};
+  }
+  // Marker scores (objective)
+  for(const k in r.sc){
+    if(r.sc[k])payload.markerScores[k]={score:r.sc[k].s,label:r.sc[k].l,value:val(S.obj[k])||(k==='bmi'?r.bmi:k==='whr'?r.whr:null)};
+  }
+  if(r.ths)payload.markerScores.trigHdlRatio={score:r.ths.s,label:r.ths.l,value:parseFloat(((val(S.obj.trig))/(val(S.obj.hdl))).toFixed(2))};
+  return payload;
+};
+
+window.downloadJSON=function(){
+  const data=exportJSON();
+  const name=S.client.name?S.client.name.replace(/[^a-zA-Z0-9]/g,'_'):'client';
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=`${name}_alignment_assessment.json`;a.click();URL.revokeObjectURL(a.href);
+};
+
+window.copyJSON=function(){
+  const data=exportJSON();
+  navigator.clipboard.writeText(JSON.stringify(data,null,2)).then(()=>{
+    const btn=document.getElementById('copyBtn');
+    if(btn){btn.textContent='\u2713 Copied';setTimeout(()=>{btn.textContent='\u{1F4CB} Copy JSON';},2000);}
+  });
+};
+
+render();
+</script>
+</body>
+</html>
