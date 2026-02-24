@@ -689,14 +689,11 @@ function render(){
     h+=`<div style="text-align:center;margin:16px 0;padding:24px 20px;background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--lav);border-radius:12px">
       <div style="font-size:15px;font-weight:700;color:var(--txth);margin-bottom:4px">Your Assessment is Complete</div>
       <div style="font-size:12px;color:var(--txt);margin-bottom:16px;line-height:1.6;max-width:520px;margin-left:auto;margin-right:auto">
-        Your domain scores reflect the current state of each metabolic domain based on what you\u2019ve entered. Where labs or measurements are missing, the Lens has scored what it can see and identified the testing that would sharpen acuity. Download your assessment file below and send it to \u00C9cire Health, where your data will be analyzed using \u00C9cire\u2019s clinical analytics to generate your personalized Alignment Report and Plan.
+        Your domain scores reflect the current state of each metabolic domain based on what you\u2019ve entered. Where labs or measurements are missing, the Lens has scored what it can see and identified the testing that would sharpen acuity. Send your assessment to \u00C9cire Health below, where your data will be analyzed using \u00C9cire\u2019s clinical analytics to generate your personalized Alignment Report and Plan.
       </div>
-      <button class="btn-export" onclick="downloadJSON()">\u2B07 Download My Assessment</button>
-      <button class="btn-export" onclick="submitAssessment()">Submit My Assessment</button>
-      <div style="margin-top:16px;padding:14px 18px;background:var(--navy2);border:1px solid var(--border);border-radius:8px;display:inline-block;text-align:center">
-        <div style="font-size:11px;color:var(--gry);margin-bottom:4px">Email your downloaded file to:</div>
-        <div style="font-size:15px;font-weight:700;color:var(--acc2);letter-spacing:0.3px">lens@ecirehealth.com</div>
-      </div>
+      <button class="btn-export" id="sendBtn" onclick="sendAssessment()">\u{1F4E8} Send My Assessment</button>
+      <button class="btn-export secondary" onclick="downloadJSON()">\u2B07 Download a Copy</button>
+      <div id="sendMsg" style="font-size:12px;margin-top:10px;min-height:18px"></div>
       <div style="text-align:left;max-width:480px;margin:18px auto 0;padding:16px 18px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px">
         <div style="font-size:11px;font-weight:700;color:var(--acc2);margin-bottom:10px;letter-spacing:1px">WHAT HAPPENS NEXT</div>
         <div style="font-size:12px;color:var(--txt);line-height:1.7;margin-bottom:8px">
@@ -711,7 +708,7 @@ function render(){
           Your Report will include a recommended governance level based on your domain scores and acuity. If you\u2019d like to discuss your results or explore ongoing implementation support, governance consultations are available through \u00C9cire Health.
         </div>
       </div>
-      <div style="font-size:10px;color:var(--gry);margin-top:14px">Your data stays on your device until you choose to send it. The file contains only what you entered here.</div>
+      <div style="font-size:10px;color:var(--gry);margin-top:14px">Your data stays on your device until you choose to send it. Clicking \u201CSend\u201D transmits your assessment securely to \u00C9cire Health. Nothing is stored on any server.</div>
     </div>`;
   }
 
@@ -727,7 +724,7 @@ function render(){
     <strong>No part of this assessment \u2014 including its design, scoring logic, domain structure, language, or output \u2014 may be reproduced, distributed, transmitted, displayed, published, or adapted in any form or by any means without the prior written consent of \u00C9cire, LLC and \u00C9cire Health, LLC.</strong>
     Unauthorized use, reverse engineering, or reproduction of this tool or its methodology is strictly prohibited and may be subject to legal action.<br><br>
     <strong>Your Data & Privacy:</strong> This assessment runs entirely in your browser. No data is transmitted to any server. Nothing you enter here is stored, collected, or accessible to \u00C9cire Health or any third party.
-    When you download your results file, that file exists only on your device until you choose to share it with your \u00C9cire Health practitioner.
+    When you send or download your results, that data goes only where you direct it \u2014 to your \u00C9cire Health practitioner or to your device.
     By using this tool, you acknowledge that it is provided for informational and governance purposes only and does not constitute a medical consultation, diagnosis, or treatment plan.
   </div>`;
   A.innerHTML=h;
@@ -832,34 +829,37 @@ window.copyJSON=function(){
   });
 };
 
- window.submitAssessment = function () {
-  const endpoint = "https://script.google.com/macros/s/AKfycby3HedJA2voOxMQZQde9GKAJ8XcidaDlFH3GR6KqfTFmYc3k-19BvyDY8re7hG0R1f8/exec";
-  const data = exportJSON();
-  const payload = JSON.stringify(data);
-
-  // 1) Try sendBeacon (most reliable cross-origin)
-  try {
-    const blob = new Blob([payload], { type: "text/plain;charset=UTF-8" });
-    const ok = navigator.sendBeacon(endpoint, blob);
-
-    if (ok) {
-      alert("Submitted! Check your email for 'New Ecire Assessment'.");
-      return;
+window.sendAssessment=function(){
+  const btn=document.getElementById('sendBtn');
+  const msg=document.getElementById('sendMsg');
+  if(!btn)return;
+  btn.disabled=true;
+  btn.textContent='Sending\u2026';
+  btn.style.opacity='0.6';
+  if(msg)msg.textContent='';
+  const data=exportJSON();
+  fetch('https://script.google.com/macros/s/AKfycby3HedJA2voOxMQZQde9GKAJ8XcidaDlFH3GR6KqfTFmYc3k-19BvyDY8re7hG0R1f8/exec',{
+    method:'POST',
+    body:JSON.stringify(data)
+  }).then(r=>r.json()).then(res=>{
+    if(res.ok){
+      btn.textContent='\u2713 Assessment Sent';
+      btn.style.background='var(--grn)';
+      btn.style.opacity='1';
+      if(msg)msg.innerHTML='<span style="color:var(--grn)">\u2713 Your assessment has been securely sent to \u00C9cire Health. You\u2019ll hear from us soon.</span>';
+    } else {
+      throw new Error(res.error||'Send failed');
     }
-  } catch (e) {
-    // fall through to fetch backup
-  }
-
-  // 2) Backup: fetch in no-cors mode (we can’t read the response)
-  fetch(endpoint, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "text/plain;charset=UTF-8" },
-    body: payload
-  })
-    .then(() => alert("Submitted! Check your email for 'New Ecire Assessment'."))
-    .catch((err) => alert("Still blocked by the browser. Use Download + email for now. " + err.message));
+  }).catch(err=>{
+    btn.textContent='Could Not Send \u2014 Try Again';
+    btn.style.background='var(--red)';
+    btn.style.opacity='1';
+    btn.disabled=false;
+    if(msg)msg.innerHTML='<span style="color:var(--red)">Could not send. Please download your assessment and email it to <strong>lens@ecirehealth.com</strong></span>';
+    setTimeout(()=>{btn.textContent='\u{1F4E8} Send My Assessment';btn.style.background='';btn.style.opacity='1';},4000);
+  });
 };
+
 render();
 </script>
 </body>
