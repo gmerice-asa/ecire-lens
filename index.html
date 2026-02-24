@@ -133,7 +133,10 @@ const S={
     strength:'declining',bodyChange:'gaining',jointPain:'sometimes',fatigue:'often'},
   obj:{sys:'',dia:'',hr:'',ht:'',wt:'',waist:'',hip:'',
     tc:'',ldl:'',hdl:'',trig:'',a1c:'',fg:'',rg:'',hgb:'',
-    tsh:'',alt:'',vitD:'',hsCRP:'',fastIns:'',cortisol:''}
+    tsh:'',alt:'',vitD:'',hsCRP:'',fastIns:'',cortisol:''},
+  diag:{dexa:false,ekg:false,echo:false,sleep_study:false,cgm:false,
+    advanced_lipid:false,cac:false,vo2:false,hormone:false,genetic:false,
+    microbiome:false,food_sensitivity:false,mri:false,ultrasound:false}
 };
 
 function val(v){const n=parseFloat(v);return(v!==''&&!isNaN(n))?n:null;}
@@ -389,18 +392,30 @@ function render(){
       </div>
       <div class="w-prep" style="margin-bottom:28px">
         <h4>WHAT YOU\u2019LL RECEIVE</h4>
-        <div style="font-size:13px;color:var(--txt);line-height:1.7;margin-bottom:12px">
-          After you complete this assessment, your practitioner will generate your <strong style="color:var(--acc2)">Alignment Report</strong> \u2014 a physician-level governance read of your metabolic strategy. Here\u2019s what it sees that standard bloodwork alone does not:
+        <div style="font-size:13px;color:var(--txt);line-height:1.7;margin-bottom:16px">
+          After you complete this assessment, your data will be analyzed using \u00C9cire\u2019s clinical analytics to generate the following:
         </div>
-        <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">Trajectory, not just position.</strong> A lab value that\u2019s \u201Cnormal\u201D today may be marching toward a threshold. The Lens reads velocity \u2014 where your numbers are heading, not just where they sit.</span></div>
-        <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">Cross-domain interactions.</strong> Your domains don\u2019t exist in isolation. A weakness in one can silently drag the others. The report shows how your domains are affecting each other.</span></div>
-        <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">The gaps that matter most.</strong> Not every missing lab is equal. The Lens identifies which single test or data point would most sharpen your picture \u2014 and why.</span></div>
-        <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">The One Move.</strong> Every report identifies the single highest-leverage intervention that touches the most domains at once. Not a laundry list. One move to start governing.</span></div>
+        <div style="margin-bottom:16px">
+          <div style="font-size:13px;font-weight:700;color:var(--acc2);margin-bottom:6px">Your Alignment Report</div>
+          <div style="font-size:12px;color:var(--txt);line-height:1.6;margin-bottom:10px;padding-left:4px">A physician-level governance read of your metabolic strategy. Here\u2019s what it sees that standard bloodwork alone does not:</div>
+          <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">Trajectory, not just position.</strong> A lab value that\u2019s \u201Cnormal\u201D today may be marching toward a threshold. The Lens reads velocity \u2014 where your numbers are heading, not just where they sit.</span></div>
+          <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">Cross-domain interactions.</strong> Your domains don\u2019t exist in isolation. A weakness in one can silently drag the others. The report shows how your domains are affecting each other.</span></div>
+          <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">The gaps that matter most.</strong> Not every missing lab is equal. The Lens identifies which single test or data point would most sharpen your picture \u2014 and why.</span></div>
+          <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">The One Move.</strong> Every report identifies the single highest-leverage intervention that touches the most domains at once. Not a laundry list. One move to start governing.</span></div>
+        </div>
+        <div style="margin-bottom:16px">
+          <div style="font-size:13px;font-weight:700;color:var(--acc2);margin-bottom:6px">Your Alignment Plan</div>
+          <div style="font-size:12px;color:var(--txt);line-height:1.6;padding-left:4px">Domain-specific recommendations, sequenced to compound and synergize across domains, so that each intervention enhances the results of the next. What to do first, what to test next, and what to protect.</div>
+        </div>
+        <div style="font-size:12px;color:var(--gry);line-height:1.6;padding:12px 14px;background:rgba(123,94,167,0.04);border:1px solid rgba(123,94,167,0.1);border-radius:6px">
+          Your Report will include a recommended governance level based on your domain scores and acuity. If you\u2019d like to discuss your results or explore ongoing implementation support, governance consultations are available through \u00C9cire Health.
+        </div>
       </div>
       <button class="w-begin" onclick="sT('context')">Begin Assessment</button>
       <div class="w-time">Takes about 10\u201315 minutes \u00B7 No account required \u00B7 Your data stays on your device</div>
       <div class="w-note">
         \u00C9cire is a physician-designed metabolic governance system. This assessment is not medical advice, diagnosis, or treatment. It does not replace your physician. It reveals what your current strategy is producing \u2014 so you can govern it.
+        <br><br><span style="font-size:9px">\u00A9 ${new Date().getFullYear()} \u00C9cire, LLC and \u00C9cire Health, LLC. All rights reserved. The Alignment Lens\u2122 and all associated methodology, scoring, and intellectual property are proprietary and confidential. No reproduction or distribution without written consent.</span>
       </div>
     </div>`;
     A.innerHTML=h;
@@ -544,7 +559,7 @@ function render(){
       <div style="margin-top:12px;padding:10px 12px;background:rgba(123,94,167,0.04);border:1px solid rgba(123,94,167,0.1);border-radius:6px">
         <div style="font-size:11px;color:var(--txt);line-height:1.6">
           <strong style="color:var(--acc2)">A note on safety and whole-life context</strong><br>
-          <span style="color:var(--gry)">The Lens measures metabolic domains, but your health exists in the full context of your life. If anything in your life is affecting your safety, your stability, or your ability to care for yourself, your governance consultation is a confidential space to discuss this. Some things belong in a conversation, not a form. Your practitioner can adapt every recommendation to your real circumstances.</span>
+          <span style="color:var(--gry)">The Lens measures metabolic domains, but your health exists in the full context of your life. If anything in your life is affecting your safety, your stability, or your ability to care for yourself, your governance consultation is a confidential space to discuss this. Some things belong in a conversation, not a form. Your \u00C9cire Health practitioner can adapt every recommendation to your real circumstances.</span>
         </div>
       </div>
     </div>`;
@@ -603,6 +618,26 @@ function render(){
         ${fld('cortisol','AM Cortisol','\u03BCg/dL','','Stress Modulation')}
       </div>
     </div></div>`;
+    h+=`<div class="sec" style="margin-top:12px">
+      <h3>Additional Diagnostics Available</h3>
+      <div style="font-size:11px;color:var(--gry);margin-bottom:10px;line-height:1.5;font-style:italic">Check anything you\u2019ve had done in the past 12 months. These don\u2019t affect your domain scores but will be noted in your Report. Detailed results can be reviewed during a governance consultation to further sharpen your domains.</div>
+      <div class="chk-grid">
+        ${dchk('dexa','DEXA Scan')}
+        ${dchk('ekg','EKG / ECG')}
+        ${dchk('echo','Echocardiogram')}
+        ${dchk('sleep_study','Sleep Study')}
+        ${dchk('cgm','CGM Data (Continuous Glucose Monitor)')}
+        ${dchk('advanced_lipid','Advanced Lipid Panel (NMR, ApoB, or Lp(a))')}
+        ${dchk('cac','Coronary Calcium Score')}
+        ${dchk('vo2','VO2 Max Testing')}
+        ${dchk('hormone','Hormone Panel')}
+        ${dchk('genetic','Genetic Testing')}
+        ${dchk('microbiome','Gut Microbiome Testing')}
+        ${dchk('food_sensitivity','Food Sensitivity Testing')}
+        ${dchk('mri','MRI')}
+        ${dchk('ultrasound','Ultrasound')}
+      </div>
+    </div>`;
     h+=`<div style="text-align:center;margin-top:12px"><button class="btn-export" onclick="sT('results')">See My Domain Scores \u2192</button></div>`;
   } else {
     h+='<div>';
@@ -651,15 +686,31 @@ function render(){
       </div>`;
     }
     h+='</div>';
-    h+=`<div style="text-align:center;margin:16px 0;padding:20px;background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--lav);border-radius:12px">
-      <div style="font-size:15px;font-weight:700;color:var(--txth);margin-bottom:4px">You\u2019re Done</div>
-      <div style="font-size:12px;color:var(--txt);margin-bottom:14px;line-height:1.5">Your assessment is complete. Download your results file and email it to your practitioner.</div>
-      <button class="btn-export" onclick="downloadJSON()">\u2B07 Download My Results</button>
-      <div style="margin-top:14px;padding:12px 16px;background:var(--navy2);border:1px solid var(--border);border-radius:8px;display:inline-block">
+    h+=`<div style="text-align:center;margin:16px 0;padding:24px 20px;background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--lav);border-radius:12px">
+      <div style="font-size:15px;font-weight:700;color:var(--txth);margin-bottom:4px">Your Assessment is Complete</div>
+      <div style="font-size:12px;color:var(--txt);margin-bottom:16px;line-height:1.6;max-width:520px;margin-left:auto;margin-right:auto">
+        Your domain scores reflect the current state of each metabolic domain based on what you\u2019ve entered. Where labs or measurements are missing, the Lens has scored what it can see and identified the testing that would sharpen acuity. Download your assessment file below and send it to \u00C9cire Health, where your data will be analyzed using \u00C9cire\u2019s clinical analytics to generate your personalized Alignment Report and Plan.
+      </div>
+      <button class="btn-export" onclick="downloadJSON()">\u2B07 Download My Assessment</button>
+      <div style="margin-top:16px;padding:14px 18px;background:var(--navy2);border:1px solid var(--border);border-radius:8px;display:inline-block;text-align:center">
         <div style="font-size:11px;color:var(--gry);margin-bottom:4px">Email your downloaded file to:</div>
         <div style="font-size:15px;font-weight:700;color:var(--acc2);letter-spacing:0.3px">lens@ecirehealth.com</div>
       </div>
-      <div style="font-size:10px;color:var(--gry);margin-top:12px">Your data stays on your device until you choose to send it. The file contains only what you entered here.</div>
+      <div style="text-align:left;max-width:480px;margin:18px auto 0;padding:16px 18px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px">
+        <div style="font-size:11px;font-weight:700;color:var(--acc2);margin-bottom:10px;letter-spacing:1px">WHAT HAPPENS NEXT</div>
+        <div style="font-size:12px;color:var(--txt);line-height:1.7;margin-bottom:8px">
+          <strong style="color:var(--txth)">Your Alignment Report</strong><br>
+          <span style="color:var(--gry)">A comprehensive analysis of your five domains \u2014 what each score means, where the blind spots are, what the data is telling us that a standard physical misses, and the single highest-leverage move for your strategy right now.</span>
+        </div>
+        <div style="font-size:12px;color:var(--txt);line-height:1.7;margin-bottom:8px">
+          <strong style="color:var(--txth)">Your Alignment Plan</strong><br>
+          <span style="color:var(--gry)">Domain-specific recommendations, sequenced to compound and synergize across domains, so that each intervention enhances the results of the next. What to do first, what to test next, and what to protect.</span>
+        </div>
+        <div style="font-size:11px;color:var(--gry);line-height:1.6;padding-top:8px;border-top:1px solid var(--border)">
+          Your Report will include a recommended governance level based on your domain scores and acuity. If you\u2019d like to discuss your results or explore ongoing implementation support, governance consultations are available through \u00C9cire Health.
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--gry);margin-top:14px">Your data stays on your device until you choose to send it. The file contains only what you entered here.</div>
     </div>`;
   }
 
@@ -667,6 +718,16 @@ function render(){
     <strong>\u00C9cire is a physician-designed metabolic governance system.</strong> Not medical advice, diagnosis, or treatment.
     Consult your healthcare provider. \u00C9cire does not evaluate or recommend changes to prescribed medications.
     Subjective inputs inform governance direction; objective data sharpens resolution. Governance modifiers adjust interpretation and urgency, not scores.
+  </div>`;
+  h+=`<div class="disc" style="margin-top:8px;font-size:9px;line-height:1.6">
+    <strong>\u00A9 ${new Date().getFullYear()} \u00C9cire, LLC and \u00C9cire Health, LLC. All rights reserved.</strong><br>
+    The Alignment Lens\u2122, Alignment Index\u2122, Governing Circle\u2122, and Metabolic Architect\u2122 are trademarks of \u00C9cire, LLC and \u00C9cire Health, LLC.
+    The scoring methodology, domain architecture, governance framework, and all associated intellectual property contained in this tool are proprietary and confidential.<br><br>
+    <strong>No part of this assessment \u2014 including its design, scoring logic, domain structure, language, or output \u2014 may be reproduced, distributed, transmitted, displayed, published, or adapted in any form or by any means without the prior written consent of \u00C9cire, LLC and \u00C9cire Health, LLC.</strong>
+    Unauthorized use, reverse engineering, or reproduction of this tool or its methodology is strictly prohibited and may be subject to legal action.<br><br>
+    <strong>Your Data & Privacy:</strong> This assessment runs entirely in your browser. No data is transmitted to any server. Nothing you enter here is stored, collected, or accessible to \u00C9cire Health or any third party.
+    When you download your results file, that file exists only on your device until you choose to share it with your \u00C9cire Health practitioner.
+    By using this tool, you acknowledge that it is provided for informational and governance purposes only and does not constitute a medical consultation, diagnosis, or treatment plan.
   </div>`;
   A.innerHTML=h;
 }
@@ -676,6 +737,12 @@ function chk(k,label,desc){
   return `<div class="chk-item ${on?'on':''}" onclick="tC('${k}')">
     <input type="checkbox" ${on?'checked':''} onclick="event.stopPropagation();tC('${k}')">
     <div><div class="cl">${label}</div><div class="cd">${desc}</div></div></div>`;
+}
+function dchk(k,label){
+  const on=S.diag[k];
+  return `<div class="chk-item ${on?'on':''}" style="padding:6px 10px" onclick="tD('${k}')">
+    <input type="checkbox" ${on?'checked':''} onclick="event.stopPropagation();tD('${k}')">
+    <div><div class="cl">${label}</div></div></div>`;
 }
 function slider(k,label,lo,hi){
   const v=S.subj[k];
@@ -701,6 +768,7 @@ window.sT=function(t){S.tab=t;render();window.scrollTo(0,0);};
 window.sS=function(k,v){S.subj[k]=v;render();};
 window.sO=function(k,v){S.obj[k]=v;};
 window.sODone=function(){render();};
+window.tD=function(k){S.diag[k]=!S.diag[k];render();};
 window.tC=function(k){S.ctx[k]=!S.ctx[k];render();};
 window.sCtx=function(k,v){S.ctx[k]=v;render();};
 window.sCl=function(k,v){S.client[k]=v;};
@@ -715,6 +783,7 @@ window.exportJSON=function(){
     subjective:{...S.subj},
     subjectiveScores:{},
     objective:{...S.obj},
+    additionalDiagnostics:{...S.diag},
     computed:{
       bmi:r.bmi,whr:r.whr,trigHdlRatio:r.ths?parseFloat(((val(S.obj.trig))/(val(S.obj.hdl))).toFixed(2)):null,
       domains:{},
