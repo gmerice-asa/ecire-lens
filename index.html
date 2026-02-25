@@ -118,7 +118,7 @@ const A=document.getElementById('app');
 
 const S={
   tab:'welcome',
-  client:{name:'',age:'',sex:'female',height:'',weight:'',profile:'',labDate:''},
+  client:{name:'',age:'',sexAtBirth:'female',gender:'',pronouns:'',race:[],height:'',weight:'',profile:'',labDate:''},
   ctx:{
     fam_diabetes:false,fam_heart:false,fam_stroke:false,fam_htn:false,fam_cancer:false,fam_obesity:false,
     hx_diabetes:false,hx_prediabetes:false,hx_htn:false,hx_pcos:false,hx_thyroid:false,hx_autoimmune:false,
@@ -132,6 +132,8 @@ const S={
     stress:5,sleepOnset:'normal',mood:5,recovery:5,
     strength:'declining',bodyChange:'gaining',jointPain:'sometimes',fatigue:'often'},
   obj:{sys:'',dia:'',hr:'',ht:'',wt:'',waist:'',hip:'',
+    bodyFat:'',leanMass:'',bodyWater:'',visceralFat:'',boneMass:'',
+    hrv:'',avgSleep:'',deepSleep:'',vo2max:'',respRate:'',
     tc:'',ldl:'',hdl:'',trig:'',a1c:'',fg:'',rg:'',hgb:'',
     tsh:'',alt:'',vitD:'',hsCRP:'',fastIns:'',cortisol:''},
   diag:{dexa:false,ekg:false,echo:false,sleep_study:false,cgm:false,
@@ -156,10 +158,24 @@ const R={
   hr:[{t:v=>v>=50&&v<=60,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v<=70,s:80,l:'Good',c:'var(--grn)'},{t:v=>v<=80,s:60,l:'Average',c:'var(--amb)'},{t:v=>v<=90,s:38,l:'Below Avg',c:'var(--red)'},{t:()=>1,s:18,l:'Elevated',c:'var(--red)'}],
   bmi:[{t:v=>v>=18.5&&v<=24.9,s:88,l:'Normal',c:'var(--grn)'},{t:v=>v<=29.9,s:62,l:'Overweight',c:'var(--amb)'},{t:v=>v<=34.9,s:40,l:'Obese I',c:'var(--red)'},{t:v=>v<=39.9,s:22,l:'Obese II',c:'var(--red)'},{t:()=>1,s:10,l:'Obese III',c:'var(--red)'}],
   whr:[{t:v=>v<0.80,s:92,l:'Low Risk',c:'var(--grn)'},{t:v=>v<=0.85,s:65,l:'Moderate',c:'var(--amb)'},{t:()=>1,s:30,l:'High Risk',c:'var(--red)'}],
+  whrM:[{t:v=>v<0.90,s:92,l:'Low Risk',c:'var(--grn)'},{t:v=>v<=0.95,s:65,l:'Moderate',c:'var(--amb)'},{t:()=>1,s:30,l:'High Risk',c:'var(--red)'}],
   tsh:[{t:v=>v>=0.5&&v<=2.5,s:92,l:'Optimal',c:'var(--grn)'},{t:v=>v<=4,s:68,l:'Suboptimal',c:'var(--amb)'},{t:()=>1,s:30,l:'Abnormal',c:'var(--red)'}],
   alt:[{t:v=>v<=33,s:90,l:'Normal',c:'var(--grn)'},{t:v=>v<=50,s:60,l:'Mild Elev',c:'var(--amb)'},{t:()=>1,s:30,l:'Elevated',c:'var(--red)'}],
   vitD:[{t:v=>v>=40,s:95,l:'Optimal',c:'var(--grn)'},{t:v=>v>=30,s:75,l:'Sufficient',c:'var(--grn)'},{t:v=>v>=20,s:45,l:'Insufficient',c:'var(--amb)'},{t:()=>1,s:18,l:'Deficient',c:'var(--red)'}],
   hsCRP:[{t:v=>v<1,s:95,l:'Low Risk',c:'var(--grn)'},{t:v=>v<=3,s:60,l:'Average',c:'var(--amb)'},{t:()=>1,s:22,l:'High Risk',c:'var(--red)'}],
+  // Body comp ranges are sex-specific — use bodyFatF/bodyFatM etc.
+  bodyFatF:[{t:v=>v<22,s:95,l:'Athletic',c:'var(--grn)'},{t:v=>v<=28,s:85,l:'Fit',c:'var(--grn)'},{t:v=>v<=33,s:65,l:'Average',c:'var(--amb)'},{t:v=>v<=39,s:40,l:'Above Avg',c:'var(--red)'},{t:()=>1,s:18,l:'High',c:'var(--red)'}],
+  bodyFatM:[{t:v=>v<15,s:95,l:'Athletic',c:'var(--grn)'},{t:v=>v<=20,s:85,l:'Fit',c:'var(--grn)'},{t:v=>v<=25,s:65,l:'Average',c:'var(--amb)'},{t:v=>v<=30,s:40,l:'Above Avg',c:'var(--red)'},{t:()=>1,s:18,l:'High',c:'var(--red)'}],
+  leanMassF:[{t:v=>v>=36,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v>=30,s:78,l:'Good',c:'var(--grn)'},{t:v=>v>=25,s:55,l:'Below Avg',c:'var(--amb)'},{t:()=>1,s:28,l:'Low',c:'var(--red)'}],
+  leanMassM:[{t:v=>v>=40,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v>=33,s:78,l:'Good',c:'var(--grn)'},{t:v=>v>=28,s:55,l:'Below Avg',c:'var(--amb)'},{t:()=>1,s:28,l:'Low',c:'var(--red)'}],
+  visceralFat:[{t:v=>v<=5,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v<=9,s:80,l:'Healthy',c:'var(--grn)'},{t:v=>v<=14,s:50,l:'High',c:'var(--amb)'},{t:()=>1,s:22,l:'Very High',c:'var(--red)'}],
+  // Wearable metrics
+  hrv:[{t:v=>v>=65,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v>=45,s:80,l:'Good',c:'var(--grn)'},{t:v=>v>=30,s:58,l:'Below Avg',c:'var(--amb)'},{t:v=>v>=20,s:35,l:'Low',c:'var(--red)'},{t:()=>1,s:15,l:'Very Low',c:'var(--red)'}],
+  avgSleep:[{t:v=>v>=7&&v<=9,s:92,l:'Optimal',c:'var(--grn)'},{t:v=>v>=6.5,s:72,l:'Adequate',c:'var(--amb)'},{t:v=>v>=6,s:48,l:'Short',c:'var(--red)'},{t:v=>v<6,s:22,l:'Deprived',c:'var(--red)'},{t:()=>1,s:60,l:'Long',c:'var(--amb)'}],
+  deepSleep:[{t:v=>v>=20,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v>=15,s:78,l:'Good',c:'var(--grn)'},{t:v=>v>=10,s:52,l:'Below Avg',c:'var(--amb)'},{t:()=>1,s:25,l:'Low',c:'var(--red)'}],
+  vo2max:[{t:v=>v>=45,s:95,l:'Superior',c:'var(--grn)'},{t:v=>v>=38,s:82,l:'Good',c:'var(--grn)'},{t:v=>v>=32,s:62,l:'Average',c:'var(--amb)'},{t:v=>v>=25,s:38,l:'Below Avg',c:'var(--red)'},{t:()=>1,s:18,l:'Poor',c:'var(--red)'}],
+  respRate:[{t:v=>v>=12&&v<=16,s:92,l:'Normal',c:'var(--grn)'},{t:v=>v<=18,s:68,l:'Slightly Elev',c:'var(--amb)'},{t:v=>v<12,s:55,l:'Low',c:'var(--amb)'},{t:()=>1,s:30,l:'Elevated',c:'var(--red)'}],
+  cortisol:[{t:v=>v>=6&&v<=18,s:90,l:'Normal',c:'var(--grn)'},{t:v=>v>=4,s:55,l:'Low',c:'var(--amb)'},{t:()=>1,s:25,l:'Abnormal',c:'var(--red)'}],
 };
 
 function subjScore(k,v){
@@ -184,19 +200,33 @@ function blend(subjM,objM){
 
 function computeAll(){
   const o=S.obj,s=S.subj,c=S.ctx;
+  const sex=S.client.sexAtBirth||'female';
   const ht=val(o.ht),wt=val(o.wt);
   const bmi=(ht&&wt&&ht>0)?wt/(ht*ht)*703:null;
   const waist=val(o.waist),hip=val(o.hip);
   const whr=(waist&&hip&&hip>0)?waist/hip:null;
   const trig=val(o.trig),hdl=val(o.hdl);
   const thR=(trig&&hdl&&hdl>0)?trig/hdl:null;
+  // Body comp
+  const bf=val(o.bodyFat),lm=val(o.leanMass),vf=val(o.visceralFat);
+  // Wearables
+  const hrvVal=val(o.hrv),sleepVal=val(o.avgSleep),deepVal=val(o.deepSleep),vo2Val=val(o.vo2max),rrVal=val(o.respRate);
   const sc={
     a1c:scr(val(o.a1c),R.a1c),fg:scr(val(o.fg),R.fg),rg:scr(val(o.rg),R.rg),
     sys:scr(val(o.sys),R.sys),dia:scr(val(o.dia),R.dia),
     tc:scr(val(o.tc),R.tc),ldl:scr(val(o.ldl),R.ldl),hdl:scr(val(o.hdl),R.hdl),
     trig:scr(val(o.trig),R.trig),hgb:scr(val(o.hgb),R.hgb),hr:scr(val(o.hr),R.hr),
-    bmi:scr(bmi,R.bmi),whr:scr(whr,R.whr),tsh:scr(val(o.tsh),R.tsh),
-    alt:scr(val(o.alt),R.alt),vitD:scr(val(o.vitD),R.vitD),hsCRP:scr(val(o.hsCRP),R.hsCRP)
+    bmi:scr(bmi,R.bmi),whr:scr(whr,sex==='male'?R.whrM:R.whr),tsh:scr(val(o.tsh),R.tsh),
+    alt:scr(val(o.alt),R.alt),vitD:scr(val(o.vitD),R.vitD),hsCRP:scr(val(o.hsCRP),R.hsCRP),
+    bodyFat:scr(bf,sex==='male'?R.bodyFatM:R.bodyFatF),
+    leanMass:scr(lm,sex==='male'?R.leanMassM:R.leanMassF),
+    visceralFat:scr(vf,R.visceralFat),
+    hrv:scr(hrvVal,R.hrv),
+    avgSleep:scr(sleepVal,R.avgSleep),
+    deepSleep:scr(deepVal,R.deepSleep),
+    vo2max:scr(vo2Val,R.vo2max),
+    respRate:scr(rrVal,R.respRate),
+    cortisol:scr(val(o.cortisol),R.cortisol)
   };
   const gl=sc.fg||sc.rg;
   const ths=thR?(thR<1?{s:95,l:thR.toFixed(1)+' Excellent',c:'var(--grn)'}:thR<=1.5?{s:82,l:thR.toFixed(1)+' Good',c:'var(--grn)'}:thR<=2.5?{s:60,l:thR.toFixed(1)+' Moderate',c:'var(--amb)'}:thR<=3.5?{s:38,l:thR.toFixed(1)+' IR likely',c:'var(--red)'}:{s:18,l:thR.toFixed(1)+' Strong IR',c:'var(--red)'}):null;
@@ -289,11 +319,11 @@ function computeAll(){
   const doms={};
   doms.energy=blend(
     [{s:ss.energy,w:30},{s:ss.sleep,w:30},{s:ss.fatigue||50,w:25},{s:ss.exercise||50,w:15}],
-    [{s:sc.hgb?sc.hgb.s:null,w:30},{s:sc.hr?sc.hr.s:null,w:25},{s:sc.bmi?sc.bmi.s:null,w:15},{s:sc.tsh?sc.tsh.s:null,w:20},{s:sc.vitD?sc.vitD.s:null,w:10}]
+    [{s:sc.hgb?sc.hgb.s:null,w:22},{s:sc.hr?sc.hr.s:null,w:15},{s:sc.bmi?sc.bmi.s:null,w:10},{s:sc.tsh?sc.tsh.s:null,w:18},{s:sc.vitD?sc.vitD.s:null,w:10},{s:sc.avgSleep?sc.avgSleep.s:null,w:12},{s:sc.deepSleep?sc.deepSleep.s:null,w:5},{s:sc.vo2max?sc.vo2max.s:null,w:8}]
   );
   doms.structural=blend(
     [{s:ss.strength||50,w:25},{s:ss.bodyChange||50,w:35},{s:ss.exercise||50,w:25},{s:ss.fatigue||50,w:15}],
-    [{s:sc.bmi?sc.bmi.s:null,w:35},{s:sc.whr?sc.whr.s:null,w:40},{s:sc.vitD?sc.vitD.s:null,w:15},{s:sc.hgb?sc.hgb.s:null,w:10}]
+    [{s:sc.bodyFat?sc.bodyFat.s:null,w:25},{s:sc.leanMass?sc.leanMass.s:null,w:20},{s:sc.visceralFat?sc.visceralFat.s:null,w:15},{s:sc.bmi?sc.bmi.s:null,w:15},{s:sc.whr?sc.whr.s:null,w:10},{s:sc.vitD?sc.vitD.s:null,w:10},{s:sc.hgb?sc.hgb.s:null,w:5}]
   );
   doms.insulin=blend(
     [{s:ss.cravings,w:30},{s:ss.postmeal,w:30},{s:ss.hunger||50,w:25},{s:ss.energy,w:15}],
@@ -305,7 +335,7 @@ function computeAll(){
   );
   doms.stress=blend(
     [{s:ss.stress,w:30},{s:ss.sleepOnset||50,w:20},{s:ss.mood,w:25},{s:ss.recovery,w:25}],
-    [{s:sc.hr?sc.hr.s:null,w:40},{s:sc.sys?sc.sys.s:null,w:30},{s:sc.dia?sc.dia.s:null,w:30}]
+    [{s:sc.hrv?sc.hrv.s:null,w:35},{s:sc.hr?sc.hr.s:null,w:18},{s:sc.sys?sc.sys.s:null,w:12},{s:sc.dia?sc.dia.s:null,w:10},{s:sc.respRate?sc.respRate.s:null,w:10},{s:sc.cortisol?sc.cortisol.s:null,w:15}]
   );
 
   const dA=[doms.energy,doms.structural,doms.insulin,doms.inflammatory,doms.stress];
@@ -341,11 +371,11 @@ function render(){
 
   const DD=[
     {key:'energy',name:'Energy Capacity',i:'01',desc:'Metabolic throughput and adaptive flexibility.',mk:'energy',
-      markers:[{n:'Hemoglobin',v:S.obj.hgb,u:'g/dL',r:r.sc.hgb},{n:'Resting HR',v:S.obj.hr,u:'bpm',r:r.sc.hr},{n:'BMI',v:r.bmi?r.bmi.toFixed(1):null,u:'',r:r.sc.bmi},{n:'TSH',v:S.obj.tsh,u:'mIU/L',r:r.sc.tsh},{n:'Vitamin D',v:S.obj.vitD,u:'ng/mL',r:r.sc.vitD}],
-      sh:[...(!S.obj.tsh?[{lab:'TSH',why:'Thyroid governs metabolic rate',p:r.mods.energy.hx?'URGENT':'High'}]:[]),...(!S.obj.vitD?[{lab:'Vitamin D',why:'>80% of Black women insufficient',p:'High'}]:[]),{lab:'Oura / Apple Watch',why:'Sleep architecture + recovery data',p:'Recommended'}]},
+      markers:[{n:'Hemoglobin',v:S.obj.hgb,u:'g/dL',r:r.sc.hgb},{n:'Resting HR',v:S.obj.hr,u:'bpm',r:r.sc.hr},{n:'BMI',v:r.bmi?r.bmi.toFixed(1):null,u:'',r:r.sc.bmi},{n:'TSH',v:S.obj.tsh,u:'mIU/L',r:r.sc.tsh},{n:'Vitamin D',v:S.obj.vitD,u:'ng/mL',r:r.sc.vitD},{n:'Avg Sleep',v:S.obj.avgSleep,u:'hrs',r:r.sc.avgSleep},{n:'Deep Sleep',v:S.obj.deepSleep,u:'%',r:r.sc.deepSleep},{n:'VO2 Max',v:S.obj.vo2max,u:'mL/kg/min',r:r.sc.vo2max}],
+      sh:[...(!S.obj.tsh?[{lab:'TSH',why:'Thyroid governs metabolic rate',p:r.mods.energy.hx?'URGENT':'High'}]:[]),...(!S.obj.vitD?[{lab:'Vitamin D',why:'>80% of Black women insufficient',p:'High'}]:[]),...(!S.obj.avgSleep?[{lab:'Sleep tracking (Apple Watch / Oura)',why:'Objective sleep data transforms this domain',p:'High'}]:[]),...(!S.obj.vo2max?[{lab:'VO2 Max estimate',why:'Best single measure of cardio fitness',p:'Medium'}]:[])]},
     {key:'structural',name:'Structural Integrity',i:'02',desc:'Lean mass, strength, and long-term metabolic rate.',mk:'structural',
-      markers:[{n:'BMI',v:r.bmi?r.bmi.toFixed(1):null,u:'',r:r.sc.bmi},{n:'Waist:Hip',v:r.whr?r.whr.toFixed(2):null,u:'',r:r.sc.whr}],
-      sh:[{lab:'Smart Scale',why:'BMI is crude \u2014 lean mass vs fat mass is the real signal',p:'High'},...(!S.obj.waist||!S.obj.hip?[{lab:'Waist + Hip measurement',why:'Visceral fat proxy',p:'Do at home'}]:[])]},
+      markers:[{n:'Body Fat',v:S.obj.bodyFat,u:'%',r:r.sc.bodyFat},{n:'Lean Mass',v:S.obj.leanMass,u:'%',r:r.sc.leanMass},{n:'Visceral Fat',v:S.obj.visceralFat,u:'rating',r:r.sc.visceralFat},{n:'BMI',v:r.bmi?r.bmi.toFixed(1):null,u:'',r:r.sc.bmi},{n:'Waist:Hip',v:r.whr?r.whr.toFixed(2):null,u:'',r:r.sc.whr},{n:'Vitamin D',v:S.obj.vitD,u:'ng/mL',r:r.sc.vitD}],
+      sh:[...(!S.obj.bodyFat?[{lab:'Smart Scale (body comp)',why:'Body fat % and lean mass % are far more precise than BMI',p:'High'}]:[]),...(!S.obj.waist||!S.obj.hip?[{lab:'Waist + Hip measurement',why:'Visceral fat proxy',p:'Do at home'}]:[])]},
     {key:'insulin',name:'Insulin Regulation',i:'03',desc:'Energy partitioning, cravings, and glycemic stability.',mk:'insulin',
       markers:[{n:'HbA1c',v:S.obj.a1c,u:'%',r:r.sc.a1c},{n:S.obj.fg?'Fasting Glucose':'Random Glucose',v:S.obj.fg||S.obj.rg,u:'mg/dL',r:r.sc.fg||r.sc.rg},{n:'Trig:HDL',v:r.ths?'':null,u:'ratio',r:r.ths?{s:r.ths.s,l:r.ths.l,c:r.ths.c}:null},{n:'BMI',v:r.bmi?r.bmi.toFixed(1):null,u:'',r:r.sc.bmi}],
       sh:[{lab:'Fasting Insulin',why:'Catches IR 5\u201310 years before A1c rises',p:(r.mods.insulin.fam||r.mods.insulin.hx)?'URGENT':'High'}]},
@@ -353,8 +383,8 @@ function render(){
       markers:[{n:'Systolic BP',v:S.obj.sys,u:'mmHg',r:r.sc.sys},{n:'Diastolic BP',v:S.obj.dia,u:'mmHg',r:r.sc.dia},{n:'LDL',v:S.obj.ldl,u:'mg/dL',r:r.sc.ldl},{n:'HDL',v:S.obj.hdl,u:'mg/dL',r:r.sc.hdl},{n:'Triglycerides',v:S.obj.trig,u:'mg/dL',r:r.sc.trig},{n:'ALT',v:S.obj.alt,u:'U/L',r:r.sc.alt},{n:'hs-CRP',v:S.obj.hsCRP,u:'mg/L',r:r.sc.hsCRP}],
       sh:[...(!S.obj.hsCRP?[{lab:'hs-CRP',why:'Measures the fire, not just the fuel',p:(r.mods.inflammatory.fam||r.mods.inflammatory.hx)?'URGENT':'High'}]:[]),{lab:'ApoB',why:'More predictive than LDL alone',p:(r.mods.inflammatory.fam||r.mods.inflammatory.hx)?'URGENT':'Medium'},{lab:'Lp(a)',why:'Genetic risk \u2014 test once, know forever',p:(r.mods.inflammatory.fam||r.mods.inflammatory.hx)?'High':'Medium'}]},
     {key:'stress',name:'Stress Modulation',i:'05',desc:'Cortisol tone, autonomic balance, and resilience.',mk:'stress',
-      markers:[{n:'Resting HR',v:S.obj.hr,u:'bpm',r:r.sc.hr},{n:'Systolic BP',v:S.obj.sys,u:'mmHg',r:r.sc.sys}],
-      sh:[{lab:'Oura / Apple Watch',why:'HRV is the gold standard \u2014 labs can\u2019t replace it',p:'High'},{lab:'AM Cortisol',why:'Only direct lab measure for this domain',p:(r.mods.stress.hx)?'URGENT':'High'}]},
+      markers:[{n:'HRV',v:S.obj.hrv,u:'ms',r:r.sc.hrv},{n:'Resting HR',v:S.obj.hr,u:'bpm',r:r.sc.hr},{n:'Systolic BP',v:S.obj.sys,u:'mmHg',r:r.sc.sys},{n:'Resp Rate',v:S.obj.respRate,u:'br/min',r:r.sc.respRate},{n:'AM Cortisol',v:S.obj.cortisol,u:'\u03BCg/dL',r:r.sc.cortisol}],
+      sh:[...(!S.obj.hrv?[{lab:'HRV tracking (Apple Watch / Oura)',why:'Gold standard for autonomic balance. Transforms this domain.',p:'URGENT'}]:[]),...(!S.obj.cortisol?[{lab:'AM Cortisol',why:'Only direct lab measure for stress axis',p:(r.mods.stress.hx)?'URGENT':'High'}]:[]),...(!S.obj.respRate?[{lab:'Respiratory rate tracking',why:'Signals stress axis activation',p:'Medium'}]:[])]},
   ];
 
   let h='';
@@ -380,8 +410,9 @@ function render(){
         <h4>WHAT YOU\u2019LL NEED</h4>
         <div class="w-item"><span class="w-icon">\u2713</span><span>Your most recent bloodwork results (lipid panel, A1c, glucose, CBC)</span></div>
         <div class="w-opt">Don\u2019t have labs? You can still complete the assessment \u2014 the Lens will score what it can see and tell you exactly which labs to request.</div>
-        <div class="w-item"><span class="w-icon">\u2713</span><span>Height, weight, and waist measurement (if available)</span></div>
+        <div class="w-item"><span class="w-icon">\u2713</span><span>Height, weight, and waist measurement. Body composition data if your scale provides it (body fat %, lean mass %).</span></div>
         <div class="w-item"><span class="w-icon">\u2713</span><span>Blood pressure and resting heart rate (if known)</span></div>
+        <div class="w-item"><span class="w-icon">\u2713</span><span>Wearable data if you have it \u2014 HRV, sleep stats, VO2 max (Apple Watch, Oura, Whoop)</span></div>
         <div class="w-item"><span class="w-icon">\u2713</span><span>About 10\u201315 minutes</span></div>
       </div>
       <div class="w-steps">
@@ -454,11 +485,41 @@ function render(){
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
           <div class="client-field"><label>Age</label>
             <input type="number" value="${S.client.age}" placeholder="" onchange="sCl('age',this.value)"></div>
-          <div class="client-field"><label>Sex</label>
-            <select onchange="sCl('sex',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-              <option value="female" ${S.client.sex==='female'?'selected':''}>Female</option>
-              <option value="male" ${S.client.sex==='male'?'selected':''}>Male</option>
+          <div class="client-field"><label>Sex Assigned at Birth</label>
+            <select onchange="sCl('sexAtBirth',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+              <option value="female" ${S.client.sexAtBirth==='female'?'selected':''}>Female</option>
+              <option value="male" ${S.client.sexAtBirth==='male'?'selected':''}>Male</option>
+              <option value="intersex" ${S.client.sexAtBirth==='intersex'?'selected':''}>Intersex</option>
+            </select>
+            <div style="font-size:10px;color:#4A5B6E;margin-top:2px">Used for lab reference ranges</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="client-field"><label>Gender Identity <span style="color:#4A5B6E;font-weight:400">(optional)</span></label>
+            <select onchange="sCl('gender',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+              <option value="" ${!S.client.gender?'selected':''}>Prefer not to say</option>
+              <option value="woman" ${S.client.gender==='woman'?'selected':''}>Woman</option>
+              <option value="man" ${S.client.gender==='man'?'selected':''}>Man</option>
+              <option value="nonbinary" ${S.client.gender==='nonbinary'?'selected':''}>Non-binary</option>
+              <option value="genderfluid" ${S.client.gender==='genderfluid'?'selected':''}>Genderfluid</option>
+              <option value="other" ${S.client.gender==='other'?'selected':''}>Other / Self-describe</option>
             </select></div>
+          <div class="client-field"><label>Pronouns <span style="color:#4A5B6E;font-weight:400">(optional)</span></label>
+            <select onchange="sCl('pronouns',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+              <option value="" ${!S.client.pronouns?'selected':''}>Prefer not to say</option>
+              <option value="she/her" ${S.client.pronouns==='she/her'?'selected':''}>She/Her</option>
+              <option value="he/him" ${S.client.pronouns==='he/him'?'selected':''}>He/Him</option>
+              <option value="they/them" ${S.client.pronouns==='they/them'?'selected':''}>They/Them</option>
+              <option value="she/they" ${S.client.pronouns==='she/they'?'selected':''}>She/They</option>
+              <option value="he/they" ${S.client.pronouns==='he/they'?'selected':''}>He/They</option>
+            </select></div>
+        </div>
+      </div>
+      <div style="margin-top:10px">
+        <label style="display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:6px">Race / Ethnicity <span style="color:#4A5B6E;font-weight:400">(select all that apply \u2014 affects how the Lens interprets certain lab values)</span></label>
+        <div class="chk-grid">
+          ${['Black / African American','White / European','Hispanic / Latino','Asian','Native American / Alaska Native','Native Hawaiian / Pacific Islander','Middle Eastern / North African','Multiracial / Other'].map(r=>
+            `<label class="chk-item"><input type="checkbox" ${S.client.race.includes(r)?'checked':''} onchange="toggleRace('${r}',this.checked)"><span class="cb"></span><span class="cl">${r}</span></label>`
+          ).join('')}
         </div>
       </div>
     </div>`;
@@ -492,7 +553,7 @@ function render(){
             ${chk('hx_depression','Depression / Anxiety','Diagnosed or treated')}
             ${chk('hx_sleep_apnea','Sleep Apnea','Diagnosed or suspected')}
           </div>
-          <div style="margin-top:10px">
+          ${S.client.sexAtBirth!=='male'?`<div style="margin-top:10px">
             <label style="display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px">Menopause Status</label>
             <select onchange="sCtx('hx_menopause',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
               <option value="pre" ${S.ctx.hx_menopause==='pre'?'selected':''}>Pre-menopausal</option>
@@ -500,7 +561,7 @@ function render(){
               <option value="post" ${S.ctx.hx_menopause==='post'?'selected':''}>Post-menopausal (12+ months without period)</option>
             </select>
             <div style="font-size:10px;color:#4A5B6E;margin-top:2px">Menopause status affects insulin sensitivity, bone density, cardiovascular risk, and stress patterns across multiple domains.</div>
-          </div>
+          </div>`:''}
         </div>
       </div>
       <div>
@@ -599,6 +660,18 @@ function render(){
         <div class="field-row">${fld('waist','Waist','inches','')}</div>
         <div class="field-row">${fld('hip','Hip','inches','')}</div>
         ${r.whr?`<div style="font-size:11px;color:var(--acc2);margin:-4px 0 6px">Waist:Hip: <strong>${r.whr.toFixed(2)}</strong></div>`:''}
+      </div>
+      <div class="sec"><h3>Body Composition <span style="font-size:10px;color:var(--gry);font-weight:400;font-style:italic">(from smart scale, DEXA, or other)</span></h3>
+        <div style="font-size:10px;color:#4A5B6E;margin-bottom:8px;line-height:1.5;font-style:italic">If your home scale reports these values, enter what you have. These sharpen your Structural Integrity domain significantly beyond BMI alone.</div>
+        <div class="field-row">${fld('bodyFat','Body Fat','%','','Structural Integrity')}${fld('leanMass','Lean Muscle Mass','%','','Structural Integrity')}</div>
+        <div class="field-row">${fld('bodyWater','Body Water','%','','General hydration')}${fld('visceralFat','Visceral Fat','rating','','1\u201359 scale, most scales')}</div>
+        <div class="field-row">${fld('boneMass','Bone Mass','lbs','','If available')}</div>
+      </div>
+      <div class="sec"><h3>Wearable / Device Data <span style="font-size:10px;color:var(--gry);font-weight:400;font-style:italic">(Apple Watch, Oura Ring, Whoop, etc.)</span></h3>
+        <div style="font-size:10px;color:#4A5B6E;margin-bottom:8px;line-height:1.5;font-style:italic">If your device tracks these, use your recent 7\u201330 day averages. These significantly sharpen Energy and Stress Modulation \u2014 the two domains most often blind without device data.</div>
+        <div class="field-row">${fld('hrv','HRV (avg)','ms','','Heart rate variability \u2192 Stress')}</div>
+        <div class="field-row">${fld('avgSleep','Avg Sleep Duration','hrs','','e.g. 7.2 \u2192 Energy')}${fld('deepSleep','Deep Sleep','%','','If available \u2192 Energy')}</div>
+        <div class="field-row">${fld('vo2max','VO2 Max (est)','mL/kg/min','','Cardio fitness \u2192 Energy + Structural')}${fld('respRate','Respiratory Rate','breaths/min','','If tracked \u2192 Stress')}</div>
       </div>
       <div class="sec"><h3>Glucose & Metabolic</h3>
         ${fld('a1c','HbA1c','%','5.4')}${fld('fg','Fasting Glucose','mg/dL','90')}
@@ -794,11 +867,12 @@ window.tD=function(k){S.diag[k]=!S.diag[k];render();};
 window.tC=function(k){S.ctx[k]=!S.ctx[k];render();};
 window.sCtx=function(k,v){S.ctx[k]=v;render();};
 window.sCl=function(k,v){S.client[k]=v;};
+window.toggleRace=function(r,checked){if(checked){if(!S.client.race.includes(r))S.client.race.push(r);}else{S.client.race=S.client.race.filter(x=>x!==r);}};
 
 window.exportJSON=function(){
   const r=computeAll();
   const payload={
-    exportVersion:'1.0',
+    exportVersion:'2.0',
     exportDate:new Date().toISOString(),
     client:{...S.client},
     context:{...S.ctx},
@@ -808,6 +882,8 @@ window.exportJSON=function(){
     additionalDiagnostics:{...S.diag},
     computed:{
       bmi:r.bmi,whr:r.whr,trigHdlRatio:r.ths?parseFloat(((val(S.obj.trig))/(val(S.obj.hdl))).toFixed(2)):null,
+      bodyFat:val(S.obj.bodyFat),leanMass:val(S.obj.leanMass),bodyWater:val(S.obj.bodyWater),visceralFat:val(S.obj.visceralFat),boneMass:val(S.obj.boneMass),
+      hrv:val(S.obj.hrv),avgSleep:val(S.obj.avgSleep),deepSleep:val(S.obj.deepSleep),vo2max:val(S.obj.vo2max),respRate:val(S.obj.respRate),
       domains:{},
       index:r.idx,indexState:gSt(r.idx).l,
       averageAcuity:r.aC,
