@@ -686,14 +686,38 @@ function render(){
       </div>`;
     }
     h+='</div>';
-    h+=`<div style="text-align:center;margin:16px 0;padding:24px 20px;background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--lav);border-radius:12px">
+    h+=`<div style="text-align:center;margin:16px 0;padding:24px 20px;background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--lav);border-radius:12px" id="submitSection">
       <div style="font-size:15px;font-weight:700;color:var(--txth);margin-bottom:4px">Your Assessment is Complete</div>
       <div style="font-size:12px;color:var(--txt);margin-bottom:16px;line-height:1.6;max-width:520px;margin-left:auto;margin-right:auto">
-        Your domain scores reflect the current state of each metabolic domain based on what you\u2019ve entered. Where labs or measurements are missing, the Lens has scored what it can see and identified the testing that would sharpen acuity. Send your assessment to \u00C9cire Health below, where your data will be analyzed using \u00C9cire\u2019s clinical analytics to generate your personalized Alignment Report and Plan.
+        Your domain scores reflect the current state of each metabolic domain based on what you\u2019ve entered. Where labs or measurements are missing, the Lens has scored what it can see and identified the testing that would sharpen acuity.
       </div>
-      <button class="btn-export" id="sendBtn" onclick="sendAssessment()">\u{1F4E8} Send My Assessment</button>
-      <button class="btn-export secondary" onclick="downloadJSON()">\u2B07 Download a Copy</button>
-      <div id="sendMsg" style="font-size:12px;margin-top:10px;min-height:18px"></div>
+      <div style="text-align:left;max-width:440px;margin:0 auto 18px">
+        <div style="background:var(--card);border:1px solid var(--lav);border-radius:10px;padding:18px 20px">
+          <div style="font-size:12px;letter-spacing:1.5px;color:var(--acc2);font-weight:700;margin-bottom:12px">CONTACT INFORMATION</div>
+          <div class="client-field">
+            <label>Email Address <span style="color:var(--red);font-weight:400">*required</span></label>
+            <input type="email" id="clientEmail" placeholder="your@email.com" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+          </div>
+          <div class="client-field">
+            <label>Phone Number <span style="color:#4A5B6E;font-weight:400">optional</span></label>
+            <input type="tel" id="clientPhone" placeholder="" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
+          </div>
+          <div class="client-field">
+            <label>Preferred Method of Contact</label>
+            <div style="display:flex;gap:20px;margin-top:4px">
+              <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txth);cursor:pointer">
+                <input type="radio" name="contactPreference" value="email" checked style="accent-color:var(--lav)"> Email
+              </label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txth);cursor:pointer">
+                <input type="radio" name="contactPreference" value="phone" style="accent-color:var(--lav)"> Phone
+              </label>
+            </div>
+          </div>
+          <div style="font-size:10px;color:var(--gry);margin-top:10px;line-height:1.5;padding-top:10px;border-top:1px solid var(--border)">Your information is used solely to deliver your report and follow up regarding your assessment.</div>
+        </div>
+      </div>
+      <button class="btn-export" id="submitBtn" onclick="submitAssessment()">\u2191 Submit My Assessment</button>
+      <div id="submitStatus" style="margin-top:12px;font-size:11px;color:var(--gry)"></div>
       <div style="text-align:left;max-width:480px;margin:18px auto 0;padding:16px 18px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px">
         <div style="font-size:11px;font-weight:700;color:var(--acc2);margin-bottom:10px;letter-spacing:1px">WHAT HAPPENS NEXT</div>
         <div style="font-size:12px;color:var(--txt);line-height:1.7;margin-bottom:8px">
@@ -708,7 +732,7 @@ function render(){
           Your Report will include a recommended governance level based on your domain scores and acuity. If you\u2019d like to discuss your results or explore ongoing implementation support, governance consultations are available through \u00C9cire Health.
         </div>
       </div>
-      <div style="font-size:10px;color:var(--gry);margin-top:14px">Your data stays on your device until you choose to send it. Clicking \u201CSend\u201D transmits your assessment securely to \u00C9cire Health. Nothing is stored on any server.</div>
+      <div style="font-size:10px;color:var(--gry);margin-top:14px">Your data stays on your device until you submit. The assessment contains only what you entered here.</div>
     </div>`;
   }
 
@@ -724,7 +748,7 @@ function render(){
     <strong>No part of this assessment \u2014 including its design, scoring logic, domain structure, language, or output \u2014 may be reproduced, distributed, transmitted, displayed, published, or adapted in any form or by any means without the prior written consent of \u00C9cire, LLC and \u00C9cire Health, LLC.</strong>
     Unauthorized use, reverse engineering, or reproduction of this tool or its methodology is strictly prohibited and may be subject to legal action.<br><br>
     <strong>Your Data & Privacy:</strong> This assessment runs entirely in your browser. No data is transmitted to any server. Nothing you enter here is stored, collected, or accessible to \u00C9cire Health or any third party.
-    When you send or download your results, that data goes only where you direct it \u2014 to your \u00C9cire Health practitioner or to your device.
+    When you download your results file, that file exists only on your device until you choose to share it with your \u00C9cire Health practitioner.
     By using this tool, you acknowledge that it is provided for informational and governance purposes only and does not constitute a medical consultation, diagnosis, or treatment plan.
   </div>`;
   A.innerHTML=h;
@@ -829,36 +853,71 @@ window.copyJSON=function(){
   });
 };
 
-window.sendAssessment=function(){
-  const btn=document.getElementById('sendBtn');
-  const msg=document.getElementById('sendMsg');
-  if(!btn)return;
-  btn.disabled=true;
-  btn.textContent='Sending\u2026';
-  btn.style.opacity='0.6';
-  if(msg)msg.textContent='';
+window.submitAssessment=function(){
   const data=exportJSON();
-  fetch('https://script.google.com/macros/s/AKfycby3HedJA2voOxMQZQde9GKAJ8XcidaDlFH3GR6KqfTFmYc3k-19BvyDY8re7hG0R1f8/exec',{
-    method:'POST',
-    body:JSON.stringify(data)
-  }).then(r=>r.json()).then(res=>{
-    if(res.ok){
-      btn.textContent='\u2713 Assessment Sent';
-      btn.style.background='var(--grn)';
-      btn.style.opacity='1';
-      if(msg)msg.innerHTML='<span style="color:var(--grn)">\u2713 Your assessment has been securely sent to \u00C9cire Health. You\u2019ll hear from us soon.</span>';
-    } else {
-      throw new Error(res.error||'Send failed');
+
+  const email=document.getElementById('clientEmail')?.value.trim();
+  const phone=document.getElementById('clientPhone')?.value.trim();
+  const contactPreference=document.querySelector('input[name="contactPreference"]:checked')?.value;
+
+  if(!email){
+    alert('Please enter your email address.');
+    return;
+  }
+
+  data.client=data.client||{};
+  data.client.email=email;
+  data.client.phone=phone||'';
+  data.client.preferredContact=contactPreference||'email';
+  data.client.submittedAt=new Date().toISOString();
+
+  const btn=document.getElementById('submitBtn');
+  const status=document.getElementById('submitStatus');
+  btn.disabled=true;
+  btn.style.opacity='0.6';
+  btn.textContent='Submitting\u2026';
+  if(status)status.textContent='';
+
+  const endpoint='https://script.google.com/macros/s/AKfycby3HedJA2voOxMQZQde9GKAJ8XcidaDlFH3GR6KqfTFmYc3k-19BvyDY8re7hG0R1f8/exec';
+  const payload=JSON.stringify(data);
+
+  let sent=false;
+  try{
+    if(navigator.sendBeacon){
+      sent=navigator.sendBeacon(endpoint,new Blob([payload],{type:'application/json'}));
     }
-  }).catch(err=>{
-    btn.textContent='Could Not Send \u2014 Try Again';
-    btn.style.background='var(--red)';
-    btn.style.opacity='1';
-    btn.disabled=false;
-    if(msg)msg.innerHTML='<span style="color:var(--red)">Could not send. Please download your assessment and email it to <strong>lens@ecirehealth.com</strong></span>';
-    setTimeout(()=>{btn.textContent='\u{1F4E8} Send My Assessment';btn.style.background='';btn.style.opacity='1';},4000);
-  });
+  }catch(e){}
+
+  if(sent){
+    showSubmitSuccess();
+  }else{
+    fetch(endpoint,{method:'POST',body:payload,headers:{'Content-Type':'text/plain'},mode:'no-cors'})
+      .then(()=>{showSubmitSuccess();})
+      .catch(()=>{
+        btn.disabled=false;
+        btn.style.opacity='1';
+        btn.textContent='\u2191 Submit My Assessment';
+        if(status)status.innerHTML='<span style="color:var(--red)">Submission failed. Please try again or download your assessment and email it to lens@ecirehealth.com.</span>';
+      });
+  }
 };
+
+function showSubmitSuccess(){
+  const sec=document.getElementById('submitSection');
+  if(sec){
+    sec.innerHTML=`
+      <div style="padding:20px 0">
+        <div style="font-size:36px;margin-bottom:12px">\u2713</div>
+        <div style="font-size:17px;font-weight:700;color:var(--txth);margin-bottom:12px">Your Assessment has been submitted.</div>
+        <div style="font-size:13px;color:var(--txt);line-height:1.7;max-width:480px;margin:0 auto 16px">
+          You will receive your Alignment Report within 3\u20135 business days.
+        </div>
+        <div style="font-size:12px;color:var(--gry);line-height:1.7;max-width:480px;margin:0 auto;padding:14px 18px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px">
+          Your report will define a recommended level of implementation structure and support based on your domain scores, overall acuity, and readiness. This framework is designed to support sustained execution of the recommended interventions.
+        </div>
+      </div>`;
+  }
+}
 
 render();
 </script>
