@@ -5,95 +5,128 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Écire Alignment Lens™</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy:#0B1B3A;--navy2:#111D35;--lav:#7B5EA7;--acc:#9B7EC8;--acc2:#B8A0D8;
-  --grn:#2E7D4F;--amb:#D4A017;--red:#C0392B;--gry:#8899AA;
+  --grn:#B8A0D8;--amb:#7A8FA8;--red:#C47A7A;--gold:#B08878;--gry:#8899AA;
   --bg:#080E1A;--card:#0F1A2E;--card2:#162240;--border:#1E2D4A;
   --txt:#C8D6E5;--txth:#EAF0F6;--white:#FFFFFF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',-apple-system,'Inter',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:-apple-system,'Inter',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;}
-.wrap{max-width:940px;margin:0 auto;padding:20px 16px;}
+body{font-family:var(--sans);background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(123,94,167,0.06) 0%,transparent 70%);pointer-events:none;z-index:0;}
+.wrap{max-width:940px;margin:0 auto;padding:20px 16px;position:relative;z-index:1;}
 .hdr{text-align:center;margin-bottom:20px;}
-.hdr .brand{font-size:11px;letter-spacing:4px;color:var(--acc2);font-weight:600;}
-.hdr h1{font-family:Georgia,serif;font-size:24px;color:var(--txth);margin:4px 0;}
-.hdr .sub{font-size:12px;color:var(--gry);font-style:italic;}
+.hdr .brand{font-size:10px;letter-spacing:5px;color:var(--acc2);font-weight:400;font-family:var(--sans);}
+.hdr h1{font-family:var(--serif);font-size:26px;color:var(--txth);margin:4px 0;font-weight:400;letter-spacing:1px;}
+.hdr .sub{font-size:12px;color:var(--gry);font-style:italic;font-family:var(--serif);font-weight:300;}
 .banner{background:linear-gradient(135deg,var(--navy),var(--lav));border-radius:14px;padding:20px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden;}
 .banner::before{content:'';position:absolute;top:-50%;right:-20%;width:60%;height:200%;background:radial-gradient(ellipse,rgba(155,126,200,0.1),transparent);}
-.banner .il{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.5);}
-.banner .inum{font-size:52px;font-weight:700;color:var(--white);line-height:1;}
-.banner .ist{font-size:15px;font-weight:600;display:inline-block;padding:3px 14px;border-radius:20px;background:rgba(255,255,255,0.12);margin-top:4px;}
+.banner .il{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.5);font-family:var(--sans);font-weight:400;}
+.banner .inum{font-size:52px;font-weight:300;color:var(--white);line-height:1;font-family:var(--serif);}
+.banner .ist{font-size:15px;font-weight:500;display:inline-block;padding:3px 14px;border-radius:20px;background:rgba(255,255,255,0.12);margin-top:4px;font-family:var(--sans);}
 .banner .im{font-size:10px;color:rgba(255,255,255,0.45);margin-top:6px;}
 .abar{display:flex;gap:3px;justify-content:center;margin-top:8px;}
 .aseg{height:4px;width:40px;border-radius:2px;background:rgba(255,255,255,0.12);}
 .aseg.on{background:var(--acc2);}
-.tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap;}
-.tab{flex:1;min-width:120px;padding:10px 6px;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:11px;font-weight:600;color:var(--gry);cursor:pointer;transition:all 0.2s;}
-.tab:hover{color:var(--txth);}
-.tab.active{background:var(--lav);color:var(--white);border-color:var(--lav);}
-.tab .ct{font-size:9px;opacity:0.6;display:block;margin-top:2px;}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 @media(max-width:700px){.grid{grid-template-columns:1fr;}}
 .sec{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;}
-.sec h3{font-size:13px;color:var(--acc2);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.sec h3{font-size:13px;color:var(--acc2);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);font-family:var(--sans);font-weight:500;letter-spacing:0.5px;}
 .field{margin-bottom:10px;}
-.field label{display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px;}
-.field input[type=number],.field select{width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;}
+.field label{display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:3px;font-family:var(--sans);letter-spacing:0.3px;}
+.field input[type=number],.field select{width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans);}
 .field input:focus,.field select:focus{border-color:var(--acc);}
-.field input::placeholder{color:#4A5B6E;}
-.field .hint{font-size:10px;color:#4A5B6E;margin-top:2px;}
+/* Ensure dropdown options are readable on all platforms */
+select option{background:#1a2540;color:#EAF0F6;}
+select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238899AA'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;}
+.field input::placeholder{color:var(--gry);opacity:0.5;}
+.client-field input::placeholder{color:var(--gry);opacity:0.5;}
+.client-field textarea::placeholder{color:var(--gry);opacity:0.5;}
+input::placeholder,select::placeholder,textarea::placeholder{color:var(--gry);opacity:0.5;}
+.field .hint{font-size:10px;color:var(--gry);margin-top:2px;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.sw{display:flex;align-items:center;gap:8px;}
-.sw input[type=range]{flex:1;accent-color:var(--acc);}
-.sv{font-size:13px;font-weight:700;color:var(--acc2);min-width:28px;text-align:center;}
-/* Checkbox grid */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .chk-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
 .chk-item{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all 0.15s;}
 .chk-item:hover{border-color:var(--acc);}
 .chk-item.on{border-color:var(--lav);background:rgba(123,94,167,0.12);}
 .chk-item input[type=checkbox]{accent-color:var(--lav);margin-top:2px;flex-shrink:0;}
-.chk-item .cl{font-size:11px;font-weight:600;color:var(--txth);}
+.chk-item .cl{font-size:11px;font-weight:500;color:var(--txth);font-family:var(--sans);}
 .chk-item .cd{font-size:10px;color:var(--gry);margin-top:1px;}
-/* Domain cards */
-.dcard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;}
-.dcard .dt{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
-.dcard .dn{font-size:15px;font-weight:700;color:var(--txth);}
-.dcard .dd{font-size:10px;color:var(--gry);font-style:italic;}
-.dcard .ds{font-size:28px;font-weight:700;line-height:1;}
-.dcard .dp{font-size:10px;font-weight:600;}
-.dcard .cb{display:flex;align-items:center;gap:6px;margin:6px 0;}
+.dom-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:700px){.dom-grid{grid-template-columns:1fr;}}
+.dcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s;}
+.dcard:hover{border-color:rgba(155,126,200,0.3);}
+.dcard .dt{display:flex;justify-content:space-between;align-items:center;padding:16px;cursor:pointer;}
+.dcard .dn{font-size:14px;font-weight:500;color:var(--txth);font-family:var(--sans);}
+.dcard .dd{font-size:10px;color:var(--gry);font-style:italic;margin-top:2px;}
+.dcard .ds{font-size:32px;font-weight:300;line-height:1;font-family:var(--serif);}
+.dcard .dp{font-size:9px;font-weight:500;letter-spacing:1px;margin-top:2px;font-family:var(--sans);}
+.dcard .ddetail{padding:0 16px 16px;border-top:1px solid var(--border);}
+.dcard .cb{display:flex;align-items:center;gap:6px;margin:10px 0 6px;}
 .dcard .ct2{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
 .dcard .cf{height:100%;border-radius:2px;}
 .dcard .cla{font-size:10px;color:var(--gry);white-space:nowrap;}
 .dcard .mk{display:flex;justify-content:space-between;padding:3px 0;font-size:11px;border-bottom:1px solid rgba(30,45,74,0.5);}
 .dcard .mn{color:var(--txt);}
-.dcard .mv{font-weight:600;}
-.dcard .sh{margin-top:8px;padding:8px;background:rgba(123,94,167,0.08);border:1px solid rgba(123,94,167,0.2);border-radius:6px;}
-.dcard .sht{font-size:10px;font-weight:700;color:var(--amb);margin-bottom:3px;}
-.dcard .shi{font-size:10px;color:var(--txt);margin-bottom:1px;}
+.dcard .mv{font-weight:500;}
+.dcard .sh{margin-top:10px;padding:10px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px;}
+.dcard .sht{font-size:10px;font-weight:500;color:var(--acc2);margin-bottom:4px;letter-spacing:0.5px;font-family:var(--sans);}
+.dcard .shi{font-size:10px;color:var(--txt);margin-bottom:2px;line-height:1.5;}
 .tag{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;}
-.tag-med{background:rgba(212,160,23,0.15);color:var(--amb);border:1px solid rgba(212,160,23,0.3);}
-.tag-fam{background:rgba(192,57,43,0.12);color:var(--red);border:1px solid rgba(192,57,43,0.25);}
-.tag-urg{background:rgba(192,57,43,0.2);color:var(--red);border:1px solid rgba(192,57,43,0.4);}
-.mod-alert{margin-top:6px;padding:6px 8px;border-radius:5px;font-size:10px;border-left:3px solid;}
-.mod-alert.warn{background:rgba(192,57,43,0.08);border-color:var(--red);color:#E8A0A0;}
-.mod-alert.info{background:rgba(212,160,23,0.08);border-color:var(--amb);color:#E8D090;}
+.tag-med{background:rgba(122,143,168,0.15);color:var(--amb);border:1px solid rgba(122,143,168,0.3);}
+.tag-fam{background:rgba(196,122,122,0.12);color:var(--red);border:1px solid rgba(196,122,122,0.25);}
+.tag-urg{background:rgba(176,136,120,0.2);color:var(--gold);border:1px solid rgba(176,136,120,0.4);}
+.mod-alert{margin-top:8px;padding:8px 10px;border-radius:6px;font-size:10px;border-left:3px solid;line-height:1.5;}
+.mod-alert.warn{background:rgba(196,122,122,0.08);border-color:var(--red);color:#D4A0A0;}
+.mod-alert.info{background:rgba(122,143,168,0.08);border-color:var(--amb);color:#A0B0C4;}
 .disc{margin-top:16px;padding:10px 14px;background:var(--card);border-radius:8px;font-size:10px;color:var(--gry);text-align:center;border:1px solid var(--border);}
-.btn-export{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--lav),var(--acc));color:var(--white);font-size:13px;font-weight:700;border:none;border-radius:8px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;margin:8px 4px;}
+.btn-export{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--lav),var(--acc));color:var(--white);font-size:13px;font-weight:400;border:none;border-radius:8px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;margin:8px 4px;font-family:var(--sans);}
 .btn-export:hover{opacity:0.9;transform:translateY(-1px);}
 .btn-export.secondary{background:var(--card2);border:1px solid var(--border);color:var(--acc2);}
 .btn-export.secondary:hover{border-color:var(--acc);}
+.acc{background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:6px;overflow:hidden;transition:border-color 0.2s;}
+.acc.completed{border-color:rgba(123,94,167,0.25);}
+.acc.next-up{border-color:rgba(123,94,167,0.4);box-shadow:0 0 0 1px rgba(123,94,167,0.15);}
+.acc-hd{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;transition:background 0.2s;gap:6px;}
+.acc-hd:hover{background:rgba(123,94,167,0.04);}
+.acc-hd h3{font-size:12px;color:var(--acc2);margin:0;border:none;padding:0;font-family:var(--sans);font-weight:500;letter-spacing:0.3px;}
+.acc-hd .acc-desc{font-size:9px;color:var(--gry);font-weight:400;letter-spacing:0;line-height:1.3;margin-left:8px;}
+.acc-hd .acc-ct{font-size:9px;color:var(--gry);margin-left:6px;}
+.acc-right{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.acc-check{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;flex-shrink:0;transition:all 0.15s;}
+.acc-check.done{background:rgba(123,94,167,0.2);color:var(--acc2);cursor:pointer;}
+.acc-check.done:hover{background:rgba(200,100,100,0.25);color:#C47A7A;}
+.acc-check.empty{background:var(--navy2);border:1px solid var(--border);}
+.acc-arr{font-size:9px;color:var(--gry);transition:transform 0.2s;}
+.acc-arr.open{transform:rotate(90deg);}
+.acc-bd{padding:0 14px 12px;animation:fadeUp 0.2s ease;}
+.progress-wrap{position:sticky;top:0;z-index:10;background:var(--bg);padding:12px 0 8px;margin-bottom:8px;}
+.progress-bar{height:2px;background:var(--navy2);border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--lav),var(--acc));transition:width 0.4s ease;border-radius:2px;}
+.progress-label{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:10px;color:var(--gry);font-family:var(--sans);}
+.sec-group{font-size:10px;letter-spacing:2px;color:var(--acc2);font-weight:400;margin:24px 0 8px;font-family:var(--sans);display:flex;align-items:center;gap:10px;}
+.sec-group::after{content:'';flex:1;height:1px;background:var(--border);}
+@media(max-width:600px){
+  .slider-nums{flex-wrap:wrap !important;justify-content:center !important;}
+  .slider-nums>div{width:32px !important;height:32px !important;}
+  .slider-labels{display:flex;justify-content:space-between;margin-bottom:4px;}
+}
 .client-field{margin-bottom:8px;}
-.client-field label{display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px;}
-.client-field input,.client-field textarea{width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:inherit;}
+.client-field label{display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:3px;font-family:var(--sans);letter-spacing:0.3px;}
+.client-field input,.client-field textarea{width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans);}
 .client-field input:focus,.client-field textarea:focus{border-color:var(--acc);}
 .client-field textarea{resize:vertical;min-height:50px;}
 /* Welcome screen */
 .welcome{max-width:620px;margin:0 auto;text-align:center;}
-.welcome .w-logo{font-size:12px;letter-spacing:5px;color:var(--acc2);font-weight:700;margin-bottom:6px;}
-.welcome h2{font-family:Georgia,serif;font-size:28px;color:var(--txth);margin-bottom:6px;}
-.welcome .w-tag{font-size:13px;color:var(--gry);font-style:italic;margin-bottom:28px;}
+.welcome .w-logo{font-size:10px;letter-spacing:6px;color:var(--acc2);font-weight:400;margin-bottom:6px;font-family:var(--sans);}
+.welcome h2{font-family:var(--serif);font-size:32px;color:var(--txth);margin-bottom:6px;font-weight:400;letter-spacing:1px;}
+.welcome .w-tag{font-size:14px;color:var(--gry);font-style:italic;margin-bottom:28px;font-family:var(--serif);font-weight:300;}
 .welcome .w-intro{font-size:14px;color:var(--txt);line-height:1.7;text-align:left;margin-bottom:24px;}
 .welcome .w-prep{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;text-align:left;margin-bottom:24px;}
 .welcome .w-prep h4{font-size:12px;letter-spacing:1.5px;color:var(--acc2);margin-bottom:10px;font-weight:700;}
@@ -105,10 +138,68 @@ body{font-family:-apple-system,'Inter',sans-serif;background:var(--bg);color:var
 .welcome .w-step .w-sn{font-size:20px;font-weight:800;color:var(--lav);margin-bottom:4px;}
 .welcome .w-step .w-st{font-size:12px;font-weight:700;color:var(--txth);margin-bottom:3px;}
 .welcome .w-step .w-sd{font-size:11px;color:var(--gry);line-height:1.4;}
-.welcome .w-begin{display:inline-block;padding:14px 48px;background:linear-gradient(135deg,var(--lav),var(--acc));color:var(--white);font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;margin-bottom:16px;}
+.welcome .w-begin{display:inline-block;padding:14px 48px;background:linear-gradient(135deg,var(--lav),var(--acc));color:var(--white);font-size:14px;font-weight:400;border:none;border-radius:10px;cursor:pointer;letter-spacing:1.5px;transition:all 0.2s;margin-bottom:16px;font-family:var(--sans);}
 .welcome .w-begin:hover{opacity:0.9;transform:translateY(-1px);}
-.welcome .w-time{font-size:11px;color:var(--gry);margin-bottom:24px;}
+.welcome .w-time{font-size:11px;color:var(--gry);margin-bottom:24px;font-family:var(--sans);letter-spacing:0.3px;}
 .welcome .w-note{font-size:11px;color:var(--gry);line-height:1.5;border-top:1px solid var(--border);padding-top:16px;text-align:center;}
+
+/* ═══ GUIDED STEP NAV ═══ */
+.guided-layout{display:flex;gap:20px;align-items:flex-start;}
+.guided-main{flex:1;min-width:0;}
+.step-nav{position:sticky;top:60px;width:180px;flex-shrink:0;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 0;max-height:calc(100vh - 80px);overflow-y:auto;}
+.step-nav::-webkit-scrollbar{width:3px;}
+.step-nav::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.step-nav-phase{font-size:8px;letter-spacing:1.5px;color:var(--acc2);font-weight:400;padding:8px 14px 4px;font-family:var(--sans);}
+.step-nav-phase:first-child{padding-top:4px;}
+.step-nav-item{display:flex;align-items:center;gap:8px;padding:6px 14px;cursor:pointer;transition:all 0.15s;font-size:11px;color:var(--gry);font-family:var(--sans);position:relative;}
+.step-nav-item:hover{background:rgba(123,94,167,0.04);color:var(--txt);}
+.step-nav-item.active{background:rgba(123,94,167,0.08);color:var(--txth);font-weight:500;}
+.step-nav-item.active::before{content:'';position:absolute;left:0;width:2px;height:20px;background:var(--lav);border-radius:0 2px 2px 0;}
+.step-nav-dot{width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;flex-shrink:0;transition:all 0.15s;}
+.step-nav-dot.done{background:rgba(123,94,167,0.25);color:var(--acc2);}
+.step-nav-dot.current{background:var(--lav);color:var(--white);font-weight:700;}
+.step-nav-dot.empty{background:var(--navy2);border:1px solid var(--border);}
+@media(max-width:800px){.step-nav{display:none;}.guided-layout{display:block;}}
+.step-strip{display:none;overflow-x:auto;gap:2px;padding:6px 0;margin-bottom:8px;-webkit-overflow-scrolling:touch;}
+.step-strip::-webkit-scrollbar{display:none;}
+.step-strip-dot{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;flex-shrink:0;cursor:pointer;transition:all 0.15s;font-family:var(--sans);}
+.step-strip-dot.done{background:rgba(123,94,167,0.25);color:var(--acc2);}
+.step-strip-dot.current{background:var(--lav);color:var(--white);font-weight:700;}
+.step-strip-dot.empty{background:var(--navy2);border:1px solid var(--border);color:var(--gry);}
+@media(max-width:800px){.step-strip{display:flex;}}
+/* ═══ GUIDED MODE STYLES ═══ */
+.guided-wrap{max-width:560px;margin:0 auto;animation:fadeUp 0.3s ease;}
+.guided-step-num{font-size:9px;letter-spacing:3px;color:var(--gry);font-family:var(--sans);font-weight:400;margin-bottom:8px;}
+.guided-q{font-family:var(--serif);font-size:24px;color:var(--txth);font-weight:400;line-height:1.35;margin-bottom:6px;letter-spacing:0.3px;}
+.guided-sub{font-size:12px;color:var(--gry);line-height:1.6;margin-bottom:24px;font-family:var(--sans);}
+.guided-body{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;}
+.guided-commentary{animation:fadeIn 0.4s ease;margin-top:12px;padding:10px 14px;border-radius:8px;font-size:11px;line-height:1.6;border-left:3px solid var(--acc);background:rgba(123,94,167,0.06);color:var(--txt);font-family:var(--sans);}
+.guided-commentary strong{color:var(--acc2);font-weight:500;}
+.guided-commentary.warn{border-color:var(--gold);background:rgba(176,136,120,0.06);}
+.guided-commentary.alert{border-color:var(--red);background:rgba(196,122,122,0.06);}
+.guided-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:12px;}
+.guided-back{padding:10px 24px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--gry);font-size:12px;cursor:pointer;font-family:var(--sans);transition:all 0.15s;}
+.guided-back:hover{border-color:var(--acc);color:var(--acc2);}
+.guided-next{padding:10px 32px;background:linear-gradient(135deg,var(--lav),var(--acc));border:none;border-radius:8px;color:var(--white);font-size:12px;cursor:pointer;font-family:var(--sans);letter-spacing:0.5px;transition:all 0.15s;}
+.guided-next:hover{opacity:0.9;transform:translateY(-1px);}
+.guided-skip{font-size:11px;color:var(--gry);cursor:pointer;transition:color 0.15s;font-family:var(--sans);}
+.guided-skip:hover{color:var(--acc2);}
+.guided-progress{position:sticky;top:0;z-index:10;background:var(--bg);padding:10px 0 6px;}
+.guided-progress .gp-bar{height:2px;background:var(--navy2);border-radius:2px;overflow:hidden;}
+.guided-progress .gp-fill{height:100%;background:linear-gradient(90deg,var(--lav),var(--acc));transition:width 0.5s ease;border-radius:2px;}
+.guided-progress .gp-info{display:flex;justify-content:space-between;align-items:center;margin-top:6px;}
+.guided-progress .gp-label{font-size:10px;color:var(--gry);font-family:var(--sans);}
+.guided-progress .gp-phase{font-size:9px;letter-spacing:1.5px;color:var(--acc2);font-family:var(--sans);}
+.mode-toggle{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:6px;font-size:10px;color:var(--gry);cursor:pointer;transition:all 0.15s;font-family:var(--sans);border:1px solid transparent;}
+.mode-toggle:hover{color:var(--acc2);border-color:var(--border);}
+.guided-none-btn{display:block;width:100%;padding:12px;background:var(--navy2);border:1px solid var(--border);border-radius:8px;color:var(--gry);font-size:12px;cursor:pointer;font-family:var(--sans);transition:all 0.15s;text-align:center;margin-top:10px;}
+.guided-none-btn:hover{border-color:var(--acc);color:var(--acc2);}
+.guided-section-label{font-size:10px;letter-spacing:2px;color:var(--acc2);font-weight:400;margin-bottom:20px;font-family:var(--sans);text-align:center;}
+@media(max-width:600px){
+  .guided-q{font-size:20px;}
+  .guided-wrap{padding:0 4px;}
+  .guided-body .chk-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -116,24 +207,29 @@ body{font-family:-apple-system,'Inter',sans-serif;background:var(--bg);color:var
 <script>
 const A=document.getElementById('app');
 
-const S={
+const S=window.S={
   tab:'welcome',
-  client:{name:'',age:'',sexAtBirth:'female',gender:'',pronouns:'',race:[],height:'',weight:'',profile:'',labDate:''},
+  guidedStep:0,
+  openPanel:'',
+  openDom:'',
+  showAbout:false,
+  redo:new Set(),
+  client:{name:'',lastName:'',age:'',sexAtBirth:'female',gender:'',pronouns:'',race:[],height:'',weight:'',profile:'',labDate:''},
   ctx:{
     fam_diabetes:false,fam_heart:false,fam_stroke:false,fam_htn:false,fam_cancer:false,fam_obesity:false,
     hx_diabetes:false,hx_prediabetes:false,hx_htn:false,hx_pcos:false,hx_thyroid:false,hx_autoimmune:false,
     hx_gest_diabetes:false,hx_gest_htn:false,hx_cholesterol:false,hx_depression:false,hx_sleep_apnea:false,
-    hx_stroke:false,hx_mi:false,hx_menopause:'pre',
+    hx_stroke:false,hx_mi:false,hx_ckd:false,hx_menopause:'pre',
     life_isolation:'connected',life_financial:'stable',
     med_statin:false,med_bp:false,med_thyroid:false,med_diabetes:false,med_glp1:false,
     med_hormone:false,med_psych:false,med_sup_vitd:false,med_sup_iron:false,med_sup_omega3:false
   },
-  subj:{energy:5,sleep:5,exercise:'none',cravings:5,postmeal:5,hunger:'moderate',
-    stress:5,sleepOnset:'normal',mood:5,recovery:5,
-    strength:'declining',bodyChange:'gaining',jointPain:'sometimes',fatigue:'often'},
+  subj:{energy:0,sleep:0,exercise:'',cravings:0,postmeal:0,hunger:'',
+    stress:0,sleepOnset:'',mood:0,recovery:0,
+    strength:'',bodyChange:'',jointPain:'',fatigue:''},
   obj:{sys:'',dia:'',hr:'',ht:'',wt:'',waist:'',hip:'',
-    bodyFat:'',leanMass:'',bodyWater:'',visceralFat:'',boneMass:'',
-    hrv:'',avgSleep:'',deepSleep:'',vo2max:'',respRate:'',
+    bodyFat:'',leanMass:'',bodyWater:'',visceralFat:'',boneMass:'',bonePct:'',musclePct:'',muscleLbs:'',bodyCompSource:'',
+    hrv:'',avgSleep:'',deepSleep:'',vo2max:'',respRate:'',wearableSource:'',
     tc:'',ldl:'',hdl:'',trig:'',a1c:'',fg:'',rg:'',hgb:'',
     tsh:'',alt:'',vitD:'',hsCRP:'',fastIns:'',cortisol:''},
   diag:{dexa:false,ekg:false,echo:false,sleep_study:false,cgm:false,
@@ -163,13 +259,11 @@ const R={
   alt:[{t:v=>v<=33,s:90,l:'Normal',c:'var(--grn)'},{t:v=>v<=50,s:60,l:'Mild Elev',c:'var(--amb)'},{t:()=>1,s:30,l:'Elevated',c:'var(--red)'}],
   vitD:[{t:v=>v>=40,s:95,l:'Optimal',c:'var(--grn)'},{t:v=>v>=30,s:75,l:'Sufficient',c:'var(--grn)'},{t:v=>v>=20,s:45,l:'Insufficient',c:'var(--amb)'},{t:()=>1,s:18,l:'Deficient',c:'var(--red)'}],
   hsCRP:[{t:v=>v<1,s:95,l:'Low Risk',c:'var(--grn)'},{t:v=>v<=3,s:60,l:'Average',c:'var(--amb)'},{t:()=>1,s:22,l:'High Risk',c:'var(--red)'}],
-  // Body comp ranges are sex-specific — use bodyFatF/bodyFatM etc.
   bodyFatF:[{t:v=>v<22,s:95,l:'Athletic',c:'var(--grn)'},{t:v=>v<=28,s:85,l:'Fit',c:'var(--grn)'},{t:v=>v<=33,s:65,l:'Average',c:'var(--amb)'},{t:v=>v<=39,s:40,l:'Above Avg',c:'var(--red)'},{t:()=>1,s:18,l:'High',c:'var(--red)'}],
   bodyFatM:[{t:v=>v<15,s:95,l:'Athletic',c:'var(--grn)'},{t:v=>v<=20,s:85,l:'Fit',c:'var(--grn)'},{t:v=>v<=25,s:65,l:'Average',c:'var(--amb)'},{t:v=>v<=30,s:40,l:'Above Avg',c:'var(--red)'},{t:()=>1,s:18,l:'High',c:'var(--red)'}],
   leanMassF:[{t:v=>v>=36,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v>=30,s:78,l:'Good',c:'var(--grn)'},{t:v=>v>=25,s:55,l:'Below Avg',c:'var(--amb)'},{t:()=>1,s:28,l:'Low',c:'var(--red)'}],
   leanMassM:[{t:v=>v>=40,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v>=33,s:78,l:'Good',c:'var(--grn)'},{t:v=>v>=28,s:55,l:'Below Avg',c:'var(--amb)'},{t:()=>1,s:28,l:'Low',c:'var(--red)'}],
   visceralFat:[{t:v=>v<=5,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v<=9,s:80,l:'Healthy',c:'var(--grn)'},{t:v=>v<=14,s:50,l:'High',c:'var(--amb)'},{t:()=>1,s:22,l:'Very High',c:'var(--red)'}],
-  // Wearable metrics
   hrv:[{t:v=>v>=65,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v>=45,s:80,l:'Good',c:'var(--grn)'},{t:v=>v>=30,s:58,l:'Below Avg',c:'var(--amb)'},{t:v=>v>=20,s:35,l:'Low',c:'var(--red)'},{t:()=>1,s:15,l:'Very Low',c:'var(--red)'}],
   avgSleep:[{t:v=>v>=7&&v<=9,s:92,l:'Optimal',c:'var(--grn)'},{t:v=>v>=6.5,s:72,l:'Adequate',c:'var(--amb)'},{t:v=>v>=6,s:48,l:'Short',c:'var(--red)'},{t:v=>v<6,s:22,l:'Deprived',c:'var(--red)'},{t:()=>1,s:60,l:'Long',c:'var(--amb)'}],
   deepSleep:[{t:v=>v>=20,s:95,l:'Excellent',c:'var(--grn)'},{t:v=>v>=15,s:78,l:'Good',c:'var(--grn)'},{t:v=>v>=10,s:52,l:'Below Avg',c:'var(--amb)'},{t:()=>1,s:25,l:'Low',c:'var(--red)'}],
@@ -179,22 +273,29 @@ const R={
 };
 
 function subjScore(k,v){
+  if(v===0||v===''||v===null||v===undefined)return null;
   const m={energy:v=>v*10,sleep:v=>v*10,stress:v=>(11-v)*10,cravings:v=>(11-v)*10,postmeal:v=>(11-v)*10,mood:v=>v*10,recovery:v=>v*10,
     exercise:{none:20,light:50,moderate:75,intense:92},hunger:{constant:25,frequent:45,moderate:65,controlled:85},
     sleepOnset:{difficult:25,delayed:50,normal:78,easy:92},strength:{declining:25,stable:60,building:88},
     bodyChange:{gaining:22,fluctuating:45,stable:72,recomposing:90},jointPain:{often:25,sometimes:55,rarely:80,never:95},
     fatigue:{always:15,often:35,sometimes:60,rarely:85}};
   const f=m[k];if(typeof f==='function')return f(typeof v==='number'?v:parseInt(v));
-  if(typeof f==='object')return f[v]||50;return 50;
+  if(typeof f==='object')return f[v]||null;return null;
 }
 
 function blend(subjM,objM){
+  const sv=subjM.filter(m=>m.s!==null&&m.s!==undefined);
   const ov=objM.filter(m=>m.s!==null);
-  const st=subjM.reduce((a,m)=>a+m.s*m.w,0)/subjM.reduce((a,m)=>a+m.w,0);
-  if(!ov.length)return{score:Math.round(st),conf:20,src:'Subjective Only',ou:0,ot:objM.length};
+  if(!sv.length&&!ov.length)return{score:0,conf:0,src:'No Data',ou:0,ot:objM.length};
+  const st=sv.length?sv.reduce((a,m)=>a+m.s*m.w,0)/sv.reduce((a,m)=>a+m.w,0):0;
+  if(!ov.length){
+    if(!sv.length)return{score:0,conf:0,src:'No Data',ou:0,ot:objM.length};
+    return{score:Math.round(st),conf:20,src:'Subjective Only',ou:0,ot:objM.length};
+  }
   const tw=ov.reduce((a,m)=>a+m.w,0),os=ov.reduce((a,m)=>a+m.s*m.w,0)/tw;
   const fw=objM.reduce((a,m)=>a+m.w,0),cov=tw/fw;
-  const ow=0.5+cov*0.35,bl2=os*ow+st*(1-ow);
+  const ow=0.5+cov*0.35;
+  const bl2=sv.length?os*ow+st*(1-ow):os;
   return{score:Math.round(bl2),conf:Math.min(95,Math.round(20+cov*75)),src:cov>0.5?'Lab-Informed':'Partially Informed',ou:ov.length,ot:objM.length};
 }
 
@@ -207,9 +308,7 @@ function computeAll(){
   const whr=(waist&&hip&&hip>0)?waist/hip:null;
   const trig=val(o.trig),hdl=val(o.hdl);
   const thR=(trig&&hdl&&hdl>0)?trig/hdl:null;
-  // Body comp
   const bf=val(o.bodyFat),lm=val(o.leanMass),vf=val(o.visceralFat);
-  // Wearables
   const hrvVal=val(o.hrv),sleepVal=val(o.avgSleep),deepVal=val(o.deepSleep),vo2Val=val(o.vo2max),rrVal=val(o.respRate);
   const sc={
     a1c:scr(val(o.a1c),R.a1c),fg:scr(val(o.fg),R.fg),rg:scr(val(o.rg),R.rg),
@@ -221,12 +320,8 @@ function computeAll(){
     bodyFat:scr(bf,sex==='male'?R.bodyFatM:R.bodyFatF),
     leanMass:scr(lm,sex==='male'?R.leanMassM:R.leanMassF),
     visceralFat:scr(vf,R.visceralFat),
-    hrv:scr(hrvVal,R.hrv),
-    avgSleep:scr(sleepVal,R.avgSleep),
-    deepSleep:scr(deepVal,R.deepSleep),
-    vo2max:scr(vo2Val,R.vo2max),
-    respRate:scr(rrVal,R.respRate),
-    cortisol:scr(val(o.cortisol),R.cortisol)
+    hrv:scr(hrvVal,R.hrv),avgSleep:scr(sleepVal,R.avgSleep),deepSleep:scr(deepVal,R.deepSleep),
+    vo2max:scr(vo2Val,R.vo2max),respRate:scr(rrVal,R.respRate),cortisol:scr(val(o.cortisol),R.cortisol)
   };
   const gl=sc.fg||sc.rg;
   const ths=thR?(thR<1?{s:95,l:thR.toFixed(1)+' Excellent',c:'var(--grn)'}:thR<=1.5?{s:82,l:thR.toFixed(1)+' Good',c:'var(--grn)'}:thR<=2.5?{s:60,l:thR.toFixed(1)+' Moderate',c:'var(--amb)'}:thR<=3.5?{s:38,l:thR.toFixed(1)+' IR likely',c:'var(--red)'}:{s:18,l:thR.toFixed(1)+' Strong IR',c:'var(--red)'}):null;
@@ -234,7 +329,6 @@ function computeAll(){
 
   // Governance modifiers
   const mods={};
-  // Insulin
   mods.insulin={fam:c.fam_diabetes,hx:c.hx_prediabetes||c.hx_diabetes||c.hx_gest_diabetes||c.hx_gest_htn||c.hx_pcos,med:c.med_diabetes||c.med_glp1,alerts:[],medLabels:[]};
   if(c.med_diabetes)mods.insulin.medLabels.push('Diabetes Rx');
   if(c.med_glp1)mods.insulin.medLabels.push('GLP-1/GIP');
@@ -243,20 +337,17 @@ function computeAll(){
   if(c.hx_gest_htn)mods.insulin.alerts.push({type:'warn',text:'History of gestational hypertension increases lifetime cardiovascular and metabolic risk. Insulin and inflammatory domains both carry elevated urgency.'});
   if(c.hx_pcos)mods.insulin.alerts.push({type:'info',text:'PCOS is strongly linked to insulin resistance. Fasting insulin and glucose response testing are critical for this domain.'});
   if(c.med_diabetes||c.med_glp1)mods.insulin.alerts.push({type:'info',text:'Current diabetes or GLP-1/GIP medication affects this domain\u2019s markers. A1c, fasting glucose, and weight may all reflect medicated, not native, insulin regulation.'});
-
-  // Inflammatory
   mods.inflammatory={fam:c.fam_heart||c.fam_stroke||c.fam_htn,hx:c.hx_htn||c.hx_cholesterol||c.hx_stroke||c.hx_mi||c.hx_gest_htn,med:c.med_statin||c.med_bp,alerts:[],medLabels:[]};
   if(c.med_statin)mods.inflammatory.medLabels.push('Lipid Rx');
   if(c.med_bp)mods.inflammatory.medLabels.push('BP Rx');
-  if(c.fam_heart)mods.inflammatory.alerts.push({type:'warn',text:'Family history of heart disease before 60. ApoB and Lp(a) upgraded to URGENT. Consider advanced imaging at Tier 3+.'});
+  if(c.fam_heart)mods.inflammatory.alerts.push({type:'warn',text:'Family history of premature heart attack (male < 55, female < 65). ApoB and Lp(a) upgraded to URGENT. Consider advanced imaging at Tier 3+.'});
   if(c.fam_stroke)mods.inflammatory.alerts.push({type:'warn',text:'Family history of stroke. Blood pressure monitoring and hs-CRP are critical for this domain.'});
   if(c.hx_mi)mods.inflammatory.alerts.push({type:'warn',text:'Personal history of heart attack. This domain carries the highest governance urgency. All inflammatory markers are critical. Advanced imaging recommended at Tier 3+.'});
   if(c.hx_stroke)mods.inflammatory.alerts.push({type:'warn',text:'Personal history of stroke. Cardiovascular governance is urgent. BP monitoring, hs-CRP, ApoB, and Lp(a) are all critical. Recommendations should be contextualized in consultation with your care team.'});
+  if(c.hx_ckd){mods.inflammatory.alerts.push({type:'warn',text:'Chronic kidney disease elevates cardiovascular risk independent of other factors. BP control and inflammatory markers carry heightened urgency.'});mods.insulin.alerts.push({type:'warn',text:'CKD impairs glucose regulation and insulin clearance. A1c may underestimate true glycemic burden. Fasting insulin and glucose monitoring carry elevated importance.'});}
   if(c.hx_gest_htn)mods.inflammatory.alerts.push({type:'warn',text:'History of gestational hypertension. Lifetime cardiovascular risk is elevated. BP monitoring carries heightened importance.'});
   if(c.med_statin)mods.inflammatory.alerts.push({type:'info',text:'Lipid-lowering medication (statin, ezetimibe, PCSK9i, or combination) affects LDL and total cholesterol. Current lipid scores reflect managed, not native, inflammatory burden.'});
   if(c.med_bp)mods.inflammatory.alerts.push({type:'info',text:'Blood pressure medication affects BP readings. Current values reflect managed, not native, cardiovascular tone.'});
-
-  // Energy
   mods.energy={fam:false,hx:c.hx_thyroid||c.hx_sleep_apnea,med:c.med_thyroid,alerts:[],medLabels:[]};
   if(c.med_thyroid)mods.energy.medLabels.push('Thyroid Rx');
   if(c.med_sup_vitd)mods.energy.medLabels.push('Vit D Suppl');
@@ -266,12 +357,8 @@ function computeAll(){
   if(c.hx_sleep_apnea)mods.energy.alerts.push({type:'warn',text:'Sleep apnea compromises sleep architecture, recovery, and oxygen saturation. Treatment compliance directly affects this domain.'});
   if(c.med_sup_vitd&&S.obj.vitD){const vd=parseFloat(S.obj.vitD);if(!isNaN(vd)&&vd<30)mods.energy.alerts.push({type:'warn',text:'You are supplementing Vitamin D but levels remain low. This suggests either insufficient dosing, absorption issues, or severe depletion. Discuss with your provider \u2014 dose escalation or testing for absorption may be needed.'});}
   if(c.med_sup_iron)mods.energy.alerts.push({type:'info',text:'Iron supplementation noted. Hemoglobin and ferritin levels reflect supplemented, not native, iron status.'});
-
-  // Structural
   mods.structural={fam:c.fam_obesity,hx:false,med:false,alerts:[],medLabels:[]};
   if(c.fam_obesity)mods.structural.alerts.push({type:'info',text:'Family history of obesity. Structural interventions may require more sustained effort. Genetic predisposition does not determine outcome.'});
-
-  // Stress
   mods.stress={fam:false,hx:c.hx_depression||c.hx_autoimmune,med:c.med_psych||c.med_hormone,alerts:[],medLabels:[]};
   if(c.med_psych)mods.stress.medLabels.push('Psych Rx');
   if(c.med_hormone)mods.stress.medLabels.push('HRT');
@@ -279,11 +366,8 @@ function computeAll(){
   if(c.hx_autoimmune)mods.stress.alerts.push({type:'warn',text:'Autoimmune conditions are stress-sensitive. Cortisol and inflammatory markers carry elevated importance.'});
   if(c.med_psych)mods.stress.alerts.push({type:'info',text:'Psychiatric medication may affect resting HR, HRV, and cortisol patterns. Domain markers reflect medicated baseline.'});
   if(c.med_hormone)mods.stress.alerts.push({type:'info',text:'Hormone therapy affects cortisol, metabolic rate, and body composition. Multiple domain scores reflect medicated baseline.'});
-  // Cross-domain supplement notes on inflammatory
   if(c.med_sup_omega3)mods.inflammatory.alerts.push({type:'info',text:'Omega-3 supplementation noted. Lipid panel and hs-CRP may reflect supplemented baseline. This is a positive governance input.'});
   if(c.med_sup_omega3)mods.inflammatory.medLabels.push('Omega-3');
-
-  // Menopause modifiers (cross-domain)
   const isPeri=c.hx_menopause==='peri',isPost=c.hx_menopause==='post';
   if(isPeri||isPost){
     const phase=isPeri?'Perimenopause':'Post-menopause';
@@ -293,8 +377,6 @@ function computeAll(){
     mods.energy.alerts.push({type:'info',text:`${phase} affects metabolic rate, sleep architecture, and thermoregulation. TSH and thyroid function should be monitored more closely.`});
     if(isPost)mods.stress.alerts.push({type:'info',text:'Post-menopause alters cortisol patterns and autonomic balance. HRV data and stress modulation interventions carry elevated importance.'});
   }
-
-  // Life context modifiers
   const isIsolated=c.life_isolation==='limited'||c.life_isolation==='isolated';
   const isStrained=c.life_financial==='strained'||c.life_financial==='crisis';
   if(isIsolated){
@@ -307,7 +389,6 @@ function computeAll(){
   }
   if(isStrained){
     mods.stress.alerts.push({type:'warn',text:'Financial strain is a chronic stressor that directly elevates cortisol and undermines health behaviors. The Lens prioritizes free and low-cost interventions first.'});
-    // Flag across all domains that cost-conscious recs should lead
     for(const dk of ['energy','structural','insulin','inflammatory']){
       mods[dk].alerts.push({type:'info',text:'Given financial context, the Lens prioritizes interventions by cost: free (walking, sleep, time-restricted eating) before low-cost (supplements) before investment (devices, advanced labs).'});
     }
@@ -318,56 +399,512 @@ function computeAll(){
 
   const doms={};
   doms.energy=blend(
-    [{s:ss.energy,w:30},{s:ss.sleep,w:30},{s:ss.fatigue||50,w:25},{s:ss.exercise||50,w:15}],
+    [{s:ss.energy,w:30},{s:ss.sleep,w:30},{s:ss.fatigue,w:25},{s:ss.exercise,w:15}],
     [{s:sc.hgb?sc.hgb.s:null,w:22},{s:sc.hr?sc.hr.s:null,w:15},{s:sc.bmi?sc.bmi.s:null,w:10},{s:sc.tsh?sc.tsh.s:null,w:18},{s:sc.vitD?sc.vitD.s:null,w:10},{s:sc.avgSleep?sc.avgSleep.s:null,w:12},{s:sc.deepSleep?sc.deepSleep.s:null,w:5},{s:sc.vo2max?sc.vo2max.s:null,w:8}]
   );
   doms.structural=blend(
-    [{s:ss.strength||50,w:25},{s:ss.bodyChange||50,w:35},{s:ss.exercise||50,w:25},{s:ss.fatigue||50,w:15}],
+    [{s:ss.strength,w:25},{s:ss.bodyChange,w:35},{s:ss.exercise,w:25},{s:ss.fatigue,w:15}],
     [{s:sc.bodyFat?sc.bodyFat.s:null,w:25},{s:sc.leanMass?sc.leanMass.s:null,w:20},{s:sc.visceralFat?sc.visceralFat.s:null,w:15},{s:sc.bmi?sc.bmi.s:null,w:15},{s:sc.whr?sc.whr.s:null,w:10},{s:sc.vitD?sc.vitD.s:null,w:10},{s:sc.hgb?sc.hgb.s:null,w:5}]
   );
   doms.insulin=blend(
-    [{s:ss.cravings,w:30},{s:ss.postmeal,w:30},{s:ss.hunger||50,w:25},{s:ss.energy,w:15}],
+    [{s:ss.cravings,w:30},{s:ss.postmeal,w:30},{s:ss.hunger,w:25},{s:ss.energy,w:15}],
     [{s:sc.a1c?sc.a1c.s:null,w:35},{s:gl?gl.s:null,w:20},{s:ths?ths.s:null,w:30},{s:sc.bmi?sc.bmi.s:null,w:15}]
   );
   doms.inflammatory=blend(
-    [{s:ss.jointPain||50,w:25},{s:ss.fatigue||50,w:25},{s:ss.recovery,w:25},{s:ss.sleep,w:25}],
+    [{s:ss.jointPain,w:25},{s:ss.fatigue,w:25},{s:ss.recovery,w:25},{s:ss.sleep,w:25}],
     [{s:sc.sys?sc.sys.s:null,w:18},{s:sc.dia?sc.dia.s:null,w:10},{s:sc.ldl?sc.ldl.s:null,w:16},{s:sc.hdl?sc.hdl.s:null,w:12},{s:sc.trig?sc.trig.s:null,w:10},{s:sc.tc?sc.tc.s:null,w:6},{s:sc.bmi?sc.bmi.s:null,w:6},{s:sc.alt?sc.alt.s:null,w:5},{s:sc.hsCRP?sc.hsCRP.s:null,w:17}]
   );
   doms.stress=blend(
-    [{s:ss.stress,w:30},{s:ss.sleepOnset||50,w:20},{s:ss.mood,w:25},{s:ss.recovery,w:25}],
+    [{s:ss.stress,w:30},{s:ss.sleepOnset,w:20},{s:ss.mood,w:25},{s:ss.recovery,w:25}],
     [{s:sc.hrv?sc.hrv.s:null,w:35},{s:sc.hr?sc.hr.s:null,w:18},{s:sc.sys?sc.sys.s:null,w:12},{s:sc.dia?sc.dia.s:null,w:10},{s:sc.respRate?sc.respRate.s:null,w:10},{s:sc.cortisol?sc.cortisol.s:null,w:15}]
   );
 
   const dA=[doms.energy,doms.structural,doms.insulin,doms.inflammatory,doms.stress];
-  const dS=dA.map(d=>d.score),raw=dS.reduce((a,v)=>a+v,0)/dS.length;
-  const va=dS.reduce((a,v)=>a+(v-raw)**2,0)/dS.length;
+  const activeDoms=dA.filter(d=>d.conf>0);
+  const domCount=activeDoms.length;
+  const raw=domCount?activeDoms.reduce((a,d)=>a+d.score,0)/domCount:0;
+  const va=domCount?activeDoms.reduce((a,d)=>a+(d.score-raw)**2,0)/domCount:0;
   const vP=Math.min(15,va/40);
   const irS=doms.insulin.score,siS=doms.structural.score;
-  const cP=(irS<35||siS<35)?10:0;
-  const fM=Math.min(irS,siS),cap=fM<30?45:fM<40?55:100;
-  const idx=Math.max(0,Math.min(cap,Math.round(raw-vP-cP)));
+  const cP=(domCount>0&&(doms.insulin.conf>0&&irS<35)||(doms.structural.conf>0&&siS<35))?10:0;
+  const fM=Math.min(doms.insulin.conf>0?irS:100,doms.structural.conf>0?siS:100);
+  const cap=fM<30?45:fM<40?55:100;
+  const idx=domCount?Math.max(0,Math.min(cap,Math.round(raw-vP-cP))):0;
   const aC=Math.round(dA.reduce((a,d)=>a+d.conf,0)/dA.length);
-
-  // Count active modifiers
   const modCount=Object.entries(S.ctx).filter(([k,v])=>{
     if(k==='hx_menopause')return v!=='pre';
     if(k==='life_isolation')return v!=='connected';
     if(k==='life_financial')return v!=='stable';
     return Boolean(v);
   }).length;
-
-  return{doms,sc,ths,bmi,whr,idx,aC,dS,mods,modCount};
+  return{doms,sc,ths,bmi,whr,idx,aC,dS:dA.map(d=>d.score),mods,modCount,domCount};
 }
 
-function gSt(s){return s>=85?{l:'Integrated',c:'var(--grn)'}:s>=70?{l:'Aligned',c:'var(--grn)'}:s>=55?{l:'Converging',c:'var(--amb)'}:s>=35?{l:'Drifting',c:'var(--red)'}:{l:'Fragmented',c:'var(--red)'};}
-function gP(s){return s>=80?{l:'Protect',c:'var(--grn)'}:s>=60?{l:'Tighten',c:'var(--amb)'}:s>=40?{l:'Stabilize',c:'var(--red)'}:{l:'Restructure',c:'var(--red)'};}
+function gSt(s){return s>=85?{l:'Integrated',c:'var(--grn)'}:s>=70?{l:'Aligned',c:'var(--acc)'}:s>=55?{l:'Converging',c:'var(--amb)'}:s>=35?{l:'Drifting',c:'var(--gold)'}:{l:'Fragmented',c:'var(--red)'};}
+function gP(s){return s>=80?{l:'Protect',c:'var(--grn)'}:s>=60?{l:'Tighten',c:'var(--amb)'}:s>=40?{l:'Stabilize',c:'var(--gold)'}:{l:'Restructure',c:'var(--red)'};}
 function gC(s){return s>=70?'var(--grn)':s>=50?'var(--amb)':'var(--red)';}
+
+// ═══════════════════════════════════════════
+// GUIDED INTAKE — STEP DEFINITIONS
+// ═══════════════════════════════════════════
+
+const GUIDED_PHASES=[
+  {label:'YOUR BACKGROUND',steps:[0,1,2,3,4]},
+  {label:'HOW YOU FEEL',steps:[5,6,7,8]},
+  {label:'YOUR NUMBERS',steps:[9,10,11,12,13,14,15]}
+];
+
+function getPhase(step){
+  for(const p of GUIDED_PHASES){if(p.steps.includes(step))return p.label;}
+  return '';
+}
+
+// Commentary engine — hardcoded, deterministic, clinician voice
+function guidedCommentary(stepIdx){
+  const c=S.ctx,s=S.subj,o=S.obj;
+  const notes=[];
+  switch(stepIdx){
+    case 0: // About You
+      if(S.client.age&&parseInt(S.client.age)>=45&&S.client.sexAtBirth==='female')
+        notes.push({text:'Age 45+ in biological females means metabolic risk accelerates. The Lens weights this across insulin, structural, and inflammatory domains.',type:''});
+      if(S.client.age&&parseInt(S.client.age)>=55)
+        notes.push({text:'After 55, cardiovascular and metabolic risk profiles shift significantly regardless of current health status. The Lens reads this trajectory.',type:''});
+      break;
+    case 1: // Family History
+      if(c.fam_diabetes)notes.push({text:'<strong>Type 2 diabetes</strong> in a first-degree relative elevates your insulin domain urgency. The Lens will weight A1c trajectory and fasting insulin more heavily.',type:'warn'});
+      if(c.fam_heart)notes.push({text:'<strong>Premature heart disease</strong> in your family means ApoB and Lp(a) testing carry heightened importance. Advanced imaging may be recommended at Tier 3+.',type:'warn'});
+      if(c.fam_stroke)notes.push({text:'<strong>Stroke history</strong> means blood pressure and hs-CRP carry extra weight in your inflammatory domain.',type:''});
+      if(c.fam_htn)notes.push({text:'<strong>Familial hypertension</strong> is one of the strongest heritable cardiovascular risk factors. BP monitoring is critical.',type:''});
+      if(c.fam_obesity)notes.push({text:'<strong>Family obesity</strong> noted. Genetic predisposition does not determine outcome, but structural interventions may require more sustained effort.',type:''});
+      break;
+    case 2: // Health History
+      if(c.hx_diabetes)notes.push({text:'Active <strong>Type 2 diabetes</strong> is the highest-urgency insulin domain modifier. All glycemic markers are critical.',type:'alert'});
+      if(c.hx_prediabetes)notes.push({text:'<strong>Prediabetes</strong> means your insulin regulation is already under pressure. A1c trajectory and fasting insulin are critical.',type:'warn'});
+      if(c.hx_gest_diabetes)notes.push({text:'<strong>Gestational diabetes</strong> increases lifetime T2D risk 7\u00d7. This domain requires heightened surveillance.',type:'warn'});
+      if(c.hx_gest_htn)notes.push({text:'<strong>Gestational hypertension</strong> elevates lifetime cardiovascular and metabolic risk across multiple domains.',type:'warn'});
+      if(c.hx_pcos)notes.push({text:'<strong>PCOS</strong> is strongly linked to insulin resistance. Fasting insulin testing is critical for your profile.',type:''});
+      if(c.hx_mi)notes.push({text:'Personal <strong>heart attack history</strong>. This carries the highest cardiovascular governance urgency.',type:'alert'});
+      if(c.hx_stroke)notes.push({text:'Personal <strong>stroke history</strong>. Cardiovascular governance is urgent across multiple markers.',type:'alert'});
+      if(c.hx_ckd)notes.push({text:'<strong>CKD</strong> elevates cardiovascular risk and impairs glucose regulation independently.',type:'warn'});
+      if(c.hx_thyroid)notes.push({text:'<strong>Thyroid condition</strong> affects metabolic rate, energy, and body composition across multiple domains.',type:''});
+      if(c.hx_autoimmune)notes.push({text:'<strong>Autoimmune conditions</strong> are stress-sensitive. Cortisol and inflammatory markers carry elevated importance.',type:''});
+      if(c.hx_sleep_apnea)notes.push({text:'<strong>Sleep apnea</strong> directly compromises recovery, oxygen saturation, and energy capacity.',type:'warn'});
+      if(c.hx_menopause==='peri')notes.push({text:'<strong>Perimenopause</strong> shifts insulin sensitivity, bone density, and cardiovascular risk. The Lens adjusts across multiple domains.',type:'warn'});
+      if(c.hx_menopause==='post')notes.push({text:'<strong>Post-menopause</strong> alters metabolic, structural, and cardiovascular risk profiles. Multiple domains carry elevated urgency.',type:'warn'});
+      break;
+    case 3: // Medications
+      if(c.med_glp1)notes.push({text:'<strong>GLP-1/GIP therapy</strong> is the most impactful insulin domain modifier. A1c, glucose, and weight all reflect medicated state.',type:''});
+      if(c.med_diabetes)notes.push({text:'<strong>Diabetes medication</strong> affects A1c, fasting glucose, and weight. Scores reflect medicated baseline.',type:''});
+      if(c.med_statin)notes.push({text:'<strong>Lipid medication</strong> means cholesterol values reflect managed levels. The Lens notes this in inflammatory scoring.',type:''});
+      if(c.med_bp)notes.push({text:'<strong>BP medication</strong> affects readings. Your values reflect managed cardiovascular tone.',type:''});
+      if(c.med_thyroid)notes.push({text:'<strong>Thyroid medication</strong> means TSH reflects managed function.',type:''});
+      if(c.med_hormone)notes.push({text:'<strong>HRT</strong> affects cortisol, metabolic rate, and body composition across domains.',type:''});
+      if(c.med_psych)notes.push({text:'<strong>Psychiatric medication</strong> may affect resting HR, HRV, and cortisol patterns.',type:''});
+      if(c.med_sup_omega3)notes.push({text:'<strong>Omega-3</strong> supplementation positively affects lipid and inflammatory markers. A positive governance input.',type:''});
+      break;
+    case 4: // Life & Support
+      if(c.life_isolation==='isolated')notes.push({text:'<strong>Severe isolation</strong> carries mortality risk comparable to smoking. This is the single most important governance modifier in your profile.',type:'alert'});
+      else if(c.life_isolation==='limited')notes.push({text:'<strong>Limited social connection</strong> is one of the strongest predictors of poor health outcomes. Community-based governance may be therapeutically important.',type:'warn'});
+      if(c.life_financial==='crisis')notes.push({text:'<strong>Financial crisis</strong> is a medical-grade stressor. The Lens will focus exclusively on zero-cost interventions.',type:'warn'});
+      else if(c.life_financial==='strained')notes.push({text:'<strong>Financial strain</strong> is a chronic stressor. The Lens prioritizes free and low-cost interventions first.',type:'warn'});
+      break;
+    case 5: // Energy & Recovery
+      if(s.energy&&s.energy<=3)notes.push({text:'Your energy level suggests <strong>significant metabolic friction</strong>. The Lens will look for upstream causes in your lab data \u2014 thyroid, iron, sleep architecture.',type:'warn'});
+      if(s.sleep&&s.sleep<=3)notes.push({text:'<strong>Poor sleep quality</strong> cascades across every domain. This is often the highest-leverage intervention point.',type:'warn'});
+      if(s.recovery&&s.recovery<=3)notes.push({text:'<strong>Slow recovery</strong> signals autonomic imbalance. HRV data would sharpen this picture significantly.',type:''});
+      if(s.fatigue==='always')notes.push({text:'<strong>Constant fatigue</strong> is not normal. This often reflects an upstream metabolic driver \u2014 thyroid, iron, sleep apnea, or insulin dysregulation.',type:'warn'});
+      if(s.exercise==='none')notes.push({text:'No regular exercise means your structural and energy domains rely entirely on lab data for scoring. Even light movement shifts these domains meaningfully.',type:''});
+      break;
+    case 6: // Stress & Mood
+      if(s.stress&&s.stress>=8)notes.push({text:'<strong>High perceived stress</strong> directly elevates cortisol and undermines recovery, sleep, and metabolic function. The Lens will weight your stress domain heavily.',type:'warn'});
+      if(s.mood&&s.mood<=3)notes.push({text:'<strong>Mood instability</strong> often reflects autonomic dysregulation. HRV and cortisol data would contextualize this significantly.',type:''});
+      if(s.sleepOnset==='difficult')notes.push({text:'Difficulty falling asleep (<strong>30+ minutes</strong>) is a stress-axis signal. This directly affects sleep architecture and next-day recovery.',type:''});
+      break;
+    case 7: // Appetite & Cravings
+      if(s.cravings&&s.cravings>=8)notes.push({text:'<strong>Intense cravings</strong> are a hallmark of insulin dysregulation \u2014 the body signaling glucose instability. A1c and fasting insulin will clarify.',type:'warn'});
+      if(s.postmeal&&s.postmeal>=8)notes.push({text:'<strong>Frequent post-meal crashes</strong> strongly suggest glycemic volatility. A1c and fasting insulin are critical for this domain.',type:'warn'});
+      if(s.hunger==='constant')notes.push({text:'<strong>Constant hunger</strong> suggests your body is not efficiently partitioning energy. This is a core insulin regulation signal.',type:''});
+      break;
+    case 8: // Body & Movement
+      if(s.strength==='declining')notes.push({text:'<strong>Declining strength</strong> is an early signal of lean mass loss \u2014 the most underappreciated metabolic risk factor.',type:'warn'});
+      if(s.bodyChange==='gaining')notes.push({text:'<strong>Fat gain</strong>, especially visceral, drives insulin resistance and inflammatory burden simultaneously.',type:'warn'});
+      if(s.jointPain==='often')notes.push({text:'<strong>Frequent joint pain</strong> may reflect systemic inflammation. hs-CRP would help differentiate inflammatory from mechanical causes.',type:''});
+      break;
+    case 9: { // Vitals
+      const r=computeAll();
+      if(r.sc.sys&&r.sc.sys.s<60)notes.push({text:`Systolic BP <strong>${S.obj.sys} mmHg \u2014 ${r.sc.sys.l}</strong>. Blood pressure is a primary inflammatory domain marker.`,type:'warn'});
+      if(r.bmi)notes.push({text:`Calculated BMI: <strong>${r.bmi.toFixed(1)}</strong>. ${r.bmi>30?'BMI above 30 elevates insulin and inflammatory domain urgency.':r.bmi>25?'BMI 25\u201330 is a moderate structural signal. Body composition data would sharpen this.':'BMI in normal range. Body composition data would add resolution.'}`,type:r.bmi>30?'warn':''});
+      if(r.whr){const sex=S.client.sexAtBirth||'female';const threshold=sex==='male'?0.9:0.8;
+        notes.push({text:`Waist:Hip ratio: <strong>${r.whr.toFixed(2)}</strong>. ${r.whr>threshold?'Elevated ratio suggests central fat distribution \u2014 a stronger metabolic risk signal than BMI alone.':'Ratio in healthy range.'}`,type:r.whr>threshold?'warn':''});}
+      break;
+    }
+    case 10: { // Glucose
+      const r=computeAll();
+      if(r.sc.a1c&&r.sc.a1c.s<=40)notes.push({text:`A1c <strong>${S.obj.a1c}% \u2014 ${r.sc.a1c.l}</strong>. ${r.sc.a1c.s<=18?'Diabetic-range A1c carries the highest insulin domain urgency.':'Prediabetic-range A1c. Fasting insulin would reveal whether this is early or advanced insulin resistance.'}`,type:'alert'});
+      else if(r.sc.a1c&&r.sc.a1c.s<=65)notes.push({text:`A1c <strong>${S.obj.a1c}% \u2014 ${r.sc.a1c.l}</strong>. Not prediabetic, but trending. The Lens watches A1c trajectory closely.`,type:'warn'});
+      if(r.sc.fg&&r.sc.fg.s<=42)notes.push({text:`Fasting glucose <strong>${S.obj.fg} mg/dL \u2014 ${r.sc.fg.l}</strong>. Impaired fasting glucose is an early insulin regulation signal.`,type:'warn'});
+      break;
+    }
+    case 11: { // Lipids
+      const r=computeAll();
+      if(r.ths&&r.ths.s<=38)notes.push({text:`Trig:HDL ratio <strong>${r.ths.l}</strong>. This is one of the most underused screening ratios for insulin resistance.`,type:'warn'});
+      if(r.sc.ldl&&r.sc.ldl.s<=30)notes.push({text:`LDL <strong>${S.obj.ldl} mg/dL \u2014 ${r.sc.ldl.l}</strong>. ApoB testing would clarify whether particle count matches concentration.`,type:'warn'});
+      if(r.sc.hdl&&r.sc.hdl.s<=50)notes.push({text:`HDL <strong>${S.obj.hdl} mg/dL \u2014 ${r.sc.hdl.l}</strong>. Low HDL reduces cardiovascular protection and worsens the Trig:HDL ratio.`,type:''});
+      break;
+    }
+    case 12: { // Extended Labs
+      const r=computeAll();
+      if(r.sc.hsCRP&&r.sc.hsCRP.s<=22)notes.push({text:`hs-CRP <strong>${S.obj.hsCRP} mg/L \u2014 ${r.sc.hsCRP.l}</strong>. Elevated CRP measures active systemic inflammation \u2014 the fire, not just the fuel.`,type:'warn'});
+      if(r.sc.tsh&&r.sc.tsh.s<=30)notes.push({text:`TSH <strong>${S.obj.tsh} mIU/L \u2014 ${r.sc.tsh.l}</strong>. Abnormal thyroid function affects metabolic rate, energy, and body composition.`,type:'warn'});
+      if(r.sc.vitD&&r.sc.vitD.s<=45)notes.push({text:`Vitamin D <strong>${S.obj.vitD} ng/mL \u2014 ${r.sc.vitD.l}</strong>. ${r.sc.vitD.s<=18?'Deficiency affects bone density, immune function, and energy.':'Insufficiency is common but correctable.'}`,type:r.sc.vitD.s<=18?'warn':''});
+      if(r.sc.hgb&&r.sc.hgb.s<90)notes.push({text:`Hemoglobin <strong>${S.obj.hgb} g/dL \u2014 ${r.sc.hgb.l}</strong>. Anemia directly drives fatigue and reduces oxygen-carrying capacity.`,type:'warn'});
+      break;
+    }
+    case 13: { // Body Comp
+      const r=computeAll();
+      if(r.sc.bodyFat&&r.sc.bodyFat.s<=40)notes.push({text:`Body fat <strong>${S.obj.bodyFat}% \u2014 ${r.sc.bodyFat.l}</strong>. ${S.obj.bodyCompSource==='DEXA Scan'||S.obj.bodyCompSource==='Bod Pod'?'Clinical-grade measurement.':'Consumer scale estimate \u2014 useful for trends but not precise.'}`,type:'warn'});
+      if(r.sc.visceralFat&&r.sc.visceralFat.s<=50)notes.push({text:`Visceral fat rating <strong>${S.obj.visceralFat} \u2014 ${r.sc.visceralFat.l}</strong>. Visceral fat drives insulin resistance and inflammation independently of total body fat.`,type:'warn'});
+      break;
+    }
+    case 14: { // Wearables
+      const r=computeAll();
+      if(r.sc.hrv&&r.sc.hrv.s<=35)notes.push({text:`HRV <strong>${S.obj.hrv} ms \u2014 ${r.sc.hrv.l}</strong>. Low HRV signals autonomic imbalance and reduced stress resilience. This is a primary stress domain marker.`,type:'warn'});
+      if(r.sc.avgSleep&&r.sc.avgSleep.s<=48)notes.push({text:`Average sleep <strong>${S.obj.avgSleep} hrs \u2014 ${r.sc.avgSleep.l}</strong>. Short sleep cascades across every domain.`,type:'warn'});
+      if(r.sc.vo2max)notes.push({text:`VO2 Max <strong>${S.obj.vo2max} mL/kg/min \u2014 ${r.sc.vo2max.l}</strong>. ${r.sc.vo2max.s>=82?'Strong cardiorespiratory fitness.':'This is the single best predictor of all-cause mortality.'}`,type:r.sc.vo2max.s<=38?'warn':''});
+      break;
+    }
+    case 15: // Diagnostics
+      break;
+  }
+  return notes;
+}
+
+const GUIDED_TOTAL=16;
+
+function guidedStepHTML(idx){
+  const c=S.ctx,s=S.subj,o=S.obj;
+  switch(idx){
+    case 0: return {
+      title:'Tell us about yourself',
+      sub:'This helps the Lens calibrate scoring ranges for sex, age, and population-specific markers.',
+      skip:false,
+      html:`
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="client-field"><label>First Name</label>
+            <input type="text" value="${S.client.name}" placeholder="" oninput="S.client.name=this.value"></div>
+          <div class="client-field"><label>Last Name</label>
+            <input type="text" value="${S.client.lastName}" placeholder="" oninput="S.client.lastName=this.value"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px">
+          <div class="client-field"><label>Age</label>
+            <input type="number" value="${S.client.age}" placeholder="" oninput="S.client.age=this.value" onblur="updateGuidedCommentary()"></div>
+          <div class="client-field"><label>Sex at Birth</label>
+            <select onchange="S.client.sexAtBirth=this.value;updateGuidedCommentary()" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+              <option value="female" ${S.client.sexAtBirth==='female'?'selected':''}>Female</option>
+              <option value="male" ${S.client.sexAtBirth==='male'?'selected':''}>Male</option>
+              <option value="intersex" ${S.client.sexAtBirth==='intersex'?'selected':''}>Intersex</option>
+            </select></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+          <div class="client-field"><label>Gender Identity <span style="color:var(--gry);font-weight:400">(optional)</span></label>
+            <select onchange="S.client.gender=this.value" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+              <option value="" ${!S.client.gender?'selected':''}>Prefer not to say</option>
+              <option value="woman" ${S.client.gender==='woman'?'selected':''}>Woman</option>
+              <option value="man" ${S.client.gender==='man'?'selected':''}>Man</option>
+              <option value="nonbinary" ${S.client.gender==='nonbinary'?'selected':''}>Non-binary</option>
+              <option value="other" ${S.client.gender==='other'?'selected':''}>Other</option>
+            </select></div>
+          <div class="client-field"><label>Pronouns <span style="color:var(--gry);font-weight:400">(optional)</span></label>
+            <select onchange="S.client.pronouns=this.value" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+              <option value="" ${!S.client.pronouns?'selected':''}>Prefer not to say</option>
+              <option value="she/her" ${S.client.pronouns==='she/her'?'selected':''}>She/Her</option>
+              <option value="he/him" ${S.client.pronouns==='he/him'?'selected':''}>He/Him</option>
+              <option value="they/them" ${S.client.pronouns==='they/them'?'selected':''}>They/Them</option>
+            </select></div>
+        </div>
+        <div style="margin-top:10px">
+          <label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:6px;font-family:var(--sans)">Race / Ethnicity <span style="color:var(--gry);font-weight:400">(select all that apply)</span></label>
+          <div class="chk-grid">
+            ${['Black / African American','White / European','Hispanic / Latino','Asian','Native American / Alaska Native','Native Hawaiian / Pacific Islander','Middle Eastern / North African','Multiracial / Other'].map(r=>
+              `<label class="chk-item"><input type="checkbox" ${S.client.race.includes(r)?'checked':''} onchange="toggleRace('${r}',this.checked)"><span class="cb"></span><span class="cl">${r}</span></label>`
+            ).join('')}
+          </div>
+        </div>`
+    };
+    case 1: return {
+      title:'Does anyone in your immediate family have any of these conditions?',
+      sub:'Parents or siblings. Family history activates governance modifiers that change how the Lens reads your data.',
+      skip:true,skipLabel:'None of these',
+      html:`<div class="chk-grid">
+        ${gChk('fam_diabetes','Type 2 Diabetes')}
+        ${gChk('fam_heart','Heart Attack \u2014 male < 55 or female < 65')}
+        ${gChk('fam_stroke','Stroke')}
+        ${gChk('fam_htn','High Blood Pressure')}
+        ${gChk('fam_cancer','Cancer')}
+        ${gChk('fam_obesity','Obesity')}
+      </div>`
+    };
+    case 2: {
+      const showMeno=S.client.sexAtBirth!=='male';
+      return {
+        title:'What about your own health history?',
+        sub:'Current or past diagnoses. These activate governance modifiers that elevate urgency in specific domains.',
+        skip:true,skipLabel:'None of these',
+        html:`<div class="chk-grid">
+          ${gChk('hx_prediabetes','Prediabetes')}
+          ${gChk('hx_diabetes','Type 2 Diabetes')}
+          ${gChk('hx_gest_diabetes','Gestational Diabetes')}
+          ${gChk('hx_gest_htn','Gestational Hypertension')}
+          ${gChk('hx_htn','High Blood Pressure')}
+          ${gChk('hx_cholesterol','High Cholesterol')}
+          ${gChk('hx_stroke','Stroke')}
+          ${gChk('hx_mi','Heart Attack')}
+          ${gChk('hx_ckd','Chronic Kidney Disease')}
+          ${gChk('hx_pcos','PCOS')}
+          ${gChk('hx_thyroid','Thyroid Disorder')}
+          ${gChk('hx_autoimmune','Autoimmune Condition')}
+          ${gChk('hx_depression','Depression / Anxiety')}
+          ${gChk('hx_sleep_apnea','Sleep Apnea')}
+        </div>
+        ${showMeno?`<div style="margin-top:12px">
+          <label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:3px;font-family:var(--sans)">Menopause Status</label>
+          <select onchange="S.ctx.hx_menopause=this.value;updateGuidedCommentary()" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+            <option value="pre" ${c.hx_menopause==='pre'?'selected':''}>Pre-menopausal</option>
+            <option value="peri" ${c.hx_menopause==='peri'?'selected':''}>Perimenopausal</option>
+            <option value="post" ${c.hx_menopause==='post'?'selected':''}>Post-menopausal</option>
+          </select>
+        </div>`:''}`
+      };
+    }
+    case 3: return {
+      title:'What medications or supplements are you currently taking?',
+      sub:'This helps the Lens distinguish managed from native baselines. We do not evaluate or recommend changes to prescribed medications.',
+      skip:true,skipLabel:'None of these',
+      html:`<div class="chk-grid">
+        ${gChk('med_statin','Lipid-Lowering Medication')}
+        ${gChk('med_bp','Blood Pressure Medication')}
+        ${gChk('med_thyroid','Thyroid Medication')}
+        ${gChk('med_diabetes','Diabetes Medication')}
+        ${gChk('med_glp1','GLP-1 / GIP Agonist')}
+        ${gChk('med_hormone','Hormone Therapy')}
+        ${gChk('med_psych','Psychiatric Medication')}
+        ${gChk('med_sup_vitd','Vitamin D Supplement')}
+        ${gChk('med_sup_iron','Iron Supplement')}
+        ${gChk('med_sup_omega3','Omega-3 / Fish Oil')}
+      </div>`
+    };
+    case 4: return {
+      title:'Tell us about your life context',
+      sub:'Social connection and financial context are among the strongest predictors of health outcomes. This shapes how the Lens prioritizes interventions.',
+      skip:false,
+      html:`<div class="grid">
+        <div>
+          <label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:3px;font-family:var(--sans)">Social Connection</label>
+          <select onchange="S.ctx.life_isolation=this.value;updateGuidedCommentary()" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+            <option value="connected" ${c.life_isolation==='connected'?'selected':''}>Well connected</option>
+            <option value="some" ${c.life_isolation==='some'?'selected':''}>Some connection</option>
+            <option value="limited" ${c.life_isolation==='limited'?'selected':''}>Limited</option>
+            <option value="isolated" ${c.life_isolation==='isolated'?'selected':''}>Isolated</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:3px;font-family:var(--sans)">Financial Context</label>
+          <select onchange="S.ctx.life_financial=this.value;updateGuidedCommentary()" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+            <option value="stable" ${c.life_financial==='stable'?'selected':''}>Stable</option>
+            <option value="mindful" ${c.life_financial==='mindful'?'selected':''}>Mindful</option>
+            <option value="strained" ${c.life_financial==='strained'?'selected':''}>Strained</option>
+            <option value="crisis" ${c.life_financial==='crisis'?'selected':''}>In crisis</option>
+          </select>
+        </div>
+      </div>`
+    };
+    case 5: return {
+      title:'How is your energy and recovery?',
+      sub:'These subjective signals feed directly into your Energy Capacity domain score.',
+      skip:true,skipLabel:'Skip for now',
+      html:`${gSlider('energy','Overall Energy Level','Exhausted','Energized')}
+        ${gSlider('sleep','Sleep Quality','Terrible','Excellent')}
+        ${gSlider('recovery','Recovery Capacity','Very slow','Bounce back fast')}
+        ${gSel('exercise','Exercise Frequency',{none:'No regular exercise',light:'Light (1\u20132x/wk)',moderate:'Moderate (3\u20134x/wk)',intense:'Intense (5+/wk)'})}
+        ${gSel('fatigue','Fatigue',{always:'Constant',often:'Frequent',sometimes:'Sometimes',rarely:'Rarely'})}`
+    };
+    case 6: return {
+      title:'How are your stress levels and mood?',
+      sub:'Stress and mood directly shape your Stress Modulation domain.',
+      skip:true,skipLabel:'Skip for now',
+      html:`${gSlider('stress','Perceived Stress','Very low','Overwhelming')}
+        ${gSlider('mood','Mood Stability','Unpredictable','Very stable')}
+        ${gSel('sleepOnset','Time to Fall Asleep',{difficult:'30+ min',delayed:'15\u201330 min',normal:'5\u201315 min',easy:'Under 5 min'})}`
+    };
+    case 7: return {
+      title:'What about appetite and cravings?',
+      sub:'Hunger patterns and post-meal energy are core Insulin Regulation signals.',
+      skip:true,skipLabel:'Skip for now',
+      html:`${gSlider('cravings','Cravings Intensity','Rare','Constant')}
+        ${gSlider('postmeal','Post-Meal Energy Crashes','Never','After every meal')}
+        ${gSel('hunger','Hunger Pattern',{constant:'Constant',frequent:'Every 2\u20133 hrs',moderate:'3\u20134 hr intervals',controlled:'Rarely urgent'})}`
+    };
+    case 8: return {
+      title:'How is your body responding?',
+      sub:'Strength trends and body changes feed your Structural Integrity domain.',
+      skip:true,skipLabel:'Skip for now',
+      html:`${gSel('strength','Strength Trend',{declining:'Declining',stable:'Stable',building:'Building'})}
+        ${gSel('bodyChange','Body Composition Trend',{gaining:'Gaining fat',fluctuating:'Fluctuating',stable:'Stable',recomposing:'Losing fat / building muscle'})}
+        ${gSel('jointPain','Joint Pain / Stiffness',{often:'Often',sometimes:'Sometimes',rarely:'Rarely',never:'Never'})}`
+    };
+    case 9: {
+      const r=computeAll();
+      return {
+        title:'Enter your vitals',
+        sub:'Blood pressure, heart rate, and measurements. Enter what you have \u2014 the Lens adapts.',
+        skip:true,skipLabel:'I don\u2019t have these',
+        html:`${gFld('sys','Systolic BP','mmHg','120')}${gFld('dia','Diastolic BP','mmHg','80')}
+          ${gFld('hr','Resting Heart Rate','bpm','72')}
+          <div class="field-row">${gFld('ht','Height','inches','66')}${gFld('wt','Weight','lbs','150')}</div>
+          ${r.bmi?`<div style="font-size:11px;color:var(--acc2);margin:-4px 0 6px">BMI: <strong>${r.bmi.toFixed(1)}</strong></div>`:''}
+          <div class="field-row">${gFld('waist','Waist','inches','')}${gFld('hip','Hip','inches','')}</div>
+          ${r.whr?`<div style="font-size:11px;color:var(--acc2);margin:-4px 0 6px">Waist:Hip: <strong>${r.whr.toFixed(2)}</strong></div>`:''}`
+      };
+    }
+    case 10: return {
+      title:'Glucose regulation markers',
+      sub:'A1c and fasting glucose are the primary Insulin Regulation domain markers.',
+      skip:true,skipLabel:'I don\u2019t have these',
+      html:`${gFld('a1c','HbA1c','%','5.4')}${gFld('fg','Fasting Glucose','mg/dL','90')}
+        ${gFld('rg','Random Glucose','mg/dL','')}`
+    };
+    case 11: return {
+      title:'Cholesterol and lipids',
+      sub:'Your lipid panel feeds the Inflammatory Burden and Insulin Regulation domains.',
+      skip:true,skipLabel:'I don\u2019t have these',
+      html:`${gFld('tc','Total Cholesterol','mg/dL','200')}${gFld('ldl','LDL','mg/dL','100')}
+        ${gFld('hdl','HDL','mg/dL','55')}${gFld('trig','Triglycerides','mg/dL','120')}
+        ${(()=>{const r=computeAll();return r.ths?`<div style="font-size:11px;color:${r.ths.c};margin:-4px 0 6px">Trig:HDL \u2014 ${r.ths.l}</div>`:''})()}`
+    };
+    case 12: return {
+      title:'Additional lab markers',
+      sub:'These sharpen domain resolution significantly. Enter any you have.',
+      skip:true,skipLabel:'I don\u2019t have these',
+      html:`${gFld('hgb','Hemoglobin','g/dL','13.0')}
+        ${gFld('tsh','TSH','mIU/L','')}
+        ${gFld('alt','ALT','U/L','')}
+        ${gFld('vitD','Vitamin D (25-OH)','ng/mL','')}
+        ${gFld('hsCRP','hs-CRP','mg/L','')}
+        ${gFld('fastIns','Fasting Insulin','\u03BCIU/mL','')}
+        ${gFld('cortisol','AM Cortisol','\u03BCg/dL','')}`
+    };
+    case 13: return {
+      title:'Body composition data',
+      sub:'Body fat and lean mass are far more precise than BMI alone.',
+      skip:true,skipLabel:'I don\u2019t have these',
+      html:`<div style="margin-bottom:12px">
+        <label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:6px;font-family:var(--sans)">Measurement Source</label>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          ${['DEXA Scan','InBody','Withings','Renpho','Garmin','Eufy','Bod Pod','Other Scale','Unknown'].map(src=>
+            `<div onclick="gPickSource('bodyCompSource','${src}',this)" style="padding:6px 12px;border-radius:6px;font-size:11px;cursor:pointer;transition:all 0.15s;font-family:var(--sans);
+              ${o.bodyCompSource===src?'background:var(--lav);color:var(--white);border:1px solid var(--lav)':'background:var(--navy2);color:var(--gry);border:1px solid var(--border)'}">${src}</div>`
+          ).join('')}
+        </div>
+        <div style="font-size:9px;color:var(--gry);margin-top:6px;line-height:1.5">DEXA and Bod Pod are clinical-grade. Consumer scales estimate via bioimpedance.</div>
+      </div>
+      <div class="field-row">${gFld('bodyFat','Body Fat','%','')}${gFld('leanMass','Lean Mass','%','')}</div>
+      <div class="field-row">${gFld('musclePct','Muscle Mass','%','')}${gFld('muscleLbs','Muscle Mass','lbs','')}</div>
+      <div class="field-row">${gFld('bodyWater','Body Water','%','')}${gFld('visceralFat','Visceral Fat','rating','')}</div>
+      <div class="field-row">${gFld('boneMass','Bone Mass','lbs','')}${gFld('bonePct','Bone Mass','%','')}</div>`
+    };
+    case 14: return {
+      title:'Wearable device data',
+      sub:'HRV, sleep, and VO2 max transform domain resolution. Use 7\u201330 day averages.',
+      skip:true,skipLabel:'I don\u2019t have a wearable',
+      html:`<div style="margin-bottom:12px">
+        <label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:6px;font-family:var(--sans)">Device Source</label>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          ${['Apple Watch','Oura Ring','Whoop','Garmin','Fitbit','Samsung Galaxy','COROS','Polar','Other'].map(src=>
+            `<div onclick="gPickSource('wearableSource','${src}',this)" style="padding:6px 12px;border-radius:6px;font-size:11px;cursor:pointer;transition:all 0.15s;font-family:var(--sans);
+              ${o.wearableSource===src?'background:var(--lav);color:var(--white);border:1px solid var(--lav)':'background:var(--navy2);color:var(--gry);border:1px solid var(--border)'}">${src}</div>`
+          ).join('')}
+        </div>
+      </div>
+      <div class="field-row">${gFld('hrv','HRV (avg)','ms','')}</div>
+      <div class="field-row">${gFld('avgSleep','Avg Sleep','hrs','')}${gFld('deepSleep','Deep Sleep','%','')}</div>
+      <div class="field-row">${gFld('vo2max','VO2 Max (est)','mL/kg/min','')}${gFld('respRate','Respiratory Rate','br/min','')}</div>`
+    };
+    case 15: return {
+      title:'Have you completed any of these tests in the past 12 months?',
+      sub:'Does not affect scores but will be noted in your report.',
+      skip:true,skipLabel:'None of these',
+      html:`<div class="chk-grid">
+        ${gDchk('dexa','DEXA Scan')}
+        ${gDchk('ekg','EKG / ECG')}
+        ${gDchk('echo','Echocardiogram')}
+        ${gDchk('sleep_study','Sleep Study')}
+        ${gDchk('cgm','CGM Data')}
+        ${gDchk('advanced_lipid','Advanced Lipid Panel')}
+        ${gDchk('cac','Coronary Calcium Score')}
+        ${gDchk('vo2','VO2 Max Testing')}
+        ${gDchk('hormone','Hormone Panel')}
+        ${gDchk('genetic','Genetic Testing')}
+        ${gDchk('microbiome','Gut Microbiome')}
+        ${gDchk('food_sensitivity','Food Sensitivity')}
+        ${gDchk('mri','MRI')}
+        ${gDchk('ultrasound','Ultrasound')}
+      </div>`
+    };
+  }
+  return {title:'',sub:'',html:'',skip:false};
+}
+
+// Guided mode helper renderers
+function gChk(k,label){
+  const on=S.ctx[k];
+  return `<div class="chk-item ${on?'on':''}" onclick="gToggleCtx('${k}',this)">
+    <input type="checkbox" ${on?'checked':''} onclick="event.stopPropagation();gToggleCtx('${k}',this.parentElement)">
+    <div><div class="cl">${label}</div></div></div>`;
+}
+function gDchk(k,label){
+  const on=S.diag[k];
+  return `<div class="chk-item ${on?'on':''}" style="padding:6px 10px" onclick="gToggleDiag('${k}',this)">
+    <input type="checkbox" ${on?'checked':''} onclick="event.stopPropagation();gToggleDiag('${k}',this.parentElement)">
+    <div><div class="cl">${label}</div></div></div>`;
+}
+function gSlider(k,label,lo,hi){
+  const v=S.subj[k];
+  return `<div class="field"><label>${label}</label>
+    <div class="slider-labels" style="display:flex;justify-content:space-between;margin-top:6px;margin-bottom:4px">
+      <span style="font-size:9px;color:var(--gry)">${lo||''}</span>
+      <span style="font-size:9px;color:var(--gry)">${hi||''}</span>
+    </div>
+    <div class="slider-nums" style="display:flex;align-items:center;gap:4px;justify-content:center">
+      ${[1,2,3,4,5,6,7,8,9,10].map(n=>
+        `<div onclick="gSliderPick('${k}',${n},this)" style="width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:var(--sans);
+          ${v===n?'background:var(--lav);color:var(--white);border:1px solid var(--lav)':'background:var(--navy2);color:var(--gry);border:1px solid var(--border)'}">${n}</div>`
+      ).join('')}
+    </div></div>`;
+}
+function gSel(k,label,opts){
+  const v=S.subj[k];
+  return `<div class="field"><label>${label}</label><select onchange="S.subj['${k}']=this.value;updateGuidedCommentary()">
+    ${v===''?'<option value="" selected disabled>\u2014</option>':''}
+    ${Object.entries(opts).map(([kk,l])=>`<option value="${kk}" ${v===kk?'selected':''}>${l}</option>`).join('')}</select></div>`;
+}
+function gFld(k,label,unit,ph){
+  return `<div class="field"><label>${label} <span style="color:var(--gry);font-weight:400">${unit}</span></label>
+    <input type="number" step="any" value="${S.obj[k]}" placeholder="${ph||''}"
+      oninput="gFieldInput('${k}',this.value)" onblur="gFieldBlur()"></div>`;
+}
+
+// ═══════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════
 
 function render(){
   const r=computeAll();
   const st=gSt(r.idx);
-  const filled=Object.values(S.obj).filter(v=>v!=='').length;
-  const aL=r.aC>=75?4:r.aC>=55?3:r.aC>=35?2:1;
+  const filled=Object.entries(S.obj).filter(([k,v])=>v!==''&&k!=='bodyCompSource'&&k!=='wearableSource').length;
+  const subjTouched=Object.values(S.subj).filter(v=>v!==0&&v!=='').length;
+  const ctxTouched=Object.entries(S.ctx).filter(([k,v])=>v===true).length;
+  const hasInput=filled>0||subjTouched>0||ctxTouched>0||S.client.name||S.client.age;
+  const aL=r.aC>=75?4:r.aC>=55?3:r.aC>=35?2:r.aC>0?1:0;
 
   const DD=[
     {key:'energy',name:'Energy Capacity',i:'01',desc:'Metabolic throughput and adaptive flexibility.',mk:'energy',
@@ -389,423 +926,501 @@ function render(){
 
   let h='';
 
+  // ═══ WELCOME ═══
   if(S.tab==='welcome'){
-    h+=`<div class="welcome">
-      <div style="margin-bottom:30px;padding-top:20px">
+    h+=`<div class="welcome" style="padding-top:18vh">
+      <div style="margin-bottom:48px">
+        <div style="width:160px;height:160px;margin:0 auto 28px;position:relative">
+          <svg viewBox="0 0 280 280" style="width:100%;height:100%">
+            <defs><radialGradient id="cg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="var(--acc)" stop-opacity="0.15"/><stop offset="100%" stop-color="var(--acc)" stop-opacity="0"/></radialGradient></defs>
+            <circle cx="140" cy="140" r="100" fill="url(#cg)"/>
+            <ellipse cx="140" cy="140" rx="90" ry="90" fill="none" stroke="var(--acc)" stroke-width="0.5" opacity="0.25"/>
+            <ellipse cx="140" cy="140" rx="88" ry="35" fill="none" stroke="var(--acc)" stroke-width="0.6" opacity="0.2"/>
+            <ellipse cx="140" cy="140" rx="85" ry="40" fill="none" stroke="var(--acc2)" stroke-width="0.5" opacity="0.15" transform="rotate(60 140 140)"/>
+            <ellipse cx="140" cy="140" rx="80" ry="32" fill="none" stroke="var(--acc)" stroke-width="0.4" opacity="0.12" transform="rotate(-30 140 140)"/>
+            <circle cx="140" cy="140" r="2.5" fill="var(--acc)" opacity="0.7"/>
+            <circle cx="230" cy="140" r="1.5" fill="var(--acc)" opacity="0.35"/>
+            <circle cx="50" cy="140" r="1.5" fill="var(--acc)" opacity="0.35"/>
+            <circle cx="140" cy="50" r="1.5" fill="var(--acc)" opacity="0.35"/>
+            <circle cx="140" cy="230" r="1.5" fill="var(--acc)" opacity="0.35"/>
+            <circle cx="204" cy="76" r="1.5" fill="var(--acc)" opacity="0.35"/>
+          </svg>
+        </div>
         <div class="w-logo">\u00C9CIRE HEALTH\u2122</div>
-        <h2>The Alignment Lens\u2122</h2>
-        <div class="w-tag">Physician-designed metabolic governance</div>
+        <h2 style="margin-bottom:10px">The Alignment Lens\u2122</h2>
+        <div class="w-tag">Physician-designed metabolic assessment</div>
       </div>
-      <div class="w-intro">
-        This assessment measures your metabolic strategy across five domains: Energy Capacity, Structural Integrity, Insulin Regulation, Inflammatory Burden, and Stress Modulation. Together, they produce your Alignment Index\u2122 \u2014 a single score reflecting how well your body\u2019s systems are working together.
+      <div style="max-width:400px;margin:0 auto 48px;font-size:16px;color:var(--txt);line-height:1.8;font-family:var(--serif);font-weight:300">
+        Five domains. One score. A clear picture of where your metabolic health is heading.
       </div>
-      <div class="w-intro" style="margin-bottom:28px">
-        This is not a diet quiz or a wellness score. It is a governance assessment \u2014 designed by a physician to read the upstream metabolic conditions that drive disease risk, years before they show up on a standard physical.
+      <button class="w-begin" onclick="sT('prep')">Begin</button>
+      <div class="w-time">10\u201315 minutes \u00B7 Your data stays on your device</div>
+      <div style="margin-top:20px">
+        <span onclick="S.showAbout=!S.showAbout;render()" style="font-size:11px;color:var(--acc2);cursor:pointer;font-family:var(--sans);letter-spacing:0.5px;opacity:0.7;transition:opacity 0.2s"
+          onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">${S.showAbout?'\u25BE':'\u25B8'} About the Lens</span>
       </div>
-      <div style="text-align:center;margin-bottom:28px;padding:14px 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-        <span style="font-size:14px;color:var(--acc2);font-style:italic;line-height:1.6">Surveillance medicine reads snapshots, binary normal/abnormal.</span><br>
-        <span style="font-size:14px;color:var(--acc2);font-style:italic;line-height:1.6">The Lens reads trajectory \u2014 velocity \u2014 interdependencies.</span>
-      </div>
-      <div class="w-prep">
-        <h4>WHAT YOU\u2019LL NEED</h4>
-        <div class="w-item"><span class="w-icon">\u2713</span><span>Your most recent bloodwork results (lipid panel, A1c, glucose, CBC)</span></div>
-        <div class="w-opt">Don\u2019t have labs? You can still complete the assessment \u2014 the Lens will score what it can see and tell you exactly which labs to request.</div>
-        <div class="w-item"><span class="w-icon">\u2713</span><span>Height, weight, and waist measurement. Body composition data if your scale provides it (body fat %, lean mass %).</span></div>
-        <div class="w-item"><span class="w-icon">\u2713</span><span>Blood pressure and resting heart rate (if known)</span></div>
-        <div class="w-item"><span class="w-icon">\u2713</span><span>Wearable data if you have it \u2014 HRV, sleep stats, VO2 max (Apple Watch, Oura, Whoop)</span></div>
-        <div class="w-item"><span class="w-icon">\u2713</span><span>About 10\u201315 minutes</span></div>
-      </div>
-      <div class="w-steps">
-        <div class="w-step"><div class="w-sn">1</div><div class="w-st">Alignment Context</div><div class="w-sd">Health history, medications, and life context that shape how the Lens reads your data.</div></div>
-        <div class="w-step"><div class="w-sn">2</div><div class="w-st">Subjective Intake</div><div class="w-sd">How you actually feel \u2014 energy, sleep, stress, cravings, and recovery.</div></div>
-        <div class="w-step"><div class="w-sn">3</div><div class="w-st">Objective Data</div><div class="w-sd">Vitals and lab values. Enter what you have \u2014 the Lens adapts to available data.</div></div>
-        <div class="w-step"><div class="w-sn">4</div><div class="w-st">Domain Scores</div><div class="w-sd">Your five domain scores, Alignment Index, and governance postures \u2014 computed in real time.</div></div>
-      </div>
-      <div class="w-prep" style="margin-bottom:28px">
-        <h4>WHAT YOU\u2019LL RECEIVE</h4>
-        <div style="font-size:13px;color:var(--txt);line-height:1.7;margin-bottom:16px">
-          After you complete this assessment, your data will be analyzed using \u00C9cire\u2019s clinical analytics to generate the following:
+      ${S.showAbout?`
+      <div style="max-width:480px;margin:20px auto 0;text-align:left;animation:fadeUp 0.3s ease">
+        <div style="font-size:13px;color:var(--txt);line-height:1.8;margin-bottom:16px;font-family:var(--sans)">
+          The Alignment Lens measures your metabolic strategy across five domains: Energy Capacity, Structural Integrity, Insulin Regulation, Inflammatory Burden, and Stress Modulation. Together, they produce your Alignment Index\u2122 \u2014 a single score reflecting how well your body\u2019s systems are working together.
         </div>
-        <div style="margin-bottom:16px">
-          <div style="font-size:13px;font-weight:700;color:var(--acc2);margin-bottom:6px">Your Alignment Report</div>
-          <div style="font-size:12px;color:var(--txt);line-height:1.6;margin-bottom:10px;padding-left:4px">A physician-level governance read of your metabolic strategy. Here\u2019s what it sees that standard bloodwork alone does not:</div>
-          <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">Trajectory, not just position.</strong> A lab value that\u2019s \u201Cnormal\u201D today may be marching toward a threshold. The Lens reads velocity \u2014 where your numbers are heading, not just where they sit.</span></div>
-          <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">Cross-domain interactions.</strong> Your domains don\u2019t exist in isolation. A weakness in one can silently drag the others. The report shows how your domains are affecting each other.</span></div>
-          <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">The gaps that matter most.</strong> Not every missing lab is equal. The Lens identifies which single test or data point would most sharpen your picture \u2014 and why.</span></div>
-          <div class="w-item"><span class="w-icon">\u25B8</span><span><strong style="color:var(--txth)">The One Move.</strong> Every report identifies the single highest-leverage intervention that touches the most domains at once. Not a laundry list. One move to start governing.</span></div>
+        <div style="font-size:13px;color:var(--txt);line-height:1.8;margin-bottom:20px;font-family:var(--sans)">
+          This is not a diet quiz or a wellness score. It is a governance assessment \u2014 designed by a physician to read the upstream metabolic conditions that drive disease risk, years before they show up on a standard physical.
         </div>
-        <div style="margin-bottom:16px">
-          <div style="font-size:13px;font-weight:700;color:var(--acc2);margin-bottom:6px">Your Alignment Plan</div>
-          <div style="font-size:12px;color:var(--txt);line-height:1.6;padding-left:4px">Domain-specific recommendations, sequenced to compound and synergize across domains, so that each intervention enhances the results of the next. What to do first, what to test next, and what to protect.</div>
-        </div>
-        <div style="font-size:12px;color:var(--gry);line-height:1.6;padding:12px 14px;background:rgba(123,94,167,0.04);border:1px solid rgba(123,94,167,0.1);border-radius:6px">
-          Your Report will include a recommended governance level based on your domain scores and acuity. If you\u2019d like to discuss your results or explore ongoing implementation support, governance consultations are available through \u00C9cire Health.
+        <div style="font-size:11px;color:var(--gry);line-height:1.6;border-top:1px solid var(--border);padding-top:14px;text-align:center;font-family:var(--sans)">
+          The Lens is not a diagnosis. It\u2019s a governance read \u2014 designed to see what standard bloodwork alone does not, and to show you where one targeted move could shift everything.
         </div>
       </div>
-      <button class="w-begin" onclick="sT('context')">Begin Assessment</button>
-      <div class="w-time">Takes about 10\u201315 minutes \u00B7 No account required \u00B7 Your data stays on your device</div>
-      <div class="w-note">
-        \u00C9cire is a physician-designed metabolic governance system. This assessment is not medical advice, diagnosis, or treatment. It does not replace your physician. It reveals what your current strategy is producing \u2014 so you can govern it.
-        <br><br><span style="font-size:9px">\u00A9 ${new Date().getFullYear()} \u00C9cire, LLC and \u00C9cire Health, LLC. All rights reserved. The Alignment Lens\u2122 and all associated methodology, scoring, and intellectual property are proprietary and confidential. No reproduction or distribution without written consent.</span>
+      `:''}
+    </div>`;
+    A.innerHTML=h;
+    return;
+  }
+
+  // ═══ PREP (now with guided/advanced choice) ═══
+  if(S.tab==='prep'){
+    h+=`<div class="welcome" style="padding-top:16vh">
+      <div style="margin-bottom:40px">
+        <div class="w-logo">\u00C9CIRE HEALTH\u2122</div>
+        <h2 style="font-size:24px;margin-bottom:6px">Before you begin</h2>
+        <div class="w-tag" style="margin-bottom:0">Have nearby if available</div>
+      </div>
+      <div style="max-width:380px;margin:0 auto 40px;text-align:left">
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--acc);font-size:16px;flex-shrink:0">\u2713</span>
+          <span style="font-size:13px;color:var(--txt);line-height:1.5">Recent bloodwork <span style="color:var(--gry)">(lipid panel, A1c, glucose)</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--acc);font-size:16px;flex-shrink:0">\u2713</span>
+          <span style="font-size:13px;color:var(--txt);line-height:1.5">Height, weight, and waist measurement</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--acc);font-size:16px;flex-shrink:0">\u2713</span>
+          <span style="font-size:13px;color:var(--txt);line-height:1.5">Blood pressure and resting heart rate</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--acc);font-size:16px;flex-shrink:0">\u2713</span>
+          <span style="font-size:13px;color:var(--txt);line-height:1.5">Wearable data <span style="color:var(--gry)">(HRV, sleep, VO2 max)</span></span>
+        </div>
+        <div style="padding:16px 0;font-size:12px;color:var(--gry);font-style:italic;line-height:1.6">
+          Don\u2019t have everything? The Lens adapts to available data and identifies what to request.
+        </div>
+      </div>
+      <button class="w-begin" onclick="S.guidedStep=0;sT('guided')">Continue</button>
+      <div style="margin-top:16px">
+        <span class="mode-toggle" onclick="sT('assessment')" style="font-size:11px">\u2630 Switch to Full Form View</span>
+      </div>
+      <div style="margin-top:24px">
+        <span style="font-size:11px;color:var(--gry);cursor:pointer;opacity:0.6" onclick="sT('welcome')">\u2190 Back</span>
       </div>
     </div>`;
     A.innerHTML=h;
     return;
   }
 
-  h+=`
-    <div class="hdr" style="cursor:pointer" onclick="sT('welcome')">
-      <div class="brand">\u00C9CIRE HEALTH\u2122</div>
-      <h1>The Alignment Lens\u2122</h1>
-      <div class="sub">Physician-designed metabolic governance. Five domains. One operating principle.</div>
-    </div>
-    <div class="banner">
-      <div class="il">ALIGNMENT INDEX\u2122</div>
-      <div class="inum">${r.idx}</div>
-      <div class="ist" style="color:${st.c}">${st.l}</div>
-      <div class="im">5/5 domains \u00B7 ${r.aC}% acuity \u00B7 ${filled} objective markers${r.modCount?' \u00B7 '+r.modCount+' governance modifiers':''}</div>
-      <div class="abar">${[1,2,3,4].map(i=>`<div class="aseg ${i<=aL?'on':''}"></div>`).join('')}</div>
-      <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:3px">${aL===1?'Low Acuity \u2014 Subjective Only':aL===2?'Partial Acuity \u2014 Basic Labs':aL===3?'Good Acuity \u2014 Standard Panel':'High Acuity \u2014 Comprehensive Panel'}</div>
-    </div>
-    <div class="tabs">
-      <div class="tab ${S.tab==='context'?'active':''}" onclick="sT('context')">1 \u00B7 Alignment Context<span class="ct">History & Meds</span></div>
-      <div class="tab ${S.tab==='subjective'?'active':''}" onclick="sT('subjective')">2 \u00B7 Subjective Intake<span class="ct">How You Feel</span></div>
-      <div class="tab ${S.tab==='objective'?'active':''}" onclick="sT('objective')">3 \u00B7 Objective Data<span class="ct">Vitals & Labs</span></div>
-      <div class="tab ${S.tab==='results'?'active':''}" onclick="sT('results')">4 \u00B7 Domain Scores<span class="ct">Your Results</span></div>
+  // ═══ GUIDED MODE ═══
+  if(S.tab==='guided'){
+    const step=S.guidedStep;
+    const pct=Math.round(((step)/GUIDED_TOTAL)*100);
+    const phase=getPhase(step);
+    const sd=guidedStepHTML(step);
+    const commentary=guidedCommentary(step);
+
+    h+=`<div class="guided-progress">
+      <div class="gp-bar"><div class="gp-fill" style="width:${pct}%"></div></div>
+      <div class="gp-info">
+        <span class="gp-label">${step+1} of ${GUIDED_TOTAL}</span>
+        <span class="gp-phase">${phase}</span>
+        <span class="mode-toggle" onclick="sT('assessment')">\u2630 Full Form</span>
+      </div>
     </div>`;
 
-  if(S.tab==='context'){
-    h+=`<div class="sec" style="margin-bottom:12px;border-color:var(--lav)30">
-      <h3 style="color:var(--acc)">About You</h3>
-      <div class="grid">
-        <div>
-          <div class="client-field"><label>Your Name <span style="color:#4A5B6E;font-weight:400">(as you\u2019d like it on your report)</span></label>
-            <input type="text" value="${S.client.name}" placeholder="First name or full name" onchange="sCl('name',this.value)"></div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div class="client-field"><label>Age</label>
-            <input type="number" value="${S.client.age}" placeholder="" onchange="sCl('age',this.value)"></div>
-          <div class="client-field"><label>Sex Assigned at Birth</label>
-            <select onchange="sCl('sexAtBirth',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-              <option value="female" ${S.client.sexAtBirth==='female'?'selected':''}>Female</option>
-              <option value="male" ${S.client.sexAtBirth==='male'?'selected':''}>Male</option>
-              <option value="intersex" ${S.client.sexAtBirth==='intersex'?'selected':''}>Intersex</option>
-            </select>
-            <div style="font-size:10px;color:#4A5B6E;margin-top:2px">Used for lab reference ranges</div></div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div class="client-field"><label>Gender Identity <span style="color:#4A5B6E;font-weight:400">(optional)</span></label>
-            <select onchange="sCl('gender',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-              <option value="" ${!S.client.gender?'selected':''}>Prefer not to say</option>
-              <option value="woman" ${S.client.gender==='woman'?'selected':''}>Woman</option>
-              <option value="man" ${S.client.gender==='man'?'selected':''}>Man</option>
-              <option value="nonbinary" ${S.client.gender==='nonbinary'?'selected':''}>Non-binary</option>
-              <option value="genderfluid" ${S.client.gender==='genderfluid'?'selected':''}>Genderfluid</option>
-              <option value="other" ${S.client.gender==='other'?'selected':''}>Other / Self-describe</option>
-            </select></div>
-          <div class="client-field"><label>Pronouns <span style="color:#4A5B6E;font-weight:400">(optional)</span></label>
-            <select onchange="sCl('pronouns',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-              <option value="" ${!S.client.pronouns?'selected':''}>Prefer not to say</option>
-              <option value="she/her" ${S.client.pronouns==='she/her'?'selected':''}>She/Her</option>
-              <option value="he/him" ${S.client.pronouns==='he/him'?'selected':''}>He/Him</option>
-              <option value="they/them" ${S.client.pronouns==='they/them'?'selected':''}>They/Them</option>
-              <option value="she/they" ${S.client.pronouns==='she/they'?'selected':''}>She/They</option>
-              <option value="he/they" ${S.client.pronouns==='he/they'?'selected':''}>He/They</option>
-            </select></div>
-        </div>
-      </div>
-      <div style="margin-top:10px">
-        <label style="display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:6px">Race / Ethnicity <span style="color:#4A5B6E;font-weight:400">(select all that apply \u2014 affects how the Lens interprets certain lab values)</span></label>
-        <div class="chk-grid">
-          ${['Black / African American','White / European','Hispanic / Latino','Asian','Native American / Alaska Native','Native Hawaiian / Pacific Islander','Middle Eastern / North African','Multiracial / Other'].map(r=>
-            `<label class="chk-item"><input type="checkbox" ${S.client.race.includes(r)?'checked':''} onchange="toggleRace('${r}',this.checked)"><span class="cb"></span><span class="cl">${r}</span></label>`
-          ).join('')}
-        </div>
+    // Mobile step strip
+    h+=`<div class="step-strip">`;
+    for(let i=0;i<GUIDED_TOTAL;i++){
+      const comp=isStepComplete(i);
+      const isCurrent=i===step;
+      h+=`<div class="step-strip-dot ${isCurrent?'current':comp?'done':'empty'}" onclick="goStep(${i})" title="${STEP_LABELS[i]}">${isCurrent?(i+1):comp?'\u2713':''}</div>`;
+    }
+    h+=`</div>`;
+
+    // Layout with sidebar
+    h+=`<div class="guided-layout">`;
+
+    // Sidebar nav
+    h+=`<div class="step-nav" id="step-nav-list">`;
+    let lastPhase='';
+    for(let i=0;i<GUIDED_TOTAL;i++){
+      const p=getPhase(i);
+      if(p!==lastPhase){h+=`<div class="step-nav-phase">${p}</div>`;lastPhase=p;}
+      const comp=isStepComplete(i);
+      const isCurrent=i===step;
+      h+=`<div class="step-nav-item ${isCurrent?'active':''}" onclick="goStep(${i})">
+        <div class="step-nav-dot ${isCurrent?'current':comp?'done':'empty'}" id="snav-dot-${i}">${isCurrent?(i+1):comp?'\u2713':''}</div>
+        <span>${STEP_LABELS[i]}</span>
+      </div>`;
+    }
+    h+=`</div>`;
+
+    // Main content
+    h+=`<div class="guided-main">`;
+    h+=`<div class="guided-wrap">
+      <div class="guided-q">${sd.title}</div>
+      <div class="guided-sub">${sd.sub}</div>
+      <div class="guided-body">${sd.html}</div>`;
+
+    // Commentary area with ID for targeted updates
+    h+=`<div id="guided-commentary-area">`;
+    if(commentary.length>0){
+      h+=commentary.map(c=>`<div class="guided-commentary ${c.type}">${c.text}</div>`).join('');
+    }
+    h+=`</div>`;
+
+    // Navigation
+    h+=`<div class="guided-nav">
+      <button class="guided-back" onclick="${step>0?`goStep(${step-1})`:`sT('prep')`}">${step>0?'\u2190 Back':'\u2190 Prep'}</button>
+      <div style="display:flex;align-items:center;gap:16px">
+        ${sd.skip?`<span class="guided-skip" onclick="${step<GUIDED_TOTAL-1?`goStep(${step+1})`:`sT('results')`}">${sd.skipLabel||'Skip'}</span>`:''}
+        <button class="guided-next" onclick="${step<GUIDED_TOTAL-1?`goStep(${step+1})`:`sT('results')`}">${step<GUIDED_TOTAL-1?'Next \u2192':'View Results \u2192'}</button>
       </div>
     </div>`;
-    h+=`<div class="grid">
-      <div>
-        <div class="sec"><h3>Family History</h3>
-          <div style="font-size:10px;color:var(--gry);margin-bottom:8px;font-style:italic">Do any of the following run in your immediate family (parents, siblings)?</div>
-          <div class="chk-grid">
-            ${chk('fam_diabetes','Type 2 Diabetes','Parent or sibling diagnosed')}
-            ${chk('fam_heart','Heart Disease < 60','Heart attack, bypass, stent before 60')}
-            ${chk('fam_stroke','Stroke','Parent or sibling')}
-            ${chk('fam_htn','High Blood Pressure','Diagnosed or medicated')}
-            ${chk('fam_cancer','Cancer','Breast, colon, or other')}
-            ${chk('fam_obesity','Obesity','Significant weight challenges')}
-          </div>
+
+    h+=`</div></div></div>`; // close guided-wrap, guided-main, guided-layout
+    A.innerHTML=h;
+    return;
+  }
+
+  // ═══ ASSESSMENT (Full Form / Advanced View) ═══
+  // Header
+  h+=`
+    <div class="hdr" style="cursor:pointer" onclick="sT('welcome')">
+      <div style="width:${S.tab==='results'?'80':'40'}px;height:${S.tab==='results'?'80':'40'}px;margin:0 auto ${S.tab==='results'?'12':'8'}px">
+        <svg viewBox="0 0 280 280" style="width:100%;height:100%">
+          <defs><radialGradient id="cg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="var(--acc)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--acc)" stop-opacity="0"/></radialGradient></defs>
+          ${S.tab==='results'?'<circle cx="140" cy="140" r="100" fill="url(#cg2)"/>':''}
+          <ellipse cx="140" cy="140" rx="90" ry="90" fill="none" stroke="var(--acc)" stroke-width="0.5" opacity="0.25"/>
+          <ellipse cx="140" cy="140" rx="88" ry="35" fill="none" stroke="var(--acc)" stroke-width="0.6" opacity="0.2"/>
+          <ellipse cx="140" cy="140" rx="85" ry="40" fill="none" stroke="var(--acc2)" stroke-width="0.5" opacity="0.15" transform="rotate(60 140 140)"/>
+          ${S.tab==='results'?'<ellipse cx="140" cy="140" rx="80" ry="32" fill="none" stroke="var(--acc)" stroke-width="0.4" opacity="0.12" transform="rotate(-30 140 140)"/>':''}
+          <circle cx="140" cy="140" r="2.5" fill="var(--acc)" opacity="0.7"/>
+          ${S.tab==='results'?'<circle cx="230" cy="140" r="1.5" fill="var(--acc)" opacity="0.35"/><circle cx="50" cy="140" r="1.5" fill="var(--acc)" opacity="0.35"/><circle cx="140" cy="50" r="1.5" fill="var(--acc)" opacity="0.35"/><circle cx="140" cy="230" r="1.5" fill="var(--acc)" opacity="0.35"/><circle cx="204" cy="76" r="1.5" fill="var(--acc)" opacity="0.35"/>':''}
+        </svg>
+      </div>
+      <div class="brand">\u00C9CIRE HEALTH\u2122</div>
+      <h1>The Alignment Lens\u2122</h1>
+      <div class="sub">Five domains. One operating principle.</div>
+    </div>
+    <div class="banner" style="${S.tab==='results'?'':'background:var(--card);border:1px solid var(--border);padding:10px 16px;'}">
+      ${S.tab==='results'?`<div class="il">ALIGNMENT INDEX\u2122</div>
+      <div class="inum">${r.idx}</div>
+      <div class="ist" style="color:${st.c}">${st.l}</div>`:''}
+      <div class="im" style="${S.tab==='results'?'':'margin:0;font-size:11px;color:var(--gry)'}">${r.domCount}/5 domains \u00B7 ${r.aC}% acuity${r.modCount?' \u00B7 '+r.modCount+' governance modifiers':''}</div>
+      ${S.tab==='results'?`<div class="abar">${[1,2,3,4].map(i=>`<div class="aseg ${i<=aL?'on':''}"></div>`).join('')}</div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:3px">${aL===0?'No Data Entered':aL===1?'Low Acuity \u2014 Subjective Only':aL===2?'Partial Acuity \u2014 Basic Labs':aL===3?'Good Acuity \u2014 Standard Panel':'High Acuity \u2014 Comprehensive Panel'}</div>`:''}
+    </div>`;
+
+  if(S.tab!=="results"){
+  // Full form mode
+  const comp={
+    about:!!(S.client.name||S.client.age),
+    family:Object.entries(S.ctx).filter(([k,v])=>k.startsWith('fam_')&&v).length>0,
+    history:Object.entries(S.ctx).filter(([k,v])=>k.startsWith('hx_')&&v&&k!=='hx_menopause').length>0,
+    meds:Object.entries(S.ctx).filter(([k,v])=>k.startsWith('med_')&&v).length>0,
+    life:S.ctx.life_isolation!=='connected'||S.ctx.life_financial!=='stable',
+    energy:S.subj.energy>0||S.subj.sleep>0||S.subj.recovery>0||S.subj.exercise!==''||S.subj.fatigue!=='',
+    stress:S.subj.stress>0||S.subj.mood>0||S.subj.sleepOnset!=='',
+    hunger:S.subj.cravings>0||S.subj.postmeal>0||S.subj.hunger!=='',
+    body:S.subj.strength!==''||S.subj.bodyChange!==''||S.subj.jointPain!=='',
+    vitals:!!(S.obj.sys||S.obj.dia||S.obj.hr||S.obj.ht||S.obj.wt),
+    glucose:!!(S.obj.a1c||S.obj.fg||S.obj.rg),
+    lipids:!!(S.obj.tc||S.obj.ldl||S.obj.hdl||S.obj.trig),
+    extended:!!(S.obj.hgb||S.obj.tsh||S.obj.alt||S.obj.vitD||S.obj.hsCRP||S.obj.fastIns||S.obj.cortisol),
+    bodycomp:!!(S.obj.bodyFat||S.obj.leanMass||S.obj.bodyWater||S.obj.visceralFat||S.obj.boneMass||S.obj.bonePct||S.obj.musclePct||S.obj.muscleLbs),
+    wearable:!!(S.obj.hrv||S.obj.avgSleep||S.obj.deepSleep||S.obj.vo2max||S.obj.respRate),
+    diagnostics:Object.values(S.diag).some(v=>v)
+  };
+  const sectionOrder=['about','family','history','meds','life','energy','stress','hunger','body','vitals','glucose','lipids','extended','bodycomp','wearable','diagnostics'];
+  const completedCount=sectionOrder.filter(k=>comp[k]&&!S.redo.has(k)).length;
+  const progress=Math.round((completedCount/sectionOrder.length)*100);
+  const firstEmpty=sectionOrder.find(k=>!comp[k]||S.redo.has(k));
+
+  const acc=(panel,title,desc,count,content)=>{
+    const open=S.openPanel===panel;
+    const hasData=comp[panel];
+    const done=hasData&&!S.redo.has(panel);
+    const isNext=!done&&panel===firstEmpty&&!open;
+    return `<div class="acc ${done?'completed':''} ${isNext?'next-up':''}">
+      <div class="acc-hd" onclick="togglePanel('${panel}')">
+        <div style="min-width:0">
+          <div style="display:flex;align-items:center"><h3>${title}</h3>${!open&&desc?`<span class="acc-desc">\u2014 ${desc}</span>`:''} ${count>0?`<span class="acc-ct">${count}</span>`:''}</div>
         </div>
-        <div class="sec"><h3>Your Health History</h3>
-          <div style="font-size:10px;color:var(--gry);margin-bottom:8px;font-style:italic">Have you ever been told you have any of the following?</div>
-          <div class="chk-grid">
-            ${chk('hx_prediabetes','Prediabetes','A1c 5.7\u20136.4 or fasting glucose 100\u2013125')}
-            ${chk('hx_diabetes','Type 2 Diabetes','Diagnosed')}
-            ${chk('hx_gest_diabetes','Gestational Diabetes','During any pregnancy')}
-            ${chk('hx_gest_htn','Gestational Hypertension','Pre-eclampsia or high BP during any pregnancy')}
-            ${chk('hx_htn','High Blood Pressure','Diagnosed or medicated')}
-            ${chk('hx_cholesterol','High Cholesterol','Diagnosed or medicated')}
-            ${chk('hx_stroke','Stroke','Personal history')}
-            ${chk('hx_mi','Heart Attack','Personal history of MI')}
-            ${chk('hx_pcos','PCOS','Polycystic ovary syndrome')}
-            ${chk('hx_thyroid','Thyroid Disorder','Hypo- or hyperthyroid')}
-            ${chk('hx_autoimmune','Autoimmune Condition','Lupus, RA, Hashimoto\u2019s, etc.')}
-            ${chk('hx_depression','Depression / Anxiety','Diagnosed or treated')}
-            ${chk('hx_sleep_apnea','Sleep Apnea','Diagnosed or suspected')}
-          </div>
-          ${S.client.sexAtBirth!=='male'?`<div style="margin-top:10px">
-            <label style="display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px">Menopause Status</label>
-            <select onchange="sCtx('hx_menopause',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-              <option value="pre" ${S.ctx.hx_menopause==='pre'?'selected':''}>Pre-menopausal</option>
-              <option value="peri" ${S.ctx.hx_menopause==='peri'?'selected':''}>Perimenopausal (irregular cycles, symptoms beginning)</option>
-              <option value="post" ${S.ctx.hx_menopause==='post'?'selected':''}>Post-menopausal (12+ months without period)</option>
-            </select>
-            <div style="font-size:10px;color:#4A5B6E;margin-top:2px">Menopause status affects insulin sensitivity, bone density, cardiovascular risk, and stress patterns across multiple domains.</div>
-          </div>`:''}
+        <div class="acc-right">
+          ${done?`<div class="acc-check done" onclick="event.stopPropagation();uncheckPanel('${panel}')" title="Mark for review">\u2713</div>`:`<div class="acc-check empty"></div>`}
+          <span class="acc-arr ${open?'open':''}">\u25B8</span>
         </div>
       </div>
-      <div>
-        <div class="sec"><h3>Current Medications</h3>
-          <div style="font-size:10px;color:var(--gry);margin-bottom:8px;font-style:italic">Current medications affect what the Lens can see. Select any categories you are currently taking. We do not manage medications \u2014 this helps the Lens interpret your lab values accurately.</div>
-          <div class="chk-grid">
-            ${chk('med_statin','Lipid-Lowering Medication','Statin, ezetimibe, PCSK9i, or combo (e.g. Vytorin)')}
-            ${chk('med_bp','Blood Pressure Medication','Any antihypertensive')}
-            ${chk('med_thyroid','Thyroid Medication','Levothyroxine, Synthroid, etc.')}
-            ${chk('med_diabetes','Diabetes Medication','Metformin, insulin, etc.')}
-            ${chk('med_glp1','GLP-1 or GIP/GLP-1 Agonist','Ozempic, Wegovy, Mounjaro, Zepbound, Saxenda, etc.')}
-            ${chk('med_hormone','Hormone Therapy','HRT, birth control, testosterone')}
-            ${chk('med_psych','Psychiatric Medication','Antidepressant, anti-anxiety, etc.')}
-            ${chk('med_sup_vitd','Vitamin D Supplement','Any dose')}
-            ${chk('med_sup_iron','Iron Supplement','Ferrous sulfate, etc.')}
-            ${chk('med_sup_omega3','Omega-3 / Fish Oil','High-dose EPA/DHA')}
-          </div>
-        </div>
-        <div class="sec" style="border-color:var(--lav)30">
-          <h3 style="color:var(--acc)">Why We Ask This</h3>
-          <div style="font-size:11px;color:var(--txt);line-height:1.5">
-            <p style="margin-bottom:8px">\u00C9cire does not diagnose, treat, or manage medications. Your physician does that.</p>
-            <p style="margin-bottom:8px">\u00C9cire governs the <em>metabolic conditions</em> that produce disease risk. Your health history and medications tell the Lens two critical things:</p>
-            <p style="margin-bottom:4px"><strong style="color:var(--acc2)">1. How urgently</strong> to govern each domain. The same A1c of 5.5 carries different weight with versus without family history of diabetes.</p>
-            <p style="margin-bottom:4px"><strong style="color:var(--acc2)">2. What the numbers actually mean.</strong> An LDL of 107 on a statin is not the same as an LDL of 107 without one. The Lens needs to know which it\u2019s seeing.</p>
-            <p style="margin-top:8px;font-size:10px;color:var(--gry)">This information does not change your domain scores. It changes how the Lens interprets them and how urgently it recommends action.</p>
-          </div>
-        </div>
+      ${open?`<div class="acc-bd">${content}</div>`:''}
+    </div>`;
+  };
+
+  const famCount=Object.entries(S.ctx).filter(([k,v])=>k.startsWith('fam_')&&v).length;
+  const hxCount=Object.entries(S.ctx).filter(([k,v])=>k.startsWith('hx_')&&v&&k!=='hx_menopause').length;
+  const medCount=Object.entries(S.ctx).filter(([k,v])=>k.startsWith('med_')&&v).length;
+
+  h+=`<div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+    <div class="progress-label">
+      <span>${completedCount} of ${sectionOrder.length} sections</span>
+      <span class="mode-toggle" onclick="sT('guided')">\u2192 Switch to Guided View</span>
+      <span>${progress}% complete</span>
+    </div>
+  </div>`;
+
+  h+=`<div class="sec-group">YOUR BACKGROUND</div>`;
+  h+=acc('about','About You','Name, age, and basic demographics',0,`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="client-field"><label>First Name</label><input type="text" value="${S.client.name}" placeholder="" onchange="sCl('name',this.value)"></div>
+      <div class="client-field"><label>Last Name</label><input type="text" value="${S.client.lastName}" placeholder="" onchange="sCl('lastName',this.value)"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px">
+      <div class="client-field"><label>Age</label><input type="number" value="${S.client.age}" placeholder="" onchange="sCl('age',this.value)"></div>
+      <div class="client-field"><label>Sex at Birth</label>
+        <select onchange="sCl('sexAtBirth',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+          <option value="female" ${S.client.sexAtBirth==='female'?'selected':''}>Female</option>
+          <option value="male" ${S.client.sexAtBirth==='male'?'selected':''}>Male</option>
+          <option value="intersex" ${S.client.sexAtBirth==='intersex'?'selected':''}>Intersex</option>
+        </select></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+      <div class="client-field"><label>Gender Identity <span style="color:var(--gry);font-weight:400">(optional)</span></label>
+        <select onchange="sCl('gender',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+          <option value="" ${!S.client.gender?'selected':''}>Prefer not to say</option><option value="woman" ${S.client.gender==='woman'?'selected':''}>Woman</option><option value="man" ${S.client.gender==='man'?'selected':''}>Man</option><option value="nonbinary" ${S.client.gender==='nonbinary'?'selected':''}>Non-binary</option><option value="other" ${S.client.gender==='other'?'selected':''}>Other</option>
+        </select></div>
+      <div class="client-field"><label>Pronouns <span style="color:var(--gry);font-weight:400">(optional)</span></label>
+        <select onchange="sCl('pronouns',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+          <option value="" ${!S.client.pronouns?'selected':''}>Prefer not to say</option><option value="she/her" ${S.client.pronouns==='she/her'?'selected':''}>She/Her</option><option value="he/him" ${S.client.pronouns==='he/him'?'selected':''}>He/Him</option><option value="they/them" ${S.client.pronouns==='they/them'?'selected':''}>They/Them</option>
+        </select></div>
+    </div>
+    <div style="margin-top:10px">
+      <label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:6px;font-family:var(--sans)">Race / Ethnicity <span style="color:var(--gry);font-weight:400">(select all that apply)</span></label>
+      <div class="chk-grid">
+        ${['Black / African American','White / European','Hispanic / Latino','Asian','Native American / Alaska Native','Native Hawaiian / Pacific Islander','Middle Eastern / North African','Multiracial / Other'].map(r=>
+          `<label class="chk-item"><input type="checkbox" ${S.client.race.includes(r)?'checked':''} onchange="toggleRace('${r}',this.checked)"><span class="cb"></span><span class="cl">${r}</span></label>`
+        ).join('')}
       </div>
     </div>
-    <div class="sec" style="margin-top:4px">
-      <h3>Life Context</h3>
-      <div style="font-size:10px;color:var(--gry);margin-bottom:10px;font-style:italic">These factors are among the strongest predictors of health outcomes. They affect what the Lens recommends and how it prioritizes interventions.</div>
-      <div class="grid">
-        <div>
-          <label style="display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px">Social Connection</label>
-          <select onchange="sCtx('life_isolation',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-            <option value="connected" ${S.ctx.life_isolation==='connected'?'selected':''}>Well connected \u2014 regular meaningful contact with people I care about</option>
-            <option value="some" ${S.ctx.life_isolation==='some'?'selected':''}>Some connection \u2014 but less than I\u2019d like</option>
-            <option value="limited" ${S.ctx.life_isolation==='limited'?'selected':''}>Limited \u2014 I often feel alone in managing my health and life</option>
-            <option value="isolated" ${S.ctx.life_isolation==='isolated'?'selected':''}>Isolated \u2014 I have very few people I can rely on</option>
-          </select>
-          <div style="font-size:10px;color:#4A5B6E;margin-top:2px">Social connection affects stress resilience, exercise adherence, and recovery across every domain.</div>
-        </div>
-        <div>
-          <label style="display:block;font-size:11px;font-weight:600;color:var(--gry);margin-bottom:3px">Financial Context</label>
-          <select onchange="sCtx('life_financial',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-            <option value="stable" ${S.ctx.life_financial==='stable'?'selected':''}>Stable \u2014 health investments are manageable</option>
-            <option value="mindful" ${S.ctx.life_financial==='mindful'?'selected':''}>Mindful \u2014 I can invest in health but need to prioritize carefully</option>
-            <option value="strained" ${S.ctx.life_financial==='strained'?'selected':''}>Strained \u2014 financial concerns limit my health choices</option>
-            <option value="crisis" ${S.ctx.life_financial==='crisis'?'selected':''}>In crisis \u2014 basic needs are difficult to meet right now</option>
-          </select>
-          <div style="font-size:10px;color:#4A5B6E;margin-top:2px">The Lens prioritizes free and low-cost interventions first when financial context requires it.</div>
-        </div>
+  `);
+  h+=acc('family','Family History','Conditions in parents or siblings',famCount,`
+    <div class="chk-grid">${chk('fam_diabetes','Type 2 Diabetes')}${chk('fam_heart','Heart Attack \u2014 male relative < 55 or female relative < 65')}${chk('fam_stroke','Stroke')}${chk('fam_htn','High Blood Pressure')}${chk('fam_cancer','Cancer')}${chk('fam_obesity','Obesity')}</div>
+  `);
+  h+=acc('history','Health History','Current or past diagnoses',hxCount,`
+    <div class="chk-grid">${chk('hx_prediabetes','Prediabetes (A1c 5.7\u20136.4% or fasting glucose 100\u2013125 mg/dL)')}${chk('hx_diabetes','Type 2 Diabetes (A1c \u22656.5% or fasting glucose \u2265126 mg/dL)')}${chk('hx_gest_diabetes','Gestational Diabetes')}${chk('hx_gest_htn','Gestational Hypertension')}${chk('hx_htn','High Blood Pressure')}${chk('hx_cholesterol','High Cholesterol')}${chk('hx_stroke','Stroke')}${chk('hx_mi','Heart Attack')}${chk('hx_ckd','Chronic Kidney Disease (CKD)')}${chk('hx_pcos','PCOS')}${chk('hx_thyroid','Thyroid Disorder')}${chk('hx_autoimmune','Autoimmune Condition (RA, Lupus, Psoriasis)')}${chk('hx_depression','Depression / Anxiety')}${chk('hx_sleep_apnea','Sleep Apnea')}</div>
+    ${S.client.sexAtBirth!=='male'?`<div style="margin-top:10px"><label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:3px;font-family:var(--sans)">Menopause Status</label>
+      <select onchange="sCtx('hx_menopause',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+        <option value="pre" ${S.ctx.hx_menopause==='pre'?'selected':''}>Pre-menopausal</option><option value="peri" ${S.ctx.hx_menopause==='peri'?'selected':''}>Perimenopausal</option><option value="post" ${S.ctx.hx_menopause==='post'?'selected':''}>Post-menopausal</option>
+      </select></div>`:''}
+  `);
+  h+=acc('meds','Medications & Supplements','What you\u2019re currently taking',medCount,`
+    <div class="chk-grid">${chk('med_statin','Lipid-Lowering Medication')}${chk('med_bp','Blood Pressure Medication')}${chk('med_thyroid','Thyroid Medication')}${chk('med_diabetes','Diabetes Medication')}${chk('med_glp1','GLP-1 / GIP Agonist')}${chk('med_hormone','Hormone Therapy')}${chk('med_psych','Psychiatric Medication')}${chk('med_sup_vitd','Vitamin D Supplement')}${chk('med_sup_iron','Iron Supplement')}${chk('med_sup_omega3','Omega-3 / Fish Oil')}</div>
+    <div style="font-size:10px;color:var(--gry);margin-top:8px;font-style:italic">Helps the Lens interpret your lab values. We do not manage medications.</div>
+  `);
+  h+=acc('life','Life & Support','Social connection and financial context',0,`
+    <div class="grid">
+      <div><label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:3px;font-family:var(--sans)">Social Connection</label>
+        <select onchange="sCtx('life_isolation',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+          <option value="connected" ${S.ctx.life_isolation==='connected'?'selected':''}>Well connected</option><option value="some" ${S.ctx.life_isolation==='some'?'selected':''}>Some connection</option><option value="limited" ${S.ctx.life_isolation==='limited'?'selected':''}>Limited</option><option value="isolated" ${S.ctx.life_isolation==='isolated'?'selected':''}>Isolated</option>
+        </select></div>
+      <div><label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:3px;font-family:var(--sans)">Financial Context</label>
+        <select onchange="sCtx('life_financial',this.value)" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none;font-family:var(--sans)">
+          <option value="stable" ${S.ctx.life_financial==='stable'?'selected':''}>Stable</option><option value="mindful" ${S.ctx.life_financial==='mindful'?'selected':''}>Mindful</option><option value="strained" ${S.ctx.life_financial==='strained'?'selected':''}>Strained</option><option value="crisis" ${S.ctx.life_financial==='crisis'?'selected':''}>In crisis</option>
+        </select></div>
+    </div>
+  `);
+
+  h+=`<div class="sec-group">HOW YOU FEEL</div>`;
+  h+=acc('energy','Energy & Recovery','Sleep, fatigue, and bounce-back',0,`
+    ${slider('energy','Overall Energy Level','Exhausted','Energized')}${slider('sleep','Sleep Quality','Terrible','Excellent')}${slider('recovery','Recovery Capacity','Very slow','Bounce back fast')}
+    ${sel('exercise','Exercise Frequency',{none:'No regular exercise',light:'Light (1\u20132x/wk)',moderate:'Moderate (3\u20134x/wk)',intense:'Intense (5+/wk)'})}
+    ${sel('fatigue','Fatigue',{always:'Constant',often:'Frequent',sometimes:'Sometimes',rarely:'Rarely'})}
+  `);
+  h+=acc('stress','Stress & Mood','Perceived stress, mood stability, sleep onset',0,`
+    ${slider('stress','Perceived Stress','Very low','Overwhelming')}${slider('mood','Mood Stability','Unpredictable','Very stable')}
+    ${sel('sleepOnset','Time to Fall Asleep',{difficult:'30+ min',delayed:'15\u201330 min',normal:'5\u201315 min',easy:'Under 5 min'})}
+  `);
+  h+=acc('hunger','Appetite & Cravings','Hunger patterns and post-meal crashes',0,`
+    ${slider('cravings','Cravings Intensity','Rare','Constant')}${slider('postmeal','Post-Meal Energy Crashes','Never','After every meal')}
+    ${sel('hunger','Hunger Pattern',{constant:'Constant',frequent:'Every 2\u20133 hrs',moderate:'3\u20134 hr intervals',controlled:'Rarely urgent'})}
+  `);
+  h+=acc('body','Body & Movement','Strength trends, body changes, joint pain',0,`
+    ${sel('strength','Strength Trend',{declining:'Declining',stable:'Stable',building:'Building'})}
+    ${sel('bodyChange','Body Composition Trend',{gaining:'Gaining fat',fluctuating:'Fluctuating',stable:'Stable',recomposing:'Losing fat / building muscle'})}
+    ${sel('jointPain','Joint Pain / Stiffness',{often:'Often',sometimes:'Sometimes',rarely:'Rarely',never:'Never'})}
+  `);
+
+  h+=`<div class="sec-group">YOUR NUMBERS</div>`;
+  h+=`<div style="font-size:11px;color:var(--gry);margin:-4px 0 10px;line-height:1.5;font-family:var(--sans)">Enter what you have. The Lens adapts to available data and identifies what to request.</div>`;
+  h+=acc('vitals','Vitals','Blood pressure, heart rate, height, weight',0,`
+    ${fld('sys','Systolic BP','mmHg','120')}${fld('dia','Diastolic BP','mmHg','80')}
+    ${fld('hr','Resting Heart Rate','bpm','72')}
+    <div class="field-row">${fld('ht','Height','inches','66')}${fld('wt','Weight','lbs','150')}</div>
+    ${r.bmi?`<div style="font-size:11px;color:var(--acc2);margin:-4px 0 6px">BMI: <strong>${r.bmi.toFixed(1)}</strong></div>`:''}
+    <div class="field-row">${fld('waist','Waist','inches','')}</div><div class="field-row">${fld('hip','Hip','inches','')}</div>
+    ${r.whr?`<div style="font-size:11px;color:var(--acc2);margin:-4px 0 6px">Waist:Hip: <strong>${r.whr.toFixed(2)}</strong></div>`:''}
+  `);
+  h+=acc('glucose','Glucose Regulation','A1c and fasting glucose',0,`
+    ${fld('a1c','HbA1c','%','5.4')}${fld('fg','Fasting Glucose','mg/dL','90')}${fld('rg','Random Glucose','mg/dL','')}
+  `);
+  h+=acc('lipids','Cholesterol & Lipids','LDL, HDL, triglycerides',0,`
+    ${fld('tc','Total Cholesterol','mg/dL','200')}${fld('ldl','LDL','mg/dL','100')}
+    ${fld('hdl','HDL','mg/dL','55')}${fld('trig','Triglycerides','mg/dL','120')}
+    ${r.ths?`<div style="font-size:11px;color:${r.ths.c};margin:-4px 0 6px">Trig:HDL \u2014 ${r.ths.l}</div>`:''}
+  `);
+  h+=acc('extended','Additional Labs','TSH, Vitamin D, hs-CRP, and more',0,`
+    ${fld('hgb','Hemoglobin','g/dL','13.0')}${fld('tsh','TSH','mIU/L','')}${fld('alt','ALT','U/L','')}
+    ${fld('vitD','Vitamin D (25-OH)','ng/mL','')}${fld('hsCRP','hs-CRP','mg/L','')}
+    ${fld('fastIns','Fasting Insulin','\u03BCIU/mL','')}${fld('cortisol','AM Cortisol','\u03BCg/dL','')}
+  `);
+  h+=acc('bodycomp','Body Composition','Body fat, lean mass, visceral fat',0,`
+    <div style="margin-bottom:12px"><label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:6px;font-family:var(--sans)">Measurement Source</label>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        ${['DEXA Scan','InBody','Withings','Renpho','Garmin','Eufy','Bod Pod','Other Scale','Unknown'].map(src=>
+          `<div onclick="sO('bodyCompSource','${src}');sODone()" style="padding:6px 12px;border-radius:6px;font-size:11px;cursor:pointer;transition:all 0.15s;font-family:var(--sans);${S.obj.bodyCompSource===src?'background:var(--lav);color:var(--white);border:1px solid var(--lav)':'background:var(--navy2);color:var(--gry);border:1px solid var(--border)'}">${src}</div>`
+        ).join('')}
       </div>
-      <div style="margin-top:12px;padding:10px 12px;background:rgba(123,94,167,0.04);border:1px solid rgba(123,94,167,0.1);border-radius:6px">
-        <div style="font-size:11px;color:var(--txt);line-height:1.6">
-          <strong style="color:var(--acc2)">A note on safety and whole-life context</strong><br>
-          <span style="color:var(--gry)">The Lens measures metabolic domains, but your health exists in the full context of your life. If anything in your life is affecting your safety, your stability, or your ability to care for yourself, your governance consultation is a confidential space to discuss this. Some things belong in a conversation, not a form. Your \u00C9cire Health practitioner can adapt every recommendation to your real circumstances.</span>
-        </div>
+      <div style="font-size:9px;color:var(--gry);margin-top:6px;line-height:1.5">DEXA and Bod Pod are clinical-grade. Consumer scales estimate via bioimpedance.</div>
+    </div>
+    <div class="field-row">${fld('bodyFat','Body Fat','%','')}${fld('leanMass','Lean Muscle Mass','%','')}</div>
+    <div class="field-row">${fld('musclePct','Muscle Mass','%','')}${fld('muscleLbs','Muscle Mass','lbs','')}</div>
+    <div class="field-row">${fld('bodyWater','Body Water','%','')}${fld('visceralFat','Visceral Fat','rating','')}</div>
+    <div class="field-row">${fld('boneMass','Bone Mass','lbs','')}${fld('bonePct','Bone Mass','%','')}</div>
+  `);
+  h+=acc('wearable','Wearable Data','HRV, sleep, VO2 max from your device',0,`
+    <div style="margin-bottom:12px"><label style="display:block;font-size:11px;font-weight:500;color:var(--gry);margin-bottom:6px;font-family:var(--sans)">Device Source</label>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        ${['Apple Watch','Oura Ring','Whoop','Garmin','Fitbit','Samsung Galaxy','COROS','Polar','Other'].map(src=>
+          `<div onclick="sO('wearableSource','${src}');sODone()" style="padding:6px 12px;border-radius:6px;font-size:11px;cursor:pointer;transition:all 0.15s;font-family:var(--sans);${S.obj.wearableSource===src?'background:var(--lav);color:var(--white);border:1px solid var(--lav)':'background:var(--navy2);color:var(--gry);border:1px solid var(--border)'}">${src}</div>`
+        ).join('')}
       </div>
-    </div>`;
-    h+=`<div style="text-align:center;margin-top:12px"><button class="btn-export" onclick="sT('subjective')">Continue to Subjective Intake \u2192</button></div>`;
-  } else if(S.tab==='subjective'){
-    h+=`<div class="grid">
-      <div class="sec"><h3>Energy & Recovery</h3>
-        ${slider('energy','Overall Energy Level','Exhausted','Energized')}${slider('sleep','Sleep Quality','Terrible','Excellent')}${slider('recovery','Recovery Capacity','Very slow','Bounce back fast')}
-        ${sel('exercise','Exercise Frequency',{none:'No regular exercise',light:'Light (1\u20132x/wk)',moderate:'Moderate (3\u20134x/wk)',intense:'Intense (5+/wk)'})}
-        ${sel('fatigue','Fatigue',{always:'Constant',often:'Frequent',sometimes:'Sometimes',rarely:'Rarely'})}
-      </div>
-      <div class="sec"><h3>Stress & Mood</h3>
-        ${slider('stress','Perceived Stress','Very low','Overwhelming')}${slider('mood','Mood Stability','Unpredictable','Very stable')}
-        ${sel('sleepOnset','Time to Fall Asleep',{difficult:'30+ min',delayed:'15\u201330 min',normal:'5\u201315 min',easy:'Under 5 min'})}
-      </div>
-      <div class="sec"><h3>Hunger & Insulin Signals</h3>
-        ${slider('cravings','Cravings Intensity','Rare','Constant')}${slider('postmeal','Post-Meal Energy Crashes','Never','After every meal')}
-        ${sel('hunger','Hunger Pattern',{constant:'Constant',frequent:'Every 2\u20133 hrs',moderate:'3\u20134 hr intervals',controlled:'Rarely urgent'})}
-      </div>
-      <div class="sec"><h3>Body & Inflammation</h3>
-        ${sel('strength','Strength Trend',{declining:'Declining',stable:'Stable',building:'Building'})}
-        ${sel('bodyChange','Body Composition Trend',{gaining:'Gaining fat',fluctuating:'Fluctuating',stable:'Stable',recomposing:'Losing fat / building muscle'})}
-        ${sel('jointPain','Joint Pain / Stiffness',{often:'Often',sometimes:'Sometimes',rarely:'Rarely',never:'Never'})}
-      </div>
-    </div>`;
-    h+=`<div style="text-align:center;margin-top:12px"><button class="btn-export" onclick="sT('objective')">Continue to Objective Data \u2192</button></div>`;
-  } else if(S.tab==='objective'){
-    h+=`<div style="padding:10px 14px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.12);border-radius:8px;margin-bottom:12px;font-size:12px;color:var(--txt);line-height:1.5">
-      <strong style="color:var(--acc2)">Enter what you have.</strong> Leave blank anything you don\u2019t know. The Lens adapts to available data \u2014 your scores and acuity will reflect exactly what\u2019s been entered. You can find most of these values on your most recent bloodwork results or patient portal.
-    </div>`;
-    h+=`<div class="grid"><div>
-      <div class="sec"><h3>Vitals</h3>
-        ${fld('sys','Systolic BP','mmHg','120')}${fld('dia','Diastolic BP','mmHg','80')}
-        ${fld('hr','Resting Heart Rate','bpm','72')}
-        <div class="field-row">${fld('ht','Height','inches','66')}${fld('wt','Weight','lbs','150')}</div>
-        ${r.bmi?`<div style="font-size:11px;color:var(--acc2);margin:-4px 0 6px">BMI: <strong>${r.bmi.toFixed(1)}</strong></div>`:''}
-        <div class="field-row">${fld('waist','Waist','inches','')}</div>
-        <div class="field-row">${fld('hip','Hip','inches','')}</div>
-        ${r.whr?`<div style="font-size:11px;color:var(--acc2);margin:-4px 0 6px">Waist:Hip: <strong>${r.whr.toFixed(2)}</strong></div>`:''}
-      </div>
-      <div class="sec"><h3>Body Composition <span style="font-size:10px;color:var(--gry);font-weight:400;font-style:italic">(from smart scale, DEXA, or other)</span></h3>
-        <div style="font-size:10px;color:#4A5B6E;margin-bottom:8px;line-height:1.5;font-style:italic">If your home scale reports these values, enter what you have. These sharpen your Structural Integrity domain significantly beyond BMI alone.</div>
-        <div class="field-row">${fld('bodyFat','Body Fat','%','','Structural Integrity')}${fld('leanMass','Lean Muscle Mass','%','','Structural Integrity')}</div>
-        <div class="field-row">${fld('bodyWater','Body Water','%','','General hydration')}${fld('visceralFat','Visceral Fat','rating','','1\u201359 scale, most scales')}</div>
-        <div class="field-row">${fld('boneMass','Bone Mass','lbs','','If available')}</div>
-      </div>
-      <div class="sec"><h3>Wearable / Device Data <span style="font-size:10px;color:var(--gry);font-weight:400;font-style:italic">(Apple Watch, Oura Ring, Whoop, etc.)</span></h3>
-        <div style="font-size:10px;color:#4A5B6E;margin-bottom:8px;line-height:1.5;font-style:italic">If your device tracks these, use your recent 7\u201330 day averages. These significantly sharpen Energy and Stress Modulation \u2014 the two domains most often blind without device data.</div>
-        <div class="field-row">${fld('hrv','HRV (avg)','ms','','Heart rate variability \u2192 Stress')}</div>
-        <div class="field-row">${fld('avgSleep','Avg Sleep Duration','hrs','','e.g. 7.2 \u2192 Energy')}${fld('deepSleep','Deep Sleep','%','','If available \u2192 Energy')}</div>
-        <div class="field-row">${fld('vo2max','VO2 Max (est)','mL/kg/min','','Cardio fitness \u2192 Energy + Structural')}${fld('respRate','Respiratory Rate','breaths/min','','If tracked \u2192 Stress')}</div>
-      </div>
-      <div class="sec"><h3>Glucose & Metabolic</h3>
-        ${fld('a1c','HbA1c','%','5.4')}${fld('fg','Fasting Glucose','mg/dL','90')}
-        ${fld('rg','Random Glucose','mg/dL','','If no fasting')}${fld('hgb','Hemoglobin','g/dL','13.0')}
-      </div></div><div>
-      <div class="sec"><h3>Lipid Panel</h3>
-        ${fld('tc','Total Cholesterol','mg/dL','200')}${fld('ldl','LDL','mg/dL','100')}
-        ${fld('hdl','HDL','mg/dL','55')}${fld('trig','Triglycerides','mg/dL','120')}
-        ${r.ths?`<div style="font-size:11px;color:${r.ths.c};margin:-4px 0 6px">Trig:HDL \u2014 ${r.ths.l}</div>`:''}
-      </div>
-      <div class="sec"><h3>Extended Panel</h3>
-        ${fld('tsh','TSH','mIU/L','2.0','Thyroid \u2192 Energy')}
-        ${fld('alt','ALT','U/L','22','Liver \u2192 Inflammatory')}
-        ${fld('vitD','Vitamin D (25-OH)','ng/mL','','Energy + Structural')}
-        ${fld('hsCRP','hs-CRP','mg/L','','Inflammation \u2192 Burden')}
-        ${fld('fastIns','Fasting Insulin','\u03BCIU/mL','','Early IR \u2192 Insulin')}
-        ${fld('cortisol','AM Cortisol','\u03BCg/dL','','Stress Modulation')}
-      </div>
-    </div></div>`;
-    h+=`<div class="sec" style="margin-top:12px">
-      <h3>Additional Diagnostics Available</h3>
-      <div style="font-size:11px;color:var(--gry);margin-bottom:10px;line-height:1.5;font-style:italic">Check anything you\u2019ve had done in the past 12 months. These don\u2019t affect your domain scores but will be noted in your Report. Detailed results can be reviewed during a governance consultation to further sharpen your domains.</div>
-      <div class="chk-grid">
-        ${dchk('dexa','DEXA Scan')}
-        ${dchk('ekg','EKG / ECG')}
-        ${dchk('echo','Echocardiogram')}
-        ${dchk('sleep_study','Sleep Study')}
-        ${dchk('cgm','CGM Data (Continuous Glucose Monitor)')}
-        ${dchk('advanced_lipid','Advanced Lipid Panel (NMR, ApoB, or Lp(a))')}
-        ${dchk('cac','Coronary Calcium Score')}
-        ${dchk('vo2','VO2 Max Testing')}
-        ${dchk('hormone','Hormone Panel')}
-        ${dchk('genetic','Genetic Testing')}
-        ${dchk('microbiome','Gut Microbiome Testing')}
-        ${dchk('food_sensitivity','Food Sensitivity Testing')}
-        ${dchk('mri','MRI')}
-        ${dchk('ultrasound','Ultrasound')}
-      </div>
-    </div>`;
-    h+=`<div style="text-align:center;margin-top:12px"><button class="btn-export" onclick="sT('results')">See My Domain Scores \u2192</button></div>`;
+    </div>
+    <div class="field-row">${fld('hrv','HRV (avg)','ms','')}</div>
+    <div class="field-row">${fld('avgSleep','Avg Sleep','hrs','')}${fld('deepSleep','Deep Sleep','%','')}</div>
+    <div class="field-row">${fld('vo2max','VO2 Max (est)','mL/kg/min','')}${fld('respRate','Respiratory Rate','br/min','')}</div>
+    <div style="font-size:10px;color:var(--gry);margin-top:6px;font-style:italic">Use recent 7\u201330 day averages from Apple Watch, Oura, Whoop, etc.</div>
+  `);
+  h+=acc('diagnostics','Prior Testing','Tests completed in the past 12 months',0,`
+    <div class="chk-grid">${dchk('dexa','DEXA Scan')}${dchk('ekg','EKG / ECG')}${dchk('echo','Echocardiogram')}${dchk('sleep_study','Sleep Study')}${dchk('cgm','CGM Data')}${dchk('advanced_lipid','Advanced Lipid Panel')}${dchk('cac','Coronary Calcium Score')}${dchk('vo2','VO2 Max Testing')}${dchk('hormone','Hormone Panel')}${dchk('genetic','Genetic Testing')}${dchk('microbiome','Gut Microbiome')}${dchk('food_sensitivity','Food Sensitivity')}${dchk('mri','MRI')}${dchk('ultrasound','Ultrasound')}</div>
+    <div style="font-size:10px;color:var(--gry);margin-top:8px;font-style:italic">Check anything completed in the past 12 months.</div>
+  `);
+  h+=`<div style="text-align:center;margin-top:28px"><button class="btn-export" style="padding:14px 48px;font-size:14px;letter-spacing:1px" onclick="sT('results')">View My Results</button></div>`;
+  h+=`<div style="text-align:center;margin-top:16px"><span style="font-size:11px;color:var(--gry);cursor:pointer;opacity:0.6;font-family:var(--sans)" onclick="sT('prep')">\u2190 Back</span></div>`;
+
   } else {
-    h+='<div>';
-    h+=`<div style="padding:10px 12px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px;margin-bottom:12px;font-size:10px;color:var(--txt);line-height:1.6">
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
-        <div><strong style="color:var(--acc2);font-size:11px">Domains</strong><br>
-          <span style="color:var(--gry)">01</span> Energy Capacity<br>
-          <span style="color:var(--gry)">02</span> Structural Integrity<br>
-          <span style="color:var(--gry)">03</span> Insulin Regulation<br>
-          <span style="color:var(--gry)">04</span> Inflammatory Burden<br>
-          <span style="color:var(--gry)">05</span> Stress Modulation</div>
-        <div><strong style="color:var(--acc2);font-size:11px">Governance Posture</strong><br>
-          <span style="color:var(--grn)">\u25CF \u226580 Protect</span> \u2014 Maintain<br>
-          <span style="color:var(--amb)">\u25CF 60\u201379 Tighten</span> \u2014 One move<br>
-          <span style="color:var(--red)">\u25CF 40\u201359 Stabilize</span> \u2014 Intervene<br>
-          <span style="color:var(--red)">\u25CF &lt;40 Restructure</span> \u2014 Rebuild</div>
-        <div><strong style="color:var(--acc2);font-size:11px">Acuity (Confidence)</strong><br>
-          <span style="color:var(--grn)">\u25CF 75\u201395%</span> High \u2014 Lab-driven<br>
-          <span style="color:var(--grn)">\u25CF 55\u201374%</span> Good \u2014 Key gaps<br>
-          <span style="color:var(--amb)">\u25CF 35\u201354%</span> Partial \u2014 Directional<br>
-          <span style="color:var(--red)">\u25CF 0\u201334%</span> Low \u2014 Needs data</div>
-      </div>
+    // ═══ RESULTS ═══
+    h+=`<div style="margin-bottom:12px"><span style="font-size:11px;color:var(--gry);cursor:pointer;opacity:0.6;font-family:var(--sans)" onclick="sT('guided')">\u2190 Edit Responses</span></div>`;
+    h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 12px;background:rgba(123,94,167,0.04);border:1px solid rgba(123,94,167,0.12);border-radius:8px;margin-bottom:16px;font-size:10px;color:var(--gry);line-height:1.5">
+      <div><strong style="color:var(--acc2);font-size:10px;letter-spacing:1px">POSTURE</strong><br>
+        <span style="color:var(--grn)">\u25CF</span> \u226580 Protect<br><span style="color:var(--amb)">\u25CF</span> 60\u201379 Tighten<br><span style="color:var(--gold)">\u25CF</span> 40\u201359 Stabilize<br><span style="color:var(--red)">\u25CF</span> &lt;40 Restructure</div>
+      <div><strong style="color:var(--acc2);font-size:10px;letter-spacing:1px">ACUITY</strong><br>
+        <span style="color:var(--grn)">\u25CF</span> 75\u201395% High<br><span style="color:var(--acc)">\u25CF</span> 55\u201374% Good<br><span style="color:var(--amb)">\u25CF</span> 35\u201354% Partial<br><span style="color:var(--red)">\u25CF</span> 0\u201334% Low</div>
+      <div style="display:flex;align-items:center;justify-content:center"><div style="text-align:center;font-size:9px;color:var(--gry);line-height:1.6">Tap any domain<br>to expand details</div></div>
     </div>`;
-    for(const d of DD){
+    h+='<div class="dom-grid">';
+    DD.forEach((d,idx)=>{
       const dr=r.doms[d.key],p=gP(dr.score),sc2=gC(dr.score);
-      const vm=d.markers.filter(m=>m.v&&m.r);
       const mod=r.mods[d.mk];
       const hasMed=mod&&mod.medLabels&&mod.medLabels.length;
       const hasFam=mod&&mod.fam;
       const menoTag=(S.ctx.hx_menopause!=='pre'&&['insulin','structural','inflammatory'].includes(d.key))?S.ctx.hx_menopause==='peri'?'PERI':'POST':null;
-      const alerts=mod?mod.alerts:[];
-      h+=`<div class="dcard" style="border-left:4px solid ${sc2}">
-        <div class="dt"><div>
-          <div style="font-size:10px;letter-spacing:1px;color:var(--acc2);font-weight:600">${d.i} DOMAIN</div>
-          <div class="dn">${d.name}${hasMed?mod.medLabels.map(l=>`<span class="tag tag-med">${l}</span>`).join(''):''}${hasFam?'<span class="tag tag-fam">FAM HX</span>':''}${menoTag?`<span class="tag tag-fam">${menoTag}</span>`:''}</div>
-          <div class="dd">${d.desc}</div>
+      const isOpen=S.openDom===d.key;
+      if(idx===4){h+='</div><div style="max-width:460px;margin:10px auto 0">';}
+      h+=`<div class="dcard" style="border-top:3px solid ${sc2}${isOpen?';border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)':''}">
+        <div class="dt" onclick="toggleDom('${d.key}')"><div>
+          <div style="font-size:9px;letter-spacing:1.5px;color:var(--gry);font-weight:400;font-family:var(--sans)">${d.i}</div>
+          <div class="dn">${d.name}</div>
+          <div class="dp" style="color:${p.c}">${p.l}</div>
         </div><div style="text-align:right">
           <div class="ds" style="color:${sc2}">${dr.score}</div>
-          <div class="dp" style="color:${p.c}">${p.l}</div>
+          <div style="font-size:9px;color:var(--gry)">${dr.conf}% acuity</div>
         </div></div>
-        <div class="cb"><div class="ct2"><div class="cf" style="width:${dr.conf}%;background:${dr.conf>65?'var(--grn)':dr.conf>35?'var(--amb)':'var(--red)'}"></div></div>
-          <div class="cla">${dr.conf}% acuity \u00B7 ${dr.src} (${dr.ou}/${dr.ot} markers)</div></div>
-        ${vm.length?vm.map(m=>`<div class="mk"><span class="mn">${m.n}</span><span class="mv" style="color:${m.r.c}">${m.v}${m.u?' '+m.u:''} \u2014 ${m.r.l}</span></div>`).join(''):''}
-        ${alerts.length?alerts.map(a=>`<div class="mod-alert ${a.type}"><strong>${a.type==='warn'?'\u26A0 GOVERNANCE MODIFIER':'\u2139 NOTE'}:</strong> ${a.text}</div>`).join(''):''}
-        ${d.sh.length?`<div class="sh"><div class="sht">\u2191 TO SHARPEN THIS DOMAIN</div>${d.sh.map(s=>`<div class="shi"><strong>${s.lab}</strong> \u2014 ${s.why} <span class="tag ${s.p==='URGENT'?'tag-urg':'tag-med'}" style="${s.p==='URGENT'?'':'background:rgba(136,153,170,0.15);color:var(--gry);border-color:rgba(136,153,170,0.3)'}">${s.p}</span></div>`).join('')}</div>`:''}
+        ${hasMed||hasFam||menoTag?`<div style="display:flex;gap:4px;flex-wrap:wrap;padding:0 16px 10px">${hasMed?mod.medLabels.map(l=>`<span class="tag tag-med">${l}</span>`).join(''):''}${hasFam?'<span class="tag tag-fam">FAM HX</span>':''}${menoTag?`<span class="tag tag-fam">${menoTag}</span>`:''}</div>`:''}
       </div>`;
-    }
+      if(idx===4){h+='</div>';}
+    });
     h+='</div>';
+
+    // ═══ EXPANDED DOMAIN DETAIL PANEL (below grid) ═══
+    if(S.openDom){
+      const d=DD.find(x=>x.key===S.openDom);
+      if(d){
+        const dr=r.doms[d.key],p=gP(dr.score),sc2=gC(dr.score);
+        const vm=d.markers.filter(m=>m.v&&m.r);
+        const mod=r.mods[d.mk];
+        const alerts=mod?mod.alerts:[];
+        h+=`<div style="margin-top:16px;background:var(--card);border:1px solid var(--acc);border-radius:12px;padding:20px;animation:fadeUp 0.2s ease;position:relative">
+          <div style="position:absolute;top:-8px;left:24px;background:var(--bg);padding:0 8px;font-size:9px;letter-spacing:2px;color:var(--acc2);font-family:var(--sans)">${d.i} \u2014 ${d.name.toUpperCase()}</div>
+          <span onclick="toggleDom('')" style="position:absolute;top:12px;right:16px;font-size:14px;color:var(--gry);cursor:pointer;line-height:1">\u2715</span>
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px;margin-top:4px">
+            <div style="font-size:36px;font-weight:300;color:${sc2};font-family:var(--serif);line-height:1">${dr.score}</div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:${p.c};font-family:var(--sans)">${p.l}</div>
+              <div style="font-size:10px;color:var(--gry);font-style:italic">${d.desc}</div>
+            </div>
+          </div>
+          <div class="cb"><div class="ct2"><div class="cf" style="width:${dr.conf}%;background:${dr.conf>65?'var(--grn)':dr.conf>35?'var(--amb)':'var(--red)'}"></div></div>
+            <div class="cla">${dr.src} (${dr.ou}/${dr.ot} markers)</div></div>
+          ${vm.length?`<div style="margin-top:8px">${vm.map(m=>`<div class="mk"><span class="mn">${m.n}</span><span class="mv" style="color:${m.r.c}">${m.v}${m.u?' '+m.u:''} \u2014 ${m.r.l}</span></div>`).join('')}</div>`:''}
+          ${alerts.length?`<div style="margin-top:10px">${alerts.map(a=>`<div class="mod-alert ${a.type}"><strong>${a.type==='warn'?'\u26A0 MODIFIER':'\u2139 NOTE'}:</strong> ${a.text}</div>`).join('')}</div>`:''}
+          ${d.sh.length?`<div class="sh" style="margin-top:12px"><div class="sht">SHARPEN THIS DOMAIN</div>${d.sh.map(s=>`<div class="shi"><strong>${s.lab}</strong> \u2014 ${s.why} <span class="tag ${s.p==='URGENT'?'tag-urg':'tag-med'}" style="${s.p==='URGENT'?'':'background:rgba(136,153,170,0.12);color:var(--gry);border-color:rgba(136,153,170,0.25)'}">${s.p}</span></div>`).join('')}</div>`:''}
+        </div>`;
+      }
+    }
+    // Submit section
     h+=`<div style="text-align:center;margin:16px 0;padding:24px 20px;background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--lav);border-radius:12px" id="submitSection">
       <div style="font-size:15px;font-weight:700;color:var(--txth);margin-bottom:4px">Your Assessment is Complete</div>
       <div style="font-size:12px;color:var(--txt);margin-bottom:16px;line-height:1.6;max-width:520px;margin-left:auto;margin-right:auto">
-        Your domain scores reflect the current state of each metabolic domain based on what you\u2019ve entered. Where labs or measurements are missing, the Lens has scored what it can see and identified the testing that would sharpen acuity.
+        Your domain scores reflect the current state of each metabolic domain based on what you\u2019ve entered.
       </div>
       <div style="text-align:left;max-width:440px;margin:0 auto 18px">
         <div style="background:var(--card);border:1px solid var(--lav);border-radius:10px;padding:18px 20px">
           <div style="font-size:12px;letter-spacing:1.5px;color:var(--acc2);font-weight:700;margin-bottom:12px">CONTACT INFORMATION</div>
-          <div class="client-field">
-            <label>Email Address <span style="color:var(--red);font-weight:400">*required</span></label>
-            <input type="email" id="clientEmail" placeholder="your@email.com" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-          </div>
-          <div class="client-field">
-            <label>Phone Number <span style="color:#4A5B6E;font-weight:400">optional</span></label>
-            <input type="tel" id="clientPhone" placeholder="" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none">
-          </div>
-          <div class="client-field">
-            <label>Preferred Method of Contact</label>
+          <div class="client-field"><label>Email Address <span style="color:var(--red);font-weight:400">*required</span></label>
+            <input type="email" id="clientEmail" placeholder="your@email.com" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none"></div>
+          <div class="client-field"><label>Phone Number <span style="color:var(--gry);font-weight:400">optional</span></label>
+            <input type="tel" id="clientPhone" placeholder="" style="width:100%;padding:7px 10px;background:var(--navy2);border:1px solid var(--border);border-radius:6px;color:var(--txth);font-size:12px;outline:none"></div>
+          <div class="client-field"><label>Preferred Method of Contact</label>
             <div style="display:flex;gap:20px;margin-top:4px">
-              <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txth);cursor:pointer">
-                <input type="radio" name="contactPreference" value="email" checked style="accent-color:var(--lav)"> Email
-              </label>
-              <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txth);cursor:pointer">
-                <input type="radio" name="contactPreference" value="phone" style="accent-color:var(--lav)"> Phone
-              </label>
-            </div>
-          </div>
+              <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txth);cursor:pointer"><input type="radio" name="contactPreference" value="email" checked style="accent-color:var(--lav)"> Email</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txth);cursor:pointer"><input type="radio" name="contactPreference" value="phone" style="accent-color:var(--lav)"> Phone</label>
+            </div></div>
           <div style="font-size:10px;color:var(--gry);margin-top:10px;line-height:1.5;padding-top:10px;border-top:1px solid var(--border)">Your information is used solely to deliver your report and follow up regarding your assessment.</div>
         </div>
       </div>
       <button class="btn-export" id="submitBtn" onclick="submitAssessment()">\u2191 Submit My Assessment</button>
       <div id="submitStatus" style="margin-top:12px;font-size:11px;color:var(--gry)"></div>
       <div style="text-align:left;max-width:480px;margin:18px auto 0;padding:16px 18px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px">
-        <div style="font-size:11px;font-weight:700;color:var(--acc2);margin-bottom:10px;letter-spacing:1px">WHAT HAPPENS NEXT</div>
+        <div style="font-size:11px;font-weight:500;color:var(--acc2);margin-bottom:10px;letter-spacing:1px;font-family:var(--sans)">WHAT HAPPENS NEXT</div>
         <div style="font-size:12px;color:var(--txt);line-height:1.7;margin-bottom:8px">
           <strong style="color:var(--txth)">Your Alignment Report</strong><br>
-          <span style="color:var(--gry)">A comprehensive analysis of your five domains \u2014 what each score means, where the blind spots are, what the data is telling us that a standard physical misses, and the single highest-leverage move for your strategy right now.</span>
+          <span style="color:var(--gry)">Your submission will be reviewed by an \u00C9cire clinician. You\u2019ll receive a comprehensive report analyzing your five domains.</span>
         </div>
         <div style="font-size:12px;color:var(--txt);line-height:1.7;margin-bottom:8px">
-          <strong style="color:var(--txth)">Your Alignment Plan</strong><br>
-          <span style="color:var(--gry)">Domain-specific recommendations, sequenced to compound and synergize across domains, so that each intervention enhances the results of the next. What to do first, what to test next, and what to protect.</span>
+          <strong style="color:var(--txth)">Your Options</strong><br>
+          <span style="color:var(--gry)">Once your report is ready, you can review it independently or book a Lens Review to walk through results with your clinician.</span>
         </div>
         <div style="font-size:11px;color:var(--gry);line-height:1.6;padding-top:8px;border-top:1px solid var(--border)">
-          Your Report will include a recommended governance level based on your domain scores and acuity. If you\u2019d like to discuss your results or explore ongoing implementation support, governance consultations are available through \u00C9cire Health.
+          Turnaround is typically 3\u20135 business days.
         </div>
       </div>
-      <div style="font-size:10px;color:var(--gry);margin-top:14px">Your data stays on your device until you submit. The assessment contains only what you entered here.</div>
+      <div style="font-size:10px;color:var(--gry);margin-top:14px">Your data stays on your device until you submit.</div>
+      <div style="text-align:center;max-width:480px;margin:24px auto 0;padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:10px">
+        <div style="font-size:13px;font-weight:400;color:var(--txth);font-family:var(--serif);margin-bottom:8px">Want to discuss your health with an \u00C9cire clinician?</div>
+        <div style="font-size:11px;color:var(--gry);line-height:1.6;margin-bottom:16px;font-family:var(--sans)">Schedule a consultation to walk through your results or begin working on a strategy.</div>
+        <a href="https://secure.gethealthie.com/appointments/embed_appt?dietitian_id=13844147" target="_blank"
+          style="display:inline-block;padding:12px 36px;background:transparent;border:1px solid var(--lav);color:var(--acc2);font-size:11px;font-weight:500;letter-spacing:1.5px;border-radius:6px;text-decoration:none;font-family:var(--sans);transition:all 0.2s;cursor:pointer"
+          onmouseover="this.style.background='var(--lav)';this.style.color='var(--white)'" onmouseout="this.style.background='transparent';this.style.color='var(--acc2)'">
+          SCHEDULE A CONSULTATION
+        </a>
+      </div>
     </div>`;
   }
 
@@ -827,11 +1442,12 @@ function render(){
   A.innerHTML=h;
 }
 
-function chk(k,label,desc){
+// ═══ ORIGINAL HELPER FUNCTIONS ═══
+function chk(k,label){
   const on=S.ctx[k];
   return `<div class="chk-item ${on?'on':''}" onclick="tC('${k}')">
     <input type="checkbox" ${on?'checked':''} onclick="event.stopPropagation();tC('${k}')">
-    <div><div class="cl">${label}</div><div class="cd">${desc}</div></div></div>`;
+    <div><div class="cl">${label}</div></div></div>`;
 }
 function dchk(k,label){
   const on=S.diag[k];
@@ -841,24 +1457,31 @@ function dchk(k,label){
 }
 function slider(k,label,lo,hi){
   const v=S.subj[k];
-  return `<div class="field"><label>${label}</label><div class="sw">
-    <span style="font-size:10px;color:var(--gry);min-width:52px;text-align:right">${lo||''}</span>
-    <input type="range" min="1" max="10" value="${v}" oninput="sS('${k}',+this.value)">
-    <div class="sv">${v}</div>
-    <span style="font-size:10px;color:var(--gry);min-width:52px">${hi||''}</span>
+  return `<div class="field"><label>${label}</label>
+    <div class="slider-labels" style="display:flex;justify-content:space-between;margin-top:6px;margin-bottom:4px">
+      <span style="font-size:9px;color:var(--gry)">${lo||''}</span>
+      <span style="font-size:9px;color:var(--gry)">${hi||''}</span>
+    </div>
+    <div class="slider-nums" style="display:flex;align-items:center;gap:4px;justify-content:center">
+      ${[1,2,3,4,5,6,7,8,9,10].map(n=>
+        `<div onclick="sS('${k}',${n})" style="width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:var(--sans);
+          ${v===n?'background:var(--lav);color:var(--white);border:1px solid var(--lav)':'background:var(--navy2);color:var(--gry);border:1px solid var(--border)'}">${n}</div>`
+      ).join('')}
     </div></div>`;
 }
 function sel(k,label,opts){
   const v=S.subj[k];
   return `<div class="field"><label>${label}</label><select onchange="sS('${k}',this.value)">
+    ${v===''?'<option value="" selected disabled>\u2014</option>':''}
     ${Object.entries(opts).map(([kk,l])=>`<option value="${kk}" ${v===kk?'selected':''}>${l}</option>`).join('')}</select></div>`;
 }
 function fld(k,label,unit,ph,hint){
-  return `<div class="field"><label>${label} <span style="color:#4A5B6E;font-weight:400">${unit}</span></label>
+  return `<div class="field"><label>${label} <span style="color:var(--gry);font-weight:400">${unit}</span></label>
     <input type="number" step="any" value="${S.obj[k]}" placeholder="${ph||''}"
       oninput="sO('${k}',this.value)" onblur="sODone()">${hint?`<div class="hint">${hint}</div>`:''}</div>`;
 }
 
+// ═══ GLOBAL HANDLERS ═══
 window.sT=function(t){S.tab=t;render();window.scrollTo(0,0);};
 window.sS=function(k,v){S.subj[k]=v;render();};
 window.sO=function(k,v){S.obj[k]=v;};
@@ -866,9 +1489,119 @@ window.sODone=function(){render();};
 window.tD=function(k){S.diag[k]=!S.diag[k];render();};
 window.tC=function(k){S.ctx[k]=!S.ctx[k];render();};
 window.sCtx=function(k,v){S.ctx[k]=v;render();};
+window.togglePanel=function(panel){S.redo.delete(panel);S.openPanel=S.openPanel===panel?'':panel;render();};
+window.uncheckPanel=function(panel){S.redo.add(panel);render();};
+window.toggleDom=function(key){S.openDom=S.openDom===key?'':key;render();};
 window.sCl=function(k,v){S.client[k]=v;};
 window.toggleRace=function(r,checked){if(checked){if(!S.client.race.includes(r))S.client.race.push(r);}else{S.client.race=S.client.race.filter(x=>x!==r);}};
+window.goStep=function(i){S.guidedStep=i;render();window.scrollTo(0,0);};
 
+// Guided slider pick — update state + visual without full re-render
+window.gSliderPick=function(k,n,el){
+  S.subj[k]=n;
+  // Update visual: reset siblings, highlight clicked
+  const parent=el.parentElement;
+  if(parent){
+    Array.from(parent.children).forEach((c,i)=>{
+      const num=i+1;
+      if(num===n){
+        c.style.background='var(--lav)';c.style.color='var(--white)';c.style.border='1px solid var(--lav)';
+      } else {
+        c.style.background='var(--navy2)';c.style.color='var(--gry)';c.style.border='1px solid var(--border)';
+      }
+    });
+  }
+  updateGuidedCommentary();
+};
+
+// Guided field input — update state without re-render
+window.gFieldInput=function(k,v){
+  S.obj[k]=v;
+};
+window.gFieldBlur=function(){
+  updateGuidedCommentary();
+};
+
+// Guided checkbox toggles — update state + visual without re-render
+window.gToggleCtx=function(k,el){
+  S.ctx[k]=!S.ctx[k];
+  const on=S.ctx[k];
+  const cb=el.querySelector('input[type=checkbox]');
+  if(cb)cb.checked=on;
+  if(on){el.classList.add('on');}else{el.classList.remove('on');}
+  updateGuidedCommentary();
+};
+window.gToggleDiag=function(k,el){
+  S.diag[k]=!S.diag[k];
+  const on=S.diag[k];
+  const cb=el.querySelector('input[type=checkbox]');
+  if(cb)cb.checked=on;
+  if(on){el.classList.add('on');}else{el.classList.remove('on');}
+  updateGuidedCommentary();
+};
+
+// Guided source picker (body comp source, wearable source)
+window.gPickSource=function(k,v,el){
+  S.obj[k]=v;
+  const parent=el.parentElement;
+  if(parent){
+    Array.from(parent.children).forEach(c=>{
+      c.style.background='var(--navy2)';c.style.color='var(--gry)';c.style.border='1px solid var(--border)';
+    });
+  }
+  el.style.background='var(--lav)';el.style.color='var(--white)';el.style.border='1px solid var(--lav)';
+  updateGuidedCommentary();
+};
+
+// Update just the commentary div without full re-render (fixes dropdowns)
+window.updateGuidedCommentary=function(){
+  const el=document.getElementById('guided-commentary-area');
+  if(el){
+    const notes=guidedCommentary(S.guidedStep);
+    el.innerHTML=notes.length?notes.map(c=>`<div class="guided-commentary ${c.type}">${c.text}</div>`).join(''):'';
+  }
+  // Also update step nav completion dots
+  const nav=document.getElementById('step-nav-list');
+  if(nav){
+    for(let i=0;i<GUIDED_TOTAL;i++){
+      const dot=document.getElementById('snav-dot-'+i);
+      if(dot){
+        const comp=isStepComplete(i);
+        const isCurrent=i===S.guidedStep;
+        dot.className='step-nav-dot '+(isCurrent?'current':comp?'done':'empty');
+        dot.textContent=isCurrent?(i+1):comp?'\u2713':'';
+      }
+    }
+  }
+};
+
+// Step completion check
+function isStepComplete(idx){
+  const c=S.ctx,s=S.subj,o=S.obj;
+  switch(idx){
+    case 0:return !!(S.client.name||S.client.age);
+    case 1:return Object.entries(c).filter(([k,v])=>k.startsWith('fam_')&&v).length>0;
+    case 2:return Object.entries(c).filter(([k,v])=>k.startsWith('hx_')&&v&&k!=='hx_menopause').length>0||c.hx_menopause!=='pre';
+    case 3:return Object.entries(c).filter(([k,v])=>k.startsWith('med_')&&v).length>0;
+    case 4:return c.life_isolation!=='connected'||c.life_financial!=='stable';
+    case 5:return s.energy>0||s.sleep>0||s.recovery>0||s.exercise!==''||s.fatigue!=='';
+    case 6:return s.stress>0||s.mood>0||s.sleepOnset!=='';
+    case 7:return s.cravings>0||s.postmeal>0||s.hunger!=='';
+    case 8:return s.strength!==''||s.bodyChange!==''||s.jointPain!=='';
+    case 9:return !!(o.sys||o.dia||o.hr||o.ht||o.wt);
+    case 10:return !!(o.a1c||o.fg||o.rg);
+    case 11:return !!(o.tc||o.ldl||o.hdl||o.trig);
+    case 12:return !!(o.hgb||o.tsh||o.alt||o.vitD||o.hsCRP||o.fastIns||o.cortisol);
+    case 13:return !!(o.bodyFat||o.leanMass||o.bodyWater||o.visceralFat||o.boneMass||o.bonePct||o.musclePct||o.muscleLbs);
+    case 14:return !!(o.hrv||o.avgSleep||o.deepSleep||o.vo2max||o.respRate);
+    case 15:return Object.values(S.diag).some(v=>v);
+    default:return false;
+  }
+}
+
+// Short labels for step nav
+const STEP_LABELS=['About You','Family History','Health History','Medications','Life Context','Energy & Recovery','Stress & Mood','Appetite','Body & Movement','Vitals','Glucose','Lipids','Additional Labs','Body Comp','Wearable Data','Prior Testing'];
+// ═══ EXPORT / SUBMIT ═══
 window.exportJSON=function(){
   const r=computeAll();
   const payload={
@@ -882,7 +1615,7 @@ window.exportJSON=function(){
     additionalDiagnostics:{...S.diag},
     computed:{
       bmi:r.bmi,whr:r.whr,trigHdlRatio:r.ths?parseFloat(((val(S.obj.trig))/(val(S.obj.hdl))).toFixed(2)):null,
-      bodyFat:val(S.obj.bodyFat),leanMass:val(S.obj.leanMass),bodyWater:val(S.obj.bodyWater),visceralFat:val(S.obj.visceralFat),boneMass:val(S.obj.boneMass),
+      bodyFat:val(S.obj.bodyFat),leanMass:val(S.obj.leanMass),bodyWater:val(S.obj.bodyWater),visceralFat:val(S.obj.visceralFat),boneMass:val(S.obj.boneMass),bonePct:val(S.obj.bonePct),musclePct:val(S.obj.musclePct),muscleLbs:val(S.obj.muscleLbs),
       hrv:val(S.obj.hrv),avgSleep:val(S.obj.avgSleep),deepSleep:val(S.obj.deepSleep),vo2max:val(S.obj.vo2max),respRate:val(S.obj.respRate),
       domains:{},
       index:r.idx,indexState:gSt(r.idx).l,
@@ -892,20 +1625,16 @@ window.exportJSON=function(){
     modifiers:{},
     markerScores:{}
   };
-  // Subjective scores
   for(const k in S.subj)payload.subjectiveScores[k]=subjScore(k,S.subj[k]);
-  // Domain data
   const dKeys=['energy','structural','insulin','inflammatory','stress'];
   for(const k of dKeys){
     const d=r.doms[k];
     payload.computed.domains[k]={score:d.score,confidence:d.conf,source:d.src,markersUsed:d.ou,markersTotal:d.ot,posture:gP(d.score).l};
   }
-  // Modifiers
   for(const k of dKeys){
     const m=r.mods[k];
     payload.modifiers[k]={familyHistory:!!m.fam,personalHistory:!!m.hx,medicated:!!m.med,medLabels:m.medLabels||[],alerts:m.alerts||[]};
   }
-  // Marker scores (objective)
   for(const k in r.sc){
     if(r.sc[k])payload.markerScores[k]={score:r.sc[k].s,label:r.sc[k].l,value:val(S.obj[k])||(k==='bmi'?r.bmi:k==='whr'?r.whr:null)};
   }
@@ -915,7 +1644,7 @@ window.exportJSON=function(){
 
 window.downloadJSON=function(){
   const data=exportJSON();
-  const name=S.client.name?S.client.name.replace(/[^a-zA-Z0-9]/g,'_'):'client';
+  const name=S.client.name?(S.client.name+(S.client.lastName?' '+S.client.lastName:'')).replace(/[^a-zA-Z0-9]/g,'_'):'client';
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);
   a.download=`${name}_alignment_assessment.json`;a.click();URL.revokeObjectURL(a.href);
@@ -931,48 +1660,28 @@ window.copyJSON=function(){
 
 window.submitAssessment=function(){
   const data=exportJSON();
-
   const email=document.getElementById('clientEmail')?.value.trim();
   const phone=document.getElementById('clientPhone')?.value.trim();
   const contactPreference=document.querySelector('input[name="contactPreference"]:checked')?.value;
-
-  if(!email){
-    alert('Please enter your email address.');
-    return;
-  }
-
+  if(!email){alert('Please enter your email address.');return;}
   data.client=data.client||{};
   data.client.email=email;
   data.client.phone=phone||'';
   data.client.preferredContact=contactPreference||'email';
   data.client.submittedAt=new Date().toISOString();
-
   const btn=document.getElementById('submitBtn');
   const status=document.getElementById('submitStatus');
-  btn.disabled=true;
-  btn.style.opacity='0.6';
-  btn.textContent='Submitting\u2026';
+  btn.disabled=true;btn.style.opacity='0.6';btn.textContent='Submitting\u2026';
   if(status)status.textContent='';
-
   const endpoint='https://script.google.com/macros/s/AKfycby3HedJA2voOxMQZQde9GKAJ8XcidaDlFH3GR6KqfTFmYc3k-19BvyDY8re7hG0R1f8/exec';
-  const payload=JSON.stringify(data);
-
+  const payloadStr=JSON.stringify(data);
   let sent=false;
-  try{
-    if(navigator.sendBeacon){
-      sent=navigator.sendBeacon(endpoint,new Blob([payload],{type:'text/plain'}));
-    }
-  }catch(e){}
-
-  if(sent){
-    showSubmitSuccess();
-  }else{
-    fetch(endpoint,{method:'POST',body:payload,headers:{'Content-Type':'text/plain'},mode:'no-cors'})
+  try{if(navigator.sendBeacon){sent=navigator.sendBeacon(endpoint,new Blob([payloadStr],{type:'text/plain'}));}}catch(e){}
+  if(sent){showSubmitSuccess();}else{
+    fetch(endpoint,{method:'POST',body:payloadStr,headers:{'Content-Type':'text/plain'},mode:'no-cors'})
       .then(()=>{showSubmitSuccess();})
       .catch(()=>{
-        btn.disabled=false;
-        btn.style.opacity='1';
-        btn.textContent='\u2191 Submit My Assessment';
+        btn.disabled=false;btn.style.opacity='1';btn.textContent='\u2191 Submit My Assessment';
         if(status)status.innerHTML='<span style="color:var(--red)">Submission failed. Please try again or download your assessment and email it to lens@ecirehealth.com.</span>';
       });
   }
@@ -989,7 +1698,7 @@ function showSubmitSuccess(){
           You will receive your Alignment Report within 3\u20135 business days.
         </div>
         <div style="font-size:12px;color:var(--gry);line-height:1.7;max-width:480px;margin:0 auto;padding:14px 18px;background:rgba(123,94,167,0.06);border:1px solid rgba(123,94,167,0.15);border-radius:8px">
-          Your report will define a recommended level of implementation structure and support based on your domain scores, overall acuity, and readiness. This framework is designed to support sustained execution of the recommended interventions.
+          Your report will define a recommended level of implementation structure and support based on your domain scores, overall acuity, and readiness.
         </div>
       </div>`;
   }
